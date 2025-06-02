@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="../styles.css">
+        <title>RRTs</title>
+        
+        <style>
+            
+            .edit-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: #005abb;
+                /* #14385d */
+            }
+            .info-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: rgba(235, 153, 1, 0.884);
+                /* #fcdb04 */
+            }
+		           
+		   body{
+                
+            min-width: 650px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f8fa;
+                
+            }
+			header {
+            background-color: #005abb;
+            color: white;
+            padding: 10px;
+            margin-bottom: 0px;
+            text-align: center;
+            }
+			ul {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            }
+			.lateral ul {
+            /*background: #0f1863; */   
+            }
+
+            .lateral ul li {
+            background: #14385d;
+            /* float: left; */
+            }
+
+            li {
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #menu-esquerda {
+            float: left;
+            width: 20%;
+            }
+
+            #menu-direita {
+                float: left;
+                width: 20%;
+                
+            }
+			.despacho {
+            float: left;
+            /* background: #b3b7be; */
+            width: 58%;
+            margin: 0px 5px;
+            }
+                        
+            .lateral ul a {
+            font-size: 0.9em;
+            display: block;
+            padding: 0.5em 1.5em;
+            text-decoration: none;
+            color: azure;
+            }
+
+            .lateral ul a:hover {
+            background-color: #244575;
+            }
+                    
+            textarea {
+                margin: 10px 20px;
+                width: 94%;
+                max-width: 94%;
+            }
+
+            #container-button{
+                text-align: center;
+                margin: 10px;
+            }
+			button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+      
+            }
+
+            #atualizar {
+            background-color: #0074D9;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #copiar {
+            background-color: #30a030;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #abas-atividades {
+                text-align: center;
+                margin: 5px 0px;
+            }
+			
+			.clear {
+            clear: both;
+            }
+
+            legend {
+            font-size: larger;
+            }
+			.container h3 {
+            color: #44546a;
+            font-size: 1.5rem; /* Tamanho da fonte específico */
+        }
+            fieldset {
+            }
+			.mt-4 {
+            color: #44546a; /* Define a cor do texto para branco, se necessário */
+    }
+			
+        </style>
+
+    </head>
+
+    <body>
+            
+        <!--------------------------------------- nav superior ---------------------------------------->
+
+        <nav class="navbar navbar-expand-lg navbar-dark siccau-color">
+			
+			<!-- brand -->
+         <a href="../Index.html"><img src="../cau.png" width="233" height="75" alt="Início" class="img-fluid"></a>
+		<!-- collapse button -->
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="index.html" >
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+                   
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav ">
+
+                    <!-- Dropdown PARA DESPACHOS PESSOA JURIDICA -->
+                    <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */  bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Jurídica</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../PJ/registro_empresa.html">Registro de Empresa</a>                           
+                            <a class="dropdown-item" href="../PJ/alteracao_cadastral.html">Alteração Cadastral</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_email.html">Inclusão de email</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa.html">Baixa de Registro</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa_oficio.html">Baixa de Registro de Ofício</a>
+                            <a class="dropdown-item" href="../PJ/interrupcao_registro_empresa.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_responsavel_tecnico.html">Inclusão de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/baixa_responsavel_tecnico.html">Baixa de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/desconto_anuidade.html">Desconto de Anuidade</a>
+                            <a class="dropdown-item" href="../PJ/crqpj.html">CRQPJ</a>
+                            <a class="dropdown-item" href="../PJ/despachos_gerais.html">Despachos Gerais</a>
+							<a class="dropdown-item" href="../PJ/consulta_cnae.html">Consulta CNAE</a>                            
+                        </div>
+                    </li>
+				
+					<!-- Dropdown com atividades PARA DESPACHOS PESSOA FÍSICA-->
+                   <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */ bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 250px; height: 100%; font-size: 20px;margin-right: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Física</a>
+                        <div class="dropdown-menu">              
+                            <a class="dropdown-item" href="PF/rrts-01.html">RRTs</a>
+                            <a class="dropdown-item" href="PF/cat-01.html">CAT-A</a>
+                            <a class="dropdown-item" href="PF/rda-01.html">RDA</a>
+                            <a class="dropdown-item" href="PF/status-01.html">Status de RRT</a>
+                            <a class="dropdown-item" href="PF/interrupcao-01.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="PF/protocolos-01.html">Protocolos</a>
+                            <a class="dropdown-item" href="PF/email-01.html">E-mail</a>
+                            <a class="dropdown-item" href="PF/siccau-01.html">SICCAU</a>                                                    
+                        </div>
+                    </li>
+					
+				
+					<!-- links demais páginas -->
+                    <ul class="navbar-nav flex-wrap">
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="piso-semanal.HTML", target="_blank">Calculadora Piso</a>
+                        </li>
+                  
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://acesso.caubr.gov.br/", target="_blank">SICCAU</a>
+                        </li> 
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/", target="_blank">Resoluções</a>
+                        </li>
+						
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php", target="_blank">Tutoriais Helpdesk</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://ria.caubr.gov.br", target="_blank">Tutoriais RIA</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://gad.caubr.gov.br", target="_blank">GAD</a>
+                        </li>
+				    </ul>
+                </ul>
+            </div>
+        </nav>
+            
+        <!--------------------------------------- area elaboração do despacho ---------------------------------------->
+<div class="container mt-4">
+        <h3 style="text-align: center;">RRTs - Despachos</h3> </div>
+       
+
+        <div id="menu-esquerda">
+            <div class="status-01">
+
+                <div class="container">
+                    <div class="lateral">
+                        <ul class="navegacao">
+
+
+                            <fieldset>
+                                <legend style="color:#44546a">
+                                    
+                                    Alteração de Status
+
+                                </legend>
+                                
+
+
+                                <li>
+                                    <a id="status-01" href="status-01.html">Cancelamento Aprovado</a>
+                                </li>
+                            
+                                <li>
+                                    <a id="status-02" href="status-02.html">Nulidade Aprovada</a>
+                                </li>
+
+                                
+                                <li>
+                                    <a id="status-03" href="status-03.html">Baixa Aprovada</a>
+                                </li>
+                                <li>
+                                    <a id="status-04" href="status-04.html">Indeferimento Aprovado</a>
+                                </li>
+                                <li>
+                                    <a id="status-05" href="status-05.html">Baixa sem Data de Término</a>
+                                </li>
+
+                                <li>
+                                    <a id="status-06" href="status-06.html">Cancelamento e Nulidade Sem Motivo/Declaração</a>
+                                </li>
+
+                                <li>
+                                    <a id="status-07" href="status-07.html">Indeferimento Sem Motivo</a>
+                                </li>
+
+                                <li>
+                                    <a id="status-08" href="status-08.html">Baixa de Ofício</a>
+                                </li>
+                                <li>
+                                    <a id="status-09" href="status-09.html">Cancelamento Cargo e Função</a>
+                                </li>   
+
+                                <li>
+                                    <a id="status-10" href="status-10.html">Cancelamento E Nulidade RRT - 2 ou Mais Serviços</a>
+                                </li>                               
+                         
+
+                             </fieldset>
+                                
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="despacho">
+
+            <div>
+            <textarea name="" id="" cols="100" rows="15">
+Prezado(a) profissional, considerando os artigos 30 e 31 da Resolução n° 91 – CAU/BR:  <br><br>
+
+“Art. 30. Além da baixa de RRT motivada por conclusão da atividade técnica que o constitui, o RRT deverá ser baixado:<br><br>
+
+I – Por interrupção da atividade técnica, se ocorrer uma das seguintes situações:<br>
+a) rescisão contratual;<br>
+b) retirada do arquiteto e urbanista da condição de responsável técnico;<br>
+c) paralisação da atividade técnica;<br><br>
+
+II – Se o arquiteto e urbanista deixar de integrar o quadro técnico da pessoa jurídica”;<br><br>
+
+“Art. 31. Em caso de comprovada omissão do arquiteto e urbanista em atender ao disposto no artigo anterior, a pessoa jurídica contratada ou a pessoa física ou jurídica contratante poderão requerer a baixa junto ao CAU/UF onde o RRT foi efetuado.<br>
+§ 1° Nos casos deste artigo, o CAU/UF notificará o arquiteto e urbanista para, no prazo de 10 (dez) dias, manifestar-se sobre o requerimento.<br><br>
+
+§ 2° Após a manifestação do arquiteto e urbanista ou decorrido o prazo concedido para sua manifestação, o CAU/UF decidirá sobre a baixa do RRT, firmando sua decisão na análise das informações contidas no requerimento apresentado.”;<br><br>
+
+Solicitamos que efetue a baixa, por solicitação da contratante, do RRT XXXXXXXXXXXXX. <br><br>
+
+Caso não haja manifestação no prazo de 10 dias após o recebimento deste protocolo, o RRT será baixado pela equipe técnica do CAU/AP. A manifestação poderá ser feita neste protocolo ou através do canal de atendimento do CAU/SP.<br><br>
+
+
+Atenciosamente, <br>
+GTEC – Gerência Técnica – CAU/AP
+            </textarea>
+            </div>
+            
+            <div id="container-button">
+                <button id="copiar">Copiar</button>
+                <button id="atualizar">Atualizar</button>
+            </div>
+
+           
+
+        </div>
+
+        <div id="menu-direita">
+            <div class="exterior-01">
+
+                <div class="container">
+                    <div class="lateral">
+                        <ul class="navegacao">
+
+
+                            
+                            
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <hr>
+        
+
+
+        <!--------------------------------------- footer  ---------------------------------------->
+
+        <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-3">
+            <p class="m-1">Gerência de Fiscalização e Registros - CAU/AP</p>
+        </footer>
+    	
+		<script> document.addEventListener("DOMContentLoaded", function() {
+            const copiarBotao = document.getElementById("copiar");
+            const textarea = document.querySelector("textarea");
+    
+            copiarBotao.addEventListener("click", function() {
+                textarea.select();
+                document.execCommand("copy");
+                
+            });
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const atualizarBotao = document.getElementById("atualizar");
+        
+        atualizarBotao.addEventListener("click", function() {
+                location.reload(); // Esta linha recarrega a página
+            });
+        }); </script>
+        <!-- JavaScript (Opcional) -->
+        <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        
+    </body>
+</html>
