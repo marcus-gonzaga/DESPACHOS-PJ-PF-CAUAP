@@ -1,0 +1,533 @@
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="../styles.css">
+        <title>Derivado02</title>
+        
+
+        <style>
+
+            .edit-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: #005abb;
+                /* #14385d */
+            }
+            .info-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: rgba(235, 153, 1, 0.884);
+                /* #fcdb04 */
+            }
+		
+            body{
+                
+            min-width: 650px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f8fa;
+                
+            }
+			header {
+            background-color: #005abb;
+            color: white;
+            padding: 10px;
+            margin-bottom: 0px;
+            text-align: center;
+            }
+			ul {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            }
+			.lateral ul {
+            /*background: #0f1863; */   
+            }
+
+            .lateral ul li {
+            background: #14385d;
+            /* float: left; */
+            }
+
+            li {
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #menu-esquerda {
+            float: left;
+            width: 20%;
+            }
+
+            #menu-direita {
+                float: left;
+                width: 20%;
+                
+            }
+			.despacho {
+            float: left;
+            /* background: #b3b7be; */
+            width: 58%;
+            margin: 0px 5px;
+            }
+                        
+            .lateral ul a {
+            font-size: 0.9em;
+            display: block;
+            padding: 0.5em 1.5em;
+            text-decoration: none;
+            color: azure;
+            }
+
+            .lateral ul a:hover {
+            background-color: #244575;
+            }
+                    
+            textarea {
+                margin: 10px 20px;
+                width: 94%;
+                max-width: 94%;
+            }
+
+            #container-button{
+                text-align: center;
+                margin: 10px;
+            }
+			button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+      
+            }
+
+            #atualizar {
+            background-color: #0074D9;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #copiar {
+            background-color: #30a030;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #abas-atividades {
+                text-align: center;
+                margin: 5px 0px;
+            }
+			
+			.clear {
+            clear: both;
+            }
+
+            legend {
+            font-size: larger;
+            }
+			.container h3 {
+            color: #44546a;
+            font-size: 1.5rem; /* Tamanho da fonte específico */
+        }
+            fieldset {
+            }
+			.mt-4 {
+			color: #44546a; /* Define a cor do texto para branco, se necessário */
+    }
+            .ativ-tecnica-01 a#ativ-tecnica-01,
+            .ativ-tecnica-02 a#ativ-tecnica-02
+
+           <!--   {
+            color: white;
+            background: #00464d;
+            cursor: text;
+            }
+
+            a {
+                text-decoration: none;
+                color: white;
+                padding: 8px 4px;
+
+            }
+
+            a:hover {
+                
+                
+                background-color: #00474d94;
+
+            } -->
+     
+        </style>
+
+    </head>
+   
+    <body >
+
+              <!--------------------------------------- nav superior ---------------------------------------->
+
+        <nav class="navbar navbar-expand-lg navbar-dark siccau-color">
+			
+			<!-- brand -->
+         <a href="../Index.html"><img src="../cau.png" width="233" height="75" alt="Início" class="img-fluid"></a>
+		<!-- collapse button -->
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="index.html" >
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+                   
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav ">
+
+                    <!-- Dropdown PARA DESPACHOS PESSOA JURIDICA -->
+                    <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */  bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Jurídica</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../PJ/registro_empresa.html">Registro de Empresa</a>                           
+                            <a class="dropdown-item" href="../PJ/alteracao_cadastral.html">Alteração Cadastral</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_email.html">Inclusão de email</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa.html">Baixa de Registro</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa_oficio.html">Baixa de Registro de Ofício</a>
+                            <a class="dropdown-item" href="../PJ/interrupcao_registro_empresa.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_responsavel_tecnico.html">Inclusão de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/baixa_responsavel_tecnico.html">Baixa de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/desconto_anuidade.html">Desconto de Anuidade</a>
+                            <a class="dropdown-item" href="../PJ/crqpj.html">CRQPJ</a>
+                            <a class="dropdown-item" href="../PJ/despachos_gerais.html">Despachos Gerais</a>
+							<a class="dropdown-item" href="../PJ/consulta_cnae.html">Consulta CNAE</a>                            
+                        </div>
+                    </li>
+				
+					<!-- Dropdown com atividades PARA DESPACHOS PESSOA FÍSICA-->
+                   <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */ bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 250px; height: 100%; font-size: 20px;margin-right: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Física</a>
+                        <div class="dropdown-menu">              
+                            <a class="dropdown-item" href="rrts-01.html">RRTs</a>
+                            <a class="dropdown-item" href="cat-01.html">CAT-A</a>
+                            <a class="dropdown-item" href="rda-01.html">RDA</a>
+                            <a class="dropdown-item" href="status-01.html">Status de RRT</a>
+                            <a class="dropdown-item" href="interrupcao-01.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="protocolos-01.html">Protocolos</a>
+                            <a class="dropdown-item" href="email-01.html">E-mail</a>
+                            <a class="dropdown-item" href="siccau-01.html">SICCAU</a>                                                    
+                        </div>
+                    </li>
+					
+				
+					<!-- links demais páginas -->
+                    <ul class="navbar-nav flex-wrap">
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="piso-semanal.HTML", target="_blank">Calculadora Piso</a>
+                        </li>
+                  
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://acesso.caubr.gov.br/", target="_blank">SICCAU</a>
+                        </li> 
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/", target="_blank">Resoluções</a>
+                        </li>
+						
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php", target="_blank">Tutoriais Helpdesk</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://ria.caubr.gov.br", target="_blank">Tutoriais RIA</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://gad.caubr.gov.br", target="_blank">GAD</a>
+                        </li>
+				    </ul>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!--------------------------------------- area elaboração do despacho ---------------------------------------->
+<div class="container mt-4">
+        <h3 style="text-align: center;">RRT - Derivada </h3> </div>
+		
+        
+
+        <div id="menu-esquerda">
+            <div class="derivado-02">
+
+                <div class="container">
+                    <div class="lateral">
+                        <ul class="navegacao">
+
+
+                            <fieldset>
+                                <legend style="color:#44546a">
+                                    
+                                    Extemporâneo
+
+                                </legend>
+                                
+
+
+                                <li>
+                                    <a id="index" href="index.html">RRT Aprovado</a>
+                                </li>
+                            
+                                <li>
+                                    <a id="rrts-02" href="rrts-02.html">RRT Aprovado (Retificador)</a>
+                                </li>
+
+                                
+                                <li>
+                                    <a id="rrts-03" href="rrts-03.html">RRT Aprovado - Atestado Não Aprova na CAT-A</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-04" href="rrts-04.html">1 Dado Divergente</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-05" href="rrts-05.html">Dados Divergentes</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-06" href="rrts-06.html">Falta Documento</a>
+                                </li>
+
+                                <li>
+                                    <a id="rrts-07" href="rrts-07.html">Falta Documentos de Cargo e Função</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-08" href="rrts-08.html">Falta Assinatura</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-09" href="rrts-09.html">Erro no Arquivo</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-10" href="rrts-10.html">Situação de Emergência</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-11" href="rrts-11.html">Atividade Não Contemplada</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-12" href="rrts-12.html">Mais de um Endereço</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-13" href="rrts-13.html">Atividade de Regularização</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-14" href="rrts-14.html">Outro responsável Técnico</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-15" href="rrts-15.html">Múltiplo Mensal</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-16" href="rrts-16.html">Cargo e Função - Não atende Salário Mínimo</a>
+                                </li>
+                                <li>
+                                    <a id="rrts-17" href="rrts-17.html">RRT Social que Não Parece Social</a>
+                                </li>
+                         
+
+                             </fieldset>
+                                
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="despacho">
+
+            <div>
+            <textarea name="" id="" cols="100" rows="15">
+D XX
+<br> 
+RRT Nº XXXXXXXXXX 
+<br><br>
+
+Olá! Para que seu RRT Derivado seja analisado, é preciso que apresente a <b>ART</b> referente a este trabalho, em formato PDF ou JPEG, podendo ser o print de tela da página da ART no CREANET. <br>
+Caso pretenda emitir CAT-A, encaminhe junto à ART o Atestado de Capacidade Técnica da atividade. <br>
+O RRT Derivado Inicial deve ser a cópia da ART, porém, alguns dados não podem ser retificados após o registro do RRT (Datas de celebração e início, empresa contratada, UF do endereço, grupo de atividades e dados da contratante). <br>
+Portanto, caso algum desses dados irretificáveis estejam divergentes entre ART e atestado, aprovaremos com os dados do atestado, para possibilitar a futura emissão da CAT-A. <br><br><br>
+
+Este protocolo será arquivado temporariamente, até que atenda ao solicitado. A ART deve ser anexada na página deste RRT. <br><br><br>
+
+Se for anexar um novo documento, por gentileza, nos informe da inclusão através do e-mail: analisepf@causp.gov.br informando o número deste RRT, para continuidade na análise. O SICCAU não está nos informando desta inclusão. <br><br>
+
+Se tiver dúvidas referentes a esta análise, entre em contato através do mesmo e-mail informado acima, descrevendo sua dúvida e o número deste RRT. <br><br>
+
+Atenciosamente, <br>
+GTEC – Gerência Técnica – CAU/AP
+            </textarea>
+            </div>
+            
+            <div id="container-button">
+                <button id="copiar">Copiar</button>
+                <button id="atualizar">Atualizar</button>
+            </div>
+
+           
+
+        </div>
+
+        <div id="menu-direita">
+            <div class="derivado-02">
+
+                <div class="container">
+                    <div class="lateral">
+                        <ul class="navegacao">
+
+
+                            
+                            <fieldset>
+                                
+                                <legend style="color: #44546a;">
+                                    
+                                    Exterior
+
+                                </legend>
+
+
+
+
+
+                                       
+                                <li>
+                                    <a id="exterior-01" href="exterior-01.html">Aprovado</a>
+                                </li>
+                                <li>
+                                    <a id="exterior-02" href="exterior-02.html">Aprovado Retificador</a>
+                                </li>
+                                <li>
+                                    <a id="exterior-03" href="exterior-03.html">Sem Documentos</a>
+                                </li>
+
+                                       
+                                <li>
+                                    <a id="exterior-04" href="exterior-04.html">Sem Tradução</a>
+                                </li>
+                                <li>
+                                    <a id="exterior-05" href="exterior-05.html">Emitido por Engano</a>
+                                </li>
+                                <li>
+                                    <a id="exterior-06" href="exterior-06.html">1 Dado Divengente</a>
+                                </li>
+                                <li>
+                                    <a id="exterior-07" href="exterior-07.html">Dados Divergentes</a>
+                                </li>
+
+                            </fieldset>
+
+                            <br>
+
+                            <fieldset>
+
+                                <legend style="color: #44546a;">
+                                   
+                                    Derivado
+
+                                </legend>
+                                                                    
+
+
+
+                                <li>
+                                    <a id="derivado-01" href="derivado-01.html">Derivado Aprovado</a>
+                                </li>
+                                <li>
+                                    <a id="derivado-02" href="derivado-02.html">FALTA ART</a>
+                                </li>
+                                <li>
+                                    <a id="derivado-03" href="derivado-03.html">Reficador</a>
+                                </li>
+                                <li>
+                                    <a id="derivado-04" href="derivado-04.html">Dados Divergentes</a>
+                                </li>
+                                <li>
+                                    <a id="derivado-05" href="derivado-05.html">Dados Divergentes (Retificador)</a>
+                                </li>
+                                
+                        
+                            </fieldset>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <hr>
+        
+
+
+       <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-3">
+            <p class="m-1">Gerência de Fiscalização e Registros - CAU/AP</p>
+        </footer>
+		
+<!-- JavaScript (Opcional) -->
+        <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const copiarBotao = document.getElementById("copiar");
+            const textarea = document.querySelector("textarea");
+    
+            copiarBotao.addEventListener("click", function() {
+                textarea.select();
+                document.execCommand("copy");
+                
+            });
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const atualizarBotao = document.getElementById("atualizar");
+        
+        atualizarBotao.addEventListener("click", function() {
+                location.reload(); // Esta linha recarrega a página
+            });
+        });
+
+        function RedirecionarRRTs() {
+            window.open('index.html', '_self');
+        }
+
+        function RedirecionarCAT() {
+            window.open('cat-01.html', '_self');
+        }
+
+        function RedirecionarRDA() {
+            window.open('rda-01.html', '_self');
+        }
+        function RedirecionarStatusRRT() {
+            window.open('status-01.html', '_self');
+        }
+        function RedirecionarInterrupcao() {
+            window.open('interrupcao-01.html', '_self');
+        }
+        function RedirecionarProtocolos() {
+            window.open('protocolos-01.html', '_self');
+        }
+        function RedirecionarEmail() {
+            window.open('email-01.html', '_self');
+        }
+        function RedirecionarSICCAU() {
+            window.open('siccau-01.html', '_self');
+        }
+
+
+        
+    </script>
+    </body>
+
+    
+
+</html>

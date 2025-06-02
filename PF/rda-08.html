@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="../styles.css">
+        <title>RDA</title>
+        
+        <style>
+            
+            .edit-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: #005abb;
+                /* #14385d */
+            }
+            .info-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: rgba(235, 153, 1, 0.884);
+                /* #fcdb04 */
+            }
+		           
+		   body{
+                
+            min-width: 650px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f8fa;
+                
+            }
+			header {
+            background-color: #005abb;
+            color: white;
+            padding: 10px;
+            margin-bottom: 0px;
+            text-align: center;
+            }
+			ul {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            }
+			.lateral ul {
+            /*background: #0f1863; */   
+            }
+
+            .lateral ul li {
+            background: #14385d;
+            /* float: left; */
+            }
+
+            li {
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #menu-esquerda {
+            float: left;
+            width: 20%;
+            }
+
+            #menu-direita {
+                float: left;
+                width: 20%;
+                
+            }
+			.despacho {
+            float: left;
+            /* background: #b3b7be; */
+            width: 58%;
+            margin: 0px 5px;
+            }
+                        
+            .lateral ul a {
+            font-size: 0.9em;
+            display: block;
+            padding: 0.5em 1.5em;
+            text-decoration: none;
+            color: azure;
+            }
+
+            .lateral ul a:hover {
+            background-color: #244575;
+            }
+                    
+            textarea {
+                margin: 10px 20px;
+                width: 94%;
+                max-width: 94%;
+            }
+
+            #container-button{
+                text-align: center;
+                margin: 10px;
+            }
+			button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+      
+            }
+
+            #atualizar {
+            background-color: #0074D9;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #copiar {
+            background-color: #30a030;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #abas-atividades {
+                text-align: center;
+                margin: 5px 0px;
+            }
+			
+			.clear {
+            clear: both;
+            }
+
+            legend {
+            font-size: larger;
+            }
+			.container h3 {
+            color: #44546a;
+            font-size: 1.5rem; /* Tamanho da fonte específico */
+        }
+            fieldset {
+            }
+			.mt-4 {
+            color: #44546a; /* Define a cor do texto para branco, se necessário */
+    }
+			
+        </style>
+
+    </head>
+
+    <body>
+            
+        <!--------------------------------------- nav superior ---------------------------------------->
+
+        <nav class="navbar navbar-expand-lg navbar-dark siccau-color">
+			
+			<!-- brand -->
+         <a href="../Index.html"><img src="../cau.png" width="233" height="75" alt="Início" class="img-fluid"></a>
+		<!-- collapse button -->
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="index.html" >
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+                   
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav ">
+
+                    <!-- Dropdown PARA DESPACHOS PESSOA JURIDICA -->
+                    <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */  bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Jurídica</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../PJ/registro_empresa.html">Registro de Empresa</a>                           
+                            <a class="dropdown-item" href="../PJ/alteracao_cadastral.html">Alteração Cadastral</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_email.html">Inclusão de email</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa.html">Baixa de Registro</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa_oficio.html">Baixa de Registro de Ofício</a>
+                            <a class="dropdown-item" href="../PJ/interrupcao_registro_empresa.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_responsavel_tecnico.html">Inclusão de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/baixa_responsavel_tecnico.html">Baixa de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/desconto_anuidade.html">Desconto de Anuidade</a>
+                            <a class="dropdown-item" href="../PJ/crqpj.html">CRQPJ</a>
+                            <a class="dropdown-item" href="../PJ/despachos_gerais.html">Despachos Gerais</a>
+							<a class="dropdown-item" href="../PJ/consulta_cnae.html">Consulta CNAE</a>                            
+                        </div>
+                    </li>
+				
+					<!-- Dropdown com atividades PARA DESPACHOS PESSOA FÍSICA-->
+                   <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */ bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 250px; height: 100%; font-size: 20px;margin-right: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Física</a>
+                        <div class="dropdown-menu">              
+                            <a class="dropdown-item" href="PF/rrts-01.html">RRTs</a>
+                            <a class="dropdown-item" href="PF/cat-01.html">CAT-A</a>
+                            <a class="dropdown-item" href="PF/rda-01.html">RDA</a>
+                            <a class="dropdown-item" href="PF/status-01.html">Status de RRT</a>
+                            <a class="dropdown-item" href="PF/interrupcao-01.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="PF/protocolos-01.html">Protocolos</a>
+                            <a class="dropdown-item" href="PF/email-01.html">E-mail</a>
+                            <a class="dropdown-item" href="PF/siccau-01.html">SICCAU</a>                                                    
+                        </div>
+                    </li>
+					
+				
+					<!-- links demais páginas -->
+                    <ul class="navbar-nav flex-wrap">
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="piso-semanal.HTML", target="_blank">Calculadora Piso</a>
+                        </li>
+                  
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://acesso.caubr.gov.br/", target="_blank">SICCAU</a>
+                        </li> 
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/", target="_blank">Resoluções</a>
+                        </li>
+						
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php", target="_blank">Tutoriais Helpdesk</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://ria.caubr.gov.br", target="_blank">Tutoriais RIA</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://gad.caubr.gov.br", target="_blank">GAD</a>
+                        </li>
+				    </ul>
+                </ul>
+            </div>
+        </nav>
+            
+        <!--------------------------------------- area elaboração do despacho ---------------------------------------->
+<div class="container mt-4">
+        <h3 style="text-align: center;">RDAs - Despachos</h3> </div>        
+
+        <div id="menu-esquerda">
+            <div class="rda-01">
+
+                <div class="container">
+                    <div class="lateral">
+                        <ul class="navegacao">
+
+
+                            <fieldset>
+                                <legend style="color:#44546a">
+                                    
+                                    RDA
+
+                                </legend>
+                                
+
+
+                                <li>
+                                    <a id="rda-01" href="rda-01.html">RDA Aprovado</a>
+                                </li>
+                            
+                                <li>
+                                    <a id="rda-02" href="rda-02.html">RDA Encaminhado para a CEP</a>
+                                </li>
+
+                                
+                                <li>
+                                    <a id="rda-03" href="rda-03.html">Faltam Todos os Documentos</a>
+                                </li>
+                                <li>
+                                    <a id="rda-04" href="rda-04.html">Encaminhamento para a CEP (AMANDA)</a>
+                                </li>
+                                <li>
+                                    <a id="rda-05" href="rda-05.html">Sem RT</a>
+                                </li>
+                                <li>
+                                    <a id="rda-06" href="rda-06.html">Falta Certificado Digital</a>
+                                </li>
+
+                                <li>
+                                    <a id="rda-07" href="rda-07.html">Fora de Formatação</a>
+                                </li>
+                                <li>
+                                    <a id="rda-08" href="rda-08.html">Faltam Documentos Técnicos</a>
+                                </li>
+                                
+                         
+
+                             </fieldset>
+                                
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="despacho">
+
+            <div>
+            <textarea name="" id="" cols="100" rows="15">
+D XX
+<br> <br>
+RDA Nº XXXXXXXXXX <br><br>
+Olá! Como o RDA tem como finalidade o registro de um trabalho intelectual, precisa estar suficientemente caracterizado para garantir o maior nível de proteção sobre a atividade técnica registrada. <br>
+Ao analisarmos a solicitação nos atentamos ao grau de definição que as peças gráficas apresentadas caracterizam o projeto a ser registrado como autoral e assim garantir ao profissional os direitos decorrentes do RDA. <br>
+Para darmos continuidade à sua solicitação pedimos que sejam apresentadas mais peças gráficas (plantas, cortes, elevações, memoriais descritivos, imagens 3D e quaisquer outros documentos que existam). <br><br><br>
+
+Os documentos deverão ser encaminhados através do e-mail: <b>atendimento@cauap.gov.br</b> informando o número deste RDA. <br><br><br><br>
+
+Atenciosamente, <br>
+GTEC – Gerência Técnica – CAU/AP
+            </textarea>
+            </div>
+            
+            <div id="container-button">
+                <button id="copiar">Copiar</button>
+                <button id="atualizar">Atualizar</button>
+            </div>
+
+           
+
+        </div>
+
+        <div id="menu-direita">
+            <div class="exterior-01">
+
+                <div class="container">
+                    <div class="lateral">
+                        <ul class="navegacao">
+
+
+                            
+                            
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="clear"></div>
+        <hr>
+        
+
+
+         <!--------------------------------------- footer  ---------------------------------------->
+
+        <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-3">
+            <p class="m-1">Gerência de Fiscalização e Registros - CAU/AP</p>
+        </footer>
+    	
+		<script> document.addEventListener("DOMContentLoaded", function() {
+            const copiarBotao = document.getElementById("copiar");
+            const textarea = document.querySelector("textarea");
+    
+            copiarBotao.addEventListener("click", function() {
+                textarea.select();
+                document.execCommand("copy");
+                
+            });
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+        const atualizarBotao = document.getElementById("atualizar");
+        
+        atualizarBotao.addEventListener("click", function() {
+                location.reload(); // Esta linha recarrega a página
+            });
+        }); </script>
+        <!-- JavaScript (Opcional) -->
+        <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        
+    </body>
+</html>
