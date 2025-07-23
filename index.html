@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Meta Tags para SEO -->
+        <meta name="description" content="Página inicial do site do Conselho de Arquitetura e Urbanismo do Amapá (CAU/AP). Acesse informações sobre despachos de pessoa jurídica e física, calculadoras, tutoriais e resoluções.">
+        <meta name="keywords" content="CAU/AP, Conselho de Arquitetura e Urbanismo, Amapá, Despachos, Pessoa Jurídica, Pessoa Física, RRT, CAT-A, SICCAU, Resoluções, Tutoriais, Arquitetura, Urbanismo">
+        <meta name="author" content="CAU/AP">
+
+        <!-- Links para CSS externos (Bootstrap, Font Awesome e seu CSS personalizado) -->
+        <!-- Links para CSS externos (Bootstrap, Font Awesome e seu CSS personalizado) -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles.css"> <!-- Seu arquivo CSS otimizado -->
+
+        <!-- Favicon -->
+        <link rel="icon" href="PF/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="PF/favicon.ico" type="image/x-icon">
+        
+        <title>CAU/AP - Início</title>
+    </head>
+
+    <body>
+            
+        <!-- Placeholder para o Cabeçalho (Conteúdo de header-partial.html será injetado aqui) -->
+        <div id="header-placeholder"></div>
+<div id="header-placeholder"></div>
+            
+        <!--------------------------------------- Área de Conteúdo Principal desta Página ---------------------------------------->
+        <main>
+            <section class="main-content-placeholder page-container">
+                <h2>Bem-vindo à Página Principal do CAU/AP</h2>
+                <p>Esta seção agora hospeda o conteúdo único da página inicial, enquanto o cabeçalho e o rodapé são injetados.</p>
+                <p>Aqui você poderá integrar os elementos de formulário, áreas de texto e botões para as ações principais, como "Atualizar" e "Copiar", que estavam no CSS inline antigo.</p>
+            </section>
+        </main>
+        
+        <!-- Placeholder para o Rodapé (Conteúdo de footer-partial.html e scripts serão injetados aqui) -->
+        <div id="footer-placeholder"></div>
+
+        <!-- Script de Inclusão JavaScript (Este script deve estar em CADA arquivo HTML principal) -->
+        <script>
+<script>
+            // Função para carregar conteúdo HTML de um arquivo e injetá-lo em um elemento
+            function loadHTML(url, elementId) {
+                // **CORREÇÃO CRÍTICA AQUI:**
+                // Para GitHub Project Pages, `window.location.origin` leva ao domínio raiz (ex: marcus-gonzaga.github.io).
+                // Ao remover `window.location.origin + '/'`, o `fetch` tratará `url` como um caminho relativo
+                // ao diretório atual do projeto (ex: marcus-gonzaga.github.io/DESPACHOS-PJ-PF-CAUAP/).
+                const finalUrl = url; // <--- A LINHA CRÍTICA FOI MODIFICADA AQUI
+
+                fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`);
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById(elementId).innerHTML = html;
+                        // Re-inicializa os componentes do Bootstrap que podem ter sido injetados
+                        if (elementId === 'header-placeholder') {
+                            setTimeout(() => {
+setTimeout(() => {
+                                if (typeof $ !== 'undefined' && $.fn.dropdown) {
+                                    $('[data-toggle="dropdown"]').dropdown();
+                                } else {
+                                    console.warn("jQuery ou Bootstrap Dropdown não encontrado. Verifique se os scripts foram carregados.");
+                                }
+                            }, 100); 
+                        }
+                    })
+                    .catch(error => console.error('Erro ao carregar HTML partial:', error));
+            }
+
+            // Carrega o cabeçalho e o rodapé quando o DOM estiver pronto
+            document.addEventListener('DOMContentLoaded', function() {
+                loadHTML('header-partial.html', 'header-placeholder');
+                loadHTML('footer-partial.html', 'footer-placeholder');
+            });
+        </script>
+    </body>
+</html>
