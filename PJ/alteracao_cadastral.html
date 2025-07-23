@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../styles.css">
+        <title>PJ - Alteração Cadastral</title>
+    </head>
+    <body>
+        <div id="header-placeholder"></div>
+        <main>
+            <div class="container-fluid">
+                <div class="row p-3">
+                    <div class="col-md-12">
+                        <h3 class="d-flex align-items-center mt-2">Alteração Cadastral</h3>
+                        <div class="mb-3 mt-3">
+                            <button class="btn btn-sm btn-secondary mt-2" style="width: 90px" id="restartButton"><i class="fa fa-rotate-right pr-1"></i>Reiniciar</button>
+                            <button class="btn btn-sm btn-secondary mt-2" style="width: 105px" id="cleanButton"><i class="fa fa-eraser pr-1"></i>Desmarcar</button>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho1" data-text="" checked>
+                            <label class="form-check-label" for="despacho1">
+                                <span contenteditable="false">Destinatário.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal1"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal1"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho2" data-text="">
+                            <label class="form-check-label" for="despacho2">
+                                <span contenteditable="false">Alteração Cadastral concluída.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal2"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal2"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho3" data-text="">
+                            <label class="form-check-label" for="despacho3">
+                                <span contenteditable="false">Abertura de Protocolo de Atualização Cadastral.<strong>&nbsp;(Tramitação E-MAIL)</strong></span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal3"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal3"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho4" data-text="">
+                            <label class="form-check-label" for="despacho4">
+                                <span contenteditable="false">Não anexou contrato social.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal4"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal4"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho5" data-text="">
+                            <label class="form-check-label" for="despacho5">
+                                <span contenteditable="false">Arquivos não anexados.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal5"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal5"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho6" data-text="">
+                            <label class="form-check-label" for="despacho6">
+                                <span contenteditable="false">Arquivos anexados não abrem.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal6"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal6"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho7" data-toggle="collapse" href="#collapse-7" data-text="">
+                            <label class="form-check-label" for="despacho7">
+                                <span contenteditable="false">
+                                    Atualização Cadastral Obrigatória.
+                                </span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal7"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal7"></i>
+                            <div class="collapse" id="collapse-7">
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="despacho8" data-text="">
+                                        <label class="form-check-label" for="despacho8">
+                                            <span contenteditable="false">Alteração Contratual.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal8"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal8"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="despacho9" data-text="">
+                                        <label class="form-check-label" for="despacho9">
+                                            <span contenteditable="false">CNPJ.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal9"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal9"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="despacho10" data-text="">
+                                        <label class="form-check-label" for="despacho10">
+                                            <span contenteditable="false">CPS.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal10"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal10"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="despacho11" data-text="">
+                                        <label class="form-check-label" for="despacho11">
+                                            <span contenteditable="false">CTPS.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal11"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal11"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="despacho12" data-text="">
+                                        <label class="form-check-label" for="despacho12">
+                                            <span contenteditable="false">Quando o tipo de vínculo é desconhecido.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal12"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal12"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="despacho13" data-text="">
+                                        <label class="form-check-label" for="despacho13">
+                                            <span contenteditable="false">RRT - emitido e válido.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal13"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal13"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check mb-1">
+                                        <input type="checkbox" class="form-check-input" id="despacho14" data-text="">
+                                        <label class="form-check-label" for="despacho14">
+                                            <span contenteditable="false">RRT - já baixado ou inexistente.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal14"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal14"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="despacho15" data-text="">
+                                        <label class="form-check-label" for="despacho15">
+                                            <span contenteditable="false">Falta de certificação digital.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal15"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal15"></i>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-1 p-0">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="despacho16" data-text="">
+                                        <label class="form-check-label" for="despacho16">
+                                            <span contenteditable="false">Link da R48.</span>
+                                        </label>
+                                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal16"></i>
+                                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho17" data-text="">
+                            <label class="form-check-label" for="despacho17">
+                                <span contenteditable="false">Orientação para responder o protocolo.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal17"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal17"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho18" data-text="">
+                            <label class="form-check-label" for="despacho18">
+                                <span contenteditable="false">Prazo para manifestação.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal18"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal18"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho19" data-text="" checked>
+                            <label class="form-check-label" for="despacho19">
+                                <span contenteditable="false">Fechos e identificação do CAU/AP.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal19"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal19"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal1" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(1)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal2">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal2" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(2)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal3">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal3" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(3)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal4">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal4" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(4)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal5">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal5" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(5)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal6">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal6" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(6)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal7">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal7" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(7)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal8">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal8" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(8)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal9">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal9" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(9)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal10">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal10" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(10)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal11">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal11" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(11)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal12">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal12" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(12)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal13">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal13" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(13)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal14">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal14" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(14)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal15">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal15" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(15)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal16">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal16" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(16)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal17">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal17" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(17)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="footer-placeholder"></div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script>
+            function loadHTML(url, elementId) {
+                const finalUrl = `${window.location.origin}/${url}`;
+                fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`); }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById(elementId).innerHTML = html;
+                        if (elementId === 'header-placeholder') {
+                            setTimeout(() => { if (typeof $ !== 'undefined' && $.fn.dropdown) { $('[data-toggle="dropdown"]').dropdown(); } else { console.warn("jQuery ou Bootstrap Dropdown não encontrado."); } }, 100);
+                        }
+                    })
+                    .catch(error => console.error('Erro ao carregar HTML partial:', error));
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                loadHTML('header-partial.html', 'header-placeholder');
+                loadHTML('footer-partial.html', 'footer-placeholder');
+            });
+            function saveEdit(despachoNumber) {
+                const editTextModal = $('#editTextModal' + despachoNumber).val();
+                const checkbox = $('#despacho' + despachoNumber);
+                checkbox.find('span').text(editTextModal);
+                checkbox.data('text', editTextModal);
+                $('#dataTextDisplay' + despachoNumber).text(editTextModal);
+                $('#editModal' + despachoNumber).modal('hide');
+            }
+            $('#copyButton').click(function() {
+                const selectedDataText = $('#selectedDataText').val();
+                if (selectedDataText !== 'Nenhum selecionado') {
+                    const el = document.createElement('textarea');
+                    el.value = selectedDataText;
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                }
+            });
+            $('#updateButton').click(function() {
+                const selectedCheckboxes = $('input[type="checkbox"]:checked');
+                const selectedDataText = Array.from(selectedCheckboxes).map(checkbox => $(checkbox).data('text')).join('\n');
+                $('#selectedDataText').val(selectedDataText || 'Nenhum selecionado');
+                $('#selectedDataText').height('auto');
+                $('#selectedDataText').height($('#selectedDataText')[0].scrollHeight);
+            });
+            $(document).ready(function() {
+                $('#deleteButton').click(function() {
+                    $('#selectedDataText').val('');
+                });
+            });
+            $(document).ready(function() {
+                $('#restartButton').click(function() {
+                    location.reload();
+                });
+            });
+            $(document).ready(function() {
+                function desmarcarTodasCheckboxes() {
+                    $('input[type="checkbox"]').prop('checked', false);
+                }
+                $('.collapse').on('hidden.bs.collapse', function() {
+                    $(this).find('input[type="checkbox"]').prop('checked', false);
+                });
+                $('#cleanButton').click(function() {
+                    desmarcarTodasCheckboxes();
+                    $('.collapse.show').collapse('hide');
+                });
+            });
+            var texto_1 = `Prezados responsáveis pela empresa XXXXXXXXXXXXXXXXXXXXX,
+`;
+            document.getElementById('despacho1').setAttribute('data-text', texto_1);
+            document.getElementById('editTextModal1').value = texto_1;
+            var texto_2 = `Informamos que o cadastro da empresa foi atualizado perante o CAU, conforme alteração contratual registrada em XX.
+`;
+            document.getElementById('despacho2').setAttribute('data-text', texto_2);
+            document.getElementById('editTextModal2').value = texto_2;
+            var texto_3 = `Para atualização cadastral da empresa, é necessário realizar a abertura de Protocolo de atualização no SICCAU da empresa,
+
+Para realizar a abertura de Protocolo:
+
+Acessar: https://www.cauap.gov.br (login com o CNPJ) e na página inicial, clique Protocolo > Cadastrar Protocolo > Grupo de Assunto: Cadastro de Empresa > Assunto: ATUALIZAÇÃO CADASTRAL PJ
+
+No Protocolo anexar a ultima alteração contratual da empresa, devidamente registrada em órgão competente.
+`;
+            document.getElementById('despacho3').setAttribute('data-text', texto_3);
+            document.getElementById('editTextModal3').value = texto_3;
+            var texto_4 = `Para efetuar a atualização do registro, é necessário anexar ao protocolo a última alteração do contrato social, devidamente registrada em órgão competente.
+`;
+            document.getElementById('despacho4').setAttribute('data-text', texto_4);
+            document.getElementById('editTextModal4').value = texto_4;
+            var texto_5 = `Verificamos que houve tentativa de envio de documentos em xxxxxxx, porém nenhum arquivo foi anexado ao protocolo para análise. Por gentileza, realizem novamente a tentativa de envio dos documentos para análise.
+
+Ressaltamos que o tamanho máximo permitido é de 2MB.
+`;
+            document.getElementById('despacho5').setAttribute('data-text', texto_5);
+            document.getElementById('editTextModal5').value = texto_5;
+            var texto_6 = `Verificamos que houve novamente tentativa de envio de documentos em xxxxx, porém novamente houve falha no carregamento do arquivo anexado. Por gentileza, solicitamos que os documentos sejam anexados e enviados via e-mail para o endereço atendimento@cauap.gov.br. Por gentileza, informar no e-mail que é referente ao protocolo nº xxxxxxx.       
+`;
+            document.getElementById('despacho6').setAttribute('data-text', texto_6);
+            document.getElementById('editTextModal6').value = texto_6;
+            var texto_7 = `Informamos que há uma atualização cadastral obrigatória ainda não atendida pela empresa.
+
+Para prosseguir com a atualização cadastral é necessário anexar ao protocolo:
+`;
+            document.getElementById('despacho7').setAttribute('data-text', texto_7);
+            document.getElementById('editTextModal7').value = texto_7;
+            var texto_8 = `XX) Última alteração consolidada do contrato social em um arquivo PDF salvo com certificação digital da empresa ou do sócio administrador (emitida pela ICP-Brasil ou pelo portal Gov.br). O certificado é dispensado em caso de apresentação da Certidão de Inteiro Teor (JUCAP) ou da Certidão de registro para fins de publicidade e eficácia contra terceiros (cartório).`;
+            document.getElementById('despacho8').setAttribute('data-text', texto_8);
+            document.getElementById('editTextModal8').value = texto_8;
+            var texto_9 = `XX) Cartão CNPJ.`;
+            document.getElementById('despacho9').setAttribute('data-text', texto_9);
+            document.getElementById('editTextModal9').value = texto_9;
+            var texto_10 = `XX) Contrato de prestação de serviços, em um arquivo PDF salvo com certificação digital da empresa ou do sócio administrador (emitida pela ICP-Brasil ou pelo portal Gov.br).`;
+            document.getElementById('despacho10').setAttribute('data-text', texto_10);
+            document.getElementById('editTextModal10').value = texto_10;
+            var texto_11 = `XX) A CTPS do profissional, contendo as páginas de identificação, qualificação, registro e anotações gerais (com alterações salariais), em um arquivo PDF único salvo com certificação digital da empresa ou do sócio administrador (emitida pela ICP-Brasil ou pelo portal Gov.br) (no caso de CTPS digital, anexar também documento de identificação do profissional).`;
+            document.getElementById('despacho11').setAttribute('data-text', texto_11);
+            document.getElementById('editTextModal11').value = texto_11;
+            var texto_12 = `XX) O comprovante de vínculo do profissional arquiteto e urbanista junto à empresa, de acordo com o tipo do vínculo:
+- caso seja empregado (registro CLT): as páginas de identificação, qualificação civil, registro e alterações salariais (se houver) da CTPS;
+- prestador de serviços: contrato de prestação de serviços.
+
+O comprovante de vínculo deve ser anexado em um arquivo PDF único salvo com certificação digital da empresa ou do sócio administrador (emitida pela ICP-Brasil ou pelo portal Gov.br).
+`;
+            document.getElementById('despacho12').setAttribute('data-text', texto_12);
+            document.getElementById('editTextModal12').value = texto_12;
+            var texto_13 = `XX) O RRT de Desempenho de Cargo ou Função Técnica nº xxxxxxx.`;
+            document.getElementById('despacho13').setAttribute('data-text', texto_13);
+            document.getElementById('editTextModal13').value = texto_13;
+            var texto_14 = `XX) O RRT de desempenho de cargo ou função emitido pelo profissional xxxxx.
+
+Caso o profissional responsável técnico pela empresa possua o ART de Cargo ou Função do CREA é possível realizar a emissão do RRT Derivado de Desempenho de Cargo ou Função Técnica.
+O RRT DERIVADO não possui taxa a ser paga. Para emissão do RRT derivado, siga o tutorial disponível no link xxxxxxxxxxxxx.
+`;
+            document.getElementById('despacho14').setAttribute('data-text', texto_14);
+            document.getElementById('editTextModal14').value = texto_14;
+            var texto_15 = `A certificação digital deve ser emitida por uma Autoridade Certificadora vinculada à ICP-Brasil (listadas em http://estrutura.iti.gov.br), ou pelo portal Gov.br.
+
+Caso não possuam certificação digital, as cópias autenticadas dos documentos devem ser apresentadas na sede do CAU: Av Caramuru 356, Beirol, Macapá/Ap, CEP 68902-100.
+`;
+            document.getElementById('despacho15').setAttribute('data-text', texto_15);
+            document.getElementById('editTextModal15').value = texto_15;
+            var texto_16 = `Link da Resolução 48 do CAU/BR, que dispõe sobre atualização cadastral:
+<a href="https://transparencia.caubr.gov.br/resolucao48/" target="blank">https://transparencia.caubr.gov.br/resolucao48/</a>       
+`;
+            document.getElementById('despacho16').setAttribute('data-text', texto_16);
+            document.getElementById('editTextModal16').value = texto_16;
+            var texto_17 = `Ao atender as orientações, por favor, responda o protocolo. Acesse o SICCAU da empresa (usando o CNPJ como login), clique em Protocolo - Pesquisar Protocolo, insira o número do protocolo e clique em “Responder Protocolo”.
+`;
+            document.getElementById('despacho17').setAttribute('data-text', texto_17);
+            document.getElementById('editTextModal17').value = texto_17;
+            var texto_18 = `PRAZO PARA MANIFESTAÇÃO: 10 DIAS (sob pena de ter o protocolo indeferido e arquivado).`;
+            document.getElementById('despacho18').setAttribute('data-text', texto_18);
+            document.getElementById('editTextModal18').value = texto_18;
+            var texto_19 = `
+
+Atenciosamente,
+Equipe CAU/AP.`;
+            document.getElementById('despacho19').setAttribute('data-text', texto_19);
+            document.getElementById('editTextModal19').value = texto_19;
+        </script>
+    </body>
+</html>

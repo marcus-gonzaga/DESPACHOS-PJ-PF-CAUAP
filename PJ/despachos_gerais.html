@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../styles.css">
+        <title>PJ - Despachos Gerais</title>
+    </head>
+    <body>
+        <div id="header-placeholder"></div>
+        <main>
+            <div class="container-fluid">
+                <div class="row p-3">
+                    <div class="col-md-12">
+                        <h3 class="d-flex align-items-center mt-2">Despachos Gerais</h3>
+                        <div class="mb-3 mt-3">
+                            <button class="btn btn-sm btn-secondary mt-2" style="width: 90px" id="restartButton"><i class="fa fa-rotate-right pr-1"></i>Reiniciar</button>
+                            <button class="btn btn-sm btn-secondary mt-2" style="width: 105px" id="cleanButton"><i class="fa fa-eraser pr-1"></i>Desmarcar</button>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho1" data-text="">
+                            <label class="form-check-label" for="despacho1">
+                                <span contenteditable="false">Destinatário Empresa.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal1"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal1"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho2" data-text="">
+                            <label class="form-check-label" for="despacho2">
+                                <span contenteditable="false">Destinatário Profissional.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal2"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal2"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho3" data-text="">
+                            <label class="form-check-label" for="despacho3">
+                                <span contenteditable="false">Solicitação de Registro de empresa feita por protocolo de outros assuntos .</strong></span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal3"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal3"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho4" data-text="">
+                            <label class="form-check-label" for="despacho4">
+                                <span contenteditable="false">Solicitação de inclusão/prorrogação de RT realizada pelo profissional.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal4"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal4"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho5" data-text="">
+                            <label class="form-check-label" for="despacho5">
+                                <span contenteditable="false">Solicitação de baixa de empresa realizada pelo profissional.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal5"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal5"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho6" data-text="">
+                            <label class="form-check-label" for="despacho6">
+                                <span contenteditable="false">Fechos e identificação do CAU/AP.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal6"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal6"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal1" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(1)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal2">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal2" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(2)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal3">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal3" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(3)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal4">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal4" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(4)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal5">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal5" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(5)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal6">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal6" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(6)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="dataTextDisplay">
+                            <h4 class="ml-3">Despacho:</h4>
+                            <textarea id="selectedDataText" class="form-control border-dark" rows="10" style="line-height: 1;"></textarea>
+                            <div class="mt-3 text-center">
+                                <button class="btn btn-primary d-inline m-1" style="width: 90px" id="updateButton">Atualizar</button>
+                                <button class="btn btn-danger d-inline m-1" style="width: 90px" id="deleteButton">Deletar</button>
+                                <button class="btn btn-success d-inline m-1" style="width: 90px" id="copyButton">Copiar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="footer-placeholder"></div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script>
+            function loadHTML(url, elementId) {
+                const finalUrl = `${window.location.origin}/${url}`;
+                fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`); }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById(elementId).innerHTML = html;
+                        if (elementId === 'header-placeholder') {
+                            setTimeout(() => { if (typeof $ !== 'undefined' && $.fn.dropdown) { $('[data-toggle="dropdown"]').dropdown(); } else { console.warn("jQuery ou Bootstrap Dropdown não encontrado."); } }, 100);
+                        }
+                    })
+                    .catch(error => console.error('Erro ao carregar HTML partial:', error));
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                loadHTML('header-partial.html', 'header-placeholder');
+                loadHTML('footer-partial.html', 'footer-placeholder');
+            });
+
+            function saveEdit(despachoNumber) {
+                const editTextModal = $('#editTextModal' + despachoNumber).val();
+                const checkbox = $('#despacho' + despachoNumber);
+                checkbox.find('span').text(editTextModal);
+                checkbox.data('text', editTextModal);
+                $('#dataTextDisplay' + despachoNumber).text(editTextModal);
+                $('#editModal' + despachoNumber).modal('hide');
+            }
+            $('#copyButton').click(function() {
+                const selectedDataText = $('#selectedDataText').val();
+                if (selectedDataText !== 'Nenhum selecionado') {
+                    const el = document.createElement('textarea');
+                    el.value = selectedDataText;
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                }
+            });
+            $('#updateButton').click(function() {
+                const selectedCheckboxes = $('input[type="checkbox"]:checked');
+                const selectedDataText = Array.from(selectedCheckboxes).map(checkbox => $(checkbox).data('text')).join('\n');
+                $('#selectedDataText').val(selectedDataText || 'Nenhum selecionado');
+                $('#selectedDataText').height('auto');
+                $('#selectedDataText').height($('#selectedDataText')[0].scrollHeight);
+            });
+            $(document).ready(function() {
+                $('#deleteButton').click(function() {
+                    $('#selectedDataText').val('');
+                });
+            });
+            $(document).ready(function() {
+                $('#restartButton').click(function() {
+                    location.reload();
+                });
+            });
+            $(document).ready(function() {
+                function desmarcarTodasCheckboxes() {
+                    $('input[type="checkbox"]').prop('checked', false);
+                }
+                $('.collapse').on('hidden.bs.collapse', function() {
+                    $(this).find('input[type="checkbox"]').prop('checked', false);
+                });
+                $('#cleanButton').click(function() {
+                    desmarcarTodasCheckboxes();
+                    $('.collapse.show').collapse('hide');
+                });
+            });
+            var texto_1 = `Prezados responsáveis pela empresa XXXXXXXXXXXXXXXXXXXXX,
+`;
+            document.getElementById('despacho1').setAttribute('data-text', texto_1);
+            document.getElementById('editTextModal1').value = texto_1;
+            var texto_2 = `Prezado (a) XXXXXXXXXXXXXXXXXXXXX,
+`;
+            document.getElementById('despacho2').setAttribute('data-text', texto_2);
+            document.getElementById('editTextModal2').value = texto_2;
+            var texto_3 = `Verificamos que não existe registro perante o CAU referente ao CNPJ xxxxxxxxxxxxxxxxxxxxxx.
+Para solicitar o registro da empresa a empresa deve acessar: <a href="https://servicos.caubr.gov.br/ " target="blank">https://servicos.caubr.gov.br/ </a> - clicar em "Solicitar Registro de Empresa" - anexar os documentos para registro, conforme documentos descritos no artigo 5 da Resolução 28 do CAU/BR:
+"Art. 5° O registro inicial de pessoa jurídica deverá ser requerido por meio do preenchimento de formulário próprio, disponível no SICCAU, ao qual deve ser anexada a seguinte documentação:
+
+a) ato constitutivo, devidamente registrado no órgão competente, incluindo as alterações, ou se for o caso, a consolidação e as alterações posteriores;
+
+b) comprovante de inscrição no Cadastro Nacional de Pessoas Jurídicas (CNPJ);
+
+c) Registro de Responsabilidade Técnica (RRT) de Cargo ou Função do arquiteto e urbanista indicado como responsável técnico.
+
+Parágrafo único. Para a validação do RRT de Cargo ou Função será necessária a comprovação de vínculo entre o responsável técnico e a pessoa jurídica, por meio de contrato social, carteira de trabalho e previdência social (CTPS), portaria de nomeação ou contrato de prestação de serviços."
+
+`;
+            document.getElementById('despacho3').setAttribute('data-text', texto_3);
+            document.getElementById('editTextModal3').value = texto_3;
+            var texto_4 = `Para inclusão/prorrogação de responsável técnico, acesse o SICCAU da empresa (login com o CNPJ) e na página inicial, clique Protocolo > Cadastrar Protocolo > Grupo de Assunto: Cadastro de Empresa > Assunto: Prorrogação, Baixa, Substituição e Inclusão de Responsável Técnico e anexe:
+
+1) RRT de desempenho de cargo ou função;
+2) Comprovante de vínculo do arquiteto e urbanista:
+2.1) sócio: contrato social;
+2.2) empregado: páginas de identificação, qualificação civil, registro e alterações salariais (se houver) da CTPS;
+2.3) prestador de serviços: contrato de prestação de serviços.`;
+            document.getElementById('despacho4').setAttribute('data-text', texto_4);
+            document.getElementById('editTextModal4').value = texto_4;
+            var texto_5 = `Informamos que o pedido de baixa registro de pessoa jurídica deve ser realizado no SICCAU (Sistema de Informação e Comunicação do CAU) da empresa, atendendo disposto na Resolução 28 do CAU/BR:
+
+"26. É obrigatório à pessoa jurídica registrada no CAU/UF solicitar a baixa de seu registro, caso
+ocorra uma das seguintes situações:
+I - dissolução da pessoa jurídica, comprovada por meio de distrato social ou outro instrumento oficialmente válido;
+II - alteração do instrumento constitutivo da pessoa jurídica excluindo de seus objetivos sociais aqueles relacionados à Arquitetura e Urbanismo;
+III - ausência de arquiteto e urbanista responsável técnico pela pessoa jurídica."
+
+<a href="https://transparencia.caubr.gov.br/resolucao28/" target="blank">https://transparencia.caubr.gov.br/resolucao28/</a>
+
+<u>Para realizar abertura de Protocolo de baixa de registro:</u>
+Acessar:
+<a href="https://www.causp.gov.br" target="blank">https://www.causp.gov.br</a>
+Clicar em "SICCAU" - no campo "Fazer login" digitar o CNPJ e a senha da empresa. Dentro do ambiente SICCAU da empresa - clicar em "Protocolos" - "Cadastrar Protocolo" - "Cadastro Empresa" - "BAIXA DE REGISTRO DE PESSOA JURÍDICA"
+
+No protocolo anexar o distrato social da empresa e a baixa do CNPJ.
+
+Para a baixa de registro é necessário também a baixa do RRT de Desempenho de Cargo ou Função Técnica do responsável técnico pela empresa.
+`;
+            document.getElementById('despacho5').setAttribute('data-text', texto_5);
+            document.getElementById('editTextModal5').value = texto_5;
+            var texto_6 = `
+
+Atenciosamente, 
+Equipe CAU/AP.`;
+            document.getElementById('despacho6').setAttribute('data-text', texto_6);
+            document.getElementById('editTextModal6').value = texto_6;
+        </script>
+    </body>
+</html>
