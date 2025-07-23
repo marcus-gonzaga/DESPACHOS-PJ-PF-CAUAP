@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../styles.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>RRTs - Status: Baixa sem Data de Término</title>
+    </head>
+    <body>
+        <div id="header-placeholder"></div>
+        <main>
+            <div class="container mt-4">
+                <h3 style="text-align: center;">RRTs - Despachos</h3>
+            </div>
+            <div id="menu-esquerda">
+                <div class="status-01">
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <fieldset>
+                                    <legend style="color:#44546a">Alteração de Status</legend>
+                                    <li><a id="status-01" href="status-01.html">Cancelamento Aprovado</a></li>
+                                    <li><a id="status-02" href="status-02.html">Nulidade Aprovada</a></li>
+                                    <li><a id="status-03" href="status-03.html">Baixa Aprovada</a></li>
+                                    <li><a id="status-04" href="status-04.html">Indeferimento Aprovado</a></li>
+                                    <li><a id="status-05" href="status-05.html">Baixa sem Data de Término</a></li>
+                                    <li><a id="status-06" href="status-06.html">Cancelamento e Nulidade Sem Motivo/Declaração</a></li>
+                                    <li><a id="status-07" href="status-07.html">Indeferimento Sem Motivo</a></li>
+                                    <li><a id="status-08" href="status-08.html">Baixa de Ofício</a></li>
+                                    <li><a id="status-09" href="status-09.html">Cancelamento Cargo e Função</a></li>
+                                    <li><a id="status-10" href="status-10.html">Cancelamento E Nulidade RRT - 2 ou Mais Serviços</a></li>
+                                </fieldset>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="despacho">
+                <div>
+                    <textarea name="" id="despachoTexto" cols="100" rows="15">
+D XX 
+<br><br>
+Olá! Informamos que, para a baixa do RRT, é preciso informar a data de término da atividade, o dia em que deixou de ser responsável. &lt;br&gt;
+Esta informação deve ser encaminhada através do e-mail: atendimento@cauap.gov.br informando o número deste RRT. &lt;br&gt;&lt;br&gt;
+
+Atenciosamente, &lt;br&gt;
+GTEC – Gerência Técnica – CAU/AP
+                    </textarea>
+                </div>
+                <div id="container-button">
+                    <button id="copiar">Copiar</button>
+                    <button id="atualizar">Atualizar</button>
+                </div>
+            </div>
+            <div id="menu-direita">
+                <div class="exterior-01">
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <!-- Este menu está vazio no original, mas mantive a estrutura -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <hr>
+        </main>
+        <div id="footer-placeholder"></div>
+        <script>
+            function loadHTML(url, elementId) {
+                const finalUrl = `${window.location.origin}/${url}`; 
+                fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`); }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById(elementId).innerHTML = html;
+                        if (elementId === 'header-placeholder') {
+                            setTimeout(() => { if (typeof $ !== 'undefined' && $.fn.dropdown) { $('[data-toggle="dropdown"]').dropdown(); } else { console.warn("jQuery ou Bootstrap Dropdown não encontrado."); } }, 100); 
+                        }
+                    })
+                    .catch(error => console.error('Erro ao carregar HTML partial:', error));
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                loadHTML('header-partial.html', 'header-placeholder');
+                loadHTML('footer-partial.html', 'footer-placeholder');
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const copiarBotao = document.getElementById("copiar");
+                const textarea = document.getElementById("despachoTexto");
+                copiarBotao.addEventListener("click", function() { 
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999); 
+                    document.execCommand("copy");
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function() {
+                const atualizarBotao = document.getElementById("atualizar");
+                atualizarBotao.addEventListener("click", function() { location.reload(); });
+            });
+        </script>
+    </body>
+</html>
