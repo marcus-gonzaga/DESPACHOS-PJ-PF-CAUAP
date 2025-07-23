@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteira Profissional - Despachos CAU/AP</title>
+    
+    <!-- Meta Tags para SEO - Ajuste para esta página específica -->
+    <meta name="description" content="Página para geração de despachos relacionados à carteira profissional no CAU/AP.">
+    <meta name="keywords" content="CAU/AP, Carteira Profissional, Despachos, Foto, Requisitos, Arquitetura, Urbanismo">
+    <meta name="author" content="CAU/AP">
+
+    <!-- Links para CSS externos (Bootstrap, Font Awesome e seu CSS personalizado) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../styles.css"> <!-- Caminho ajustado para o styles.css que está na raiz -->
+
+    <!-- Favicon - Caminho ajustado para o favicon que está em PF/ -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Placeholder para o Cabeçalho (Conteúdo de header-partial.html será injetado aqui) -->
+    <div id="header-placeholder"></div>
+
+    <!--------------------------------------- Área de Conteúdo Principal da Carteira Profissional ---------------------------------------->
+    <main>
+        <div class="page-container">
+            <h2 class="page-title">Despacho para Carteira Profissional</h2>
+
+            <div class="content-grid">
+                <div class="options-column">
+                    <h3>Selecione os apontamentos:</h3>
+                    <form id="opcoesFormCarteira">
+                        
+                        <label class="input-group-label" for="generoProfissionalRadioGroup">Saudação:</label>
+                        <div class="radio-group" id="generoProfissionalRadioGroup">
+                            <!-- Radio buttons serão inseridos aqui pelo JS -->
+                        </div>
+                        
+                        <label class="input-group-label" for="checkboxContainerCarteira">Observações sobre a foto:</label>
+                        <div class="checkbox-options" id="checkboxContainerCarteira">
+                            <!-- Checkboxes serão inseridos aqui pelo JS -->
+                        </div>
+                    </form>
+                    <button id="btnDesmarcarTodosCarteira" class="btn btn-desmarcar">Desmarcar Todos</button>
+                </div>
+
+                <div class="despacho-column">
+                    <h3>Texto do Despacho:</h3>
+                    <h6>Copiado automaticamente para a área de transferência</h6>
+                    <textarea id="despachoOutputCarteira" readonly placeholder="Selecione as opções para gerar o texto do despacho..."></textarea>
+                   
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Placeholder para o Rodapé (Conteúdo de footer-partial.html e scripts serão injetados aqui) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Script de Inclusão JavaScript (Este script deve estar em CADA arquivo HTML principal) -->
+    <script>
+        // Função para carregar conteúdo HTML de um arquivo e injetá-lo em um elemento
+        function loadHTML(url, elementId) {
+            // Sempre carrega os arquivos parciais a partir da raiz do domínio
+            const finalUrl = `${window.location.origin}/${url}`; 
+
+            fetch(finalUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(elementId).innerHTML = html;
+                    // Re-inicializa os componentes do Bootstrap que podem ter sido injetados
+                    if (elementId === 'header-placeholder') {
+                        setTimeout(() => {
+                            if (typeof $ !== 'undefined' && $.fn.dropdown) {
+                                $('[data-toggle="dropdown"]').dropdown();
+                            } else {
+                                console.warn("jQuery ou Bootstrap Dropdown não encontrado. Verifique se os scripts foram carregados.");
+                            }
+                        }, 100); 
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar HTML partial:', error));
+        }
+
+        // Carrega o cabeçalho e o rodapé quando o DOM estiver pronto
+        document.addEventListener('DOMContentLoaded', function() {
+            loadHTML('header-partial.html', 'header-placeholder');
+            loadHTML('footer-partial.html', 'footer-placeholder');
+        });
+    </script>
+
+    <!-- Script ESPECÍFICO desta página para gerar o despacho (NÃO INCLUÍDO NO FOOTER-PARTIAL.HTML) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const radioGroupContainer = document.getElementById('generoProfissionalRadioGroup');
+            const checkboxContainer = document.getElementById('checkboxContainerCarteira');
+            const despachoOutput = document.getElementById('despachoOutputCarteira');
+            const btnDesmarcar = document.getElementById('btnDesmarcarTodosCarteira');
+            // Os botões "Copiar", "Atualizar", "Deletar" não estão no HTML fornecido pelo usuário.
+            // Se eles forem reintroduzidos, adicione as referências aqui:
+            // const btnCopiar = document.getElementById('btnCopiarDespacho');
+            // const btnAtualizar = document.getElementById('btnAtualizarDespacho');
+            // const btnDeletar = document.getElementById('btnDeletarDespacho');
+
+
+            const opcoesSaudacao = [
+                { id: 'optArquiteta', label: 'Arquiteta', textoDespacho: 'Prezada Arquiteta, analisamos a foto enviada e pedimos que envie outra. Esta foi recusada porque:' },
+                { id: 'optArquiteto', label: 'Arquiteto', textoDespacho: 'Prezado Arquiteto, analisamos a foto enviada e pedimos que envie outra. Esta foi recusada porque:' }
+            ];
+
+            const opcoesObservacoes = [
+                { id: 'optLonge', label: 'Está muito longe', textoDespacho: '- Está muito longe;' },
+                { id: 'optSombraRosto', label: 'Há sombra no seu rosto', textoDespacho: '- Há sombra no seu rosto' },
+                { id: 'optSombraCabeca', label: 'Há sombra atrás da cabeça', textoDespacho: '- Há sombra atrás da cabeça' },
+                { id: 'optReflexoRosto', label: 'Há reflexo no seu rosto', textoDespacho: '- Há reflexo no seu rosto' },
+                { id: 'optObjetoFundo', label: 'Há outro objeto aparecendo ao fundo', textoDespacho: '- Há outro objeto aparecendo ao fundo' },
+                { id: 'optObjetoOmbro', label: 'Há outro objeto sobre seu ombro', textoDespacho: '- Há outro objeto sobre seu ombro' },
+                { id: 'optOlhandoBaixo', label: 'Está olhando para baixo', textoDespacho: '- Está olhando para baixo' },
+                { id: 'optOlhandoCima', label: 'Está olhando para cima', textoDespacho: '- Está olhando para cima' },
+                { id: 'optArmacaoPesada', label: 'Armação muito pesada', textoDespacho: '- Armação muito pesada' },
+                { id: 'optOculosCobrindo', label: 'Óculos cobrindo os olhos', textoDespacho: '- Óculos cobrindo os olhos' },
+                { id: 'optSemCamisa', label: 'Está sem camisa', textoDespacho: '- Está sem camisa' },
+                { id: 'optFundoEscuro', label: 'Fundo muito escuro', textoDespacho: '- Fundo muito escuro' },
+                { id: 'optReflexoOculos', label: 'Há reflexo nos óculos', textoDespacho: '- Há reflexo nos óculos' },
+                { id: 'optCorDesbotada', label: 'Cor desbotada', textoDespacho: '- Cor desbotada' },
+                { id: 'optReflexoFundo', label: 'Há reflexo ao fundo', textoDespacho: '- Há reflexo ao fundo' },
+                { id: 'optRostoCima', label: 'O rosto está para cima', textoDespacho: '- O rosto está para cima' },
+                { id: 'optRostoBaixo', label: 'O rosto está para baixo', textoDespacho: '- O rosto está para baixo' }
+            ];
+
+            // Popular Radio Buttons para Saudação
+            opcoesSaudacao.forEach(opcao => {
+                const labelElement = document.createElement('label');
+                const input = document.createElement('input');
+                
+                input.type = 'radio';
+                input.id = opcao.id;
+                input.name = 'saudacaoProfissional'; // Nome comum para o grupo de radio
+                input.value = opcao.id; // Pode ser útil se você submeter o formulário
+                input.dataset.texto = opcao.textoDespacho;
+                
+                labelElement.htmlFor = opcao.id;
+                labelElement.appendChild(input);
+                labelElement.appendChild(document.createTextNode(opcao.label));
+                
+                radioGroupContainer.appendChild(labelElement);
+                input.addEventListener('change', atualizarDespachoTexto);
+            });
+
+            // Popular Checkboxes para Observações
+            opcoesObservacoes.forEach(opcao => {
+                const divItem = document.createElement('div'); 
+                const labelElement = document.createElement('label');
+                const input = document.createElement('input');
+                
+                input.type = 'checkbox';
+                input.id = opcao.id;
+                input.name = 'despachoObservacao'; 
+                input.dataset.texto = opcao.textoDespacho;
+                
+                labelElement.htmlFor = opcao.id;
+                labelElement.appendChild(input);
+                labelElement.appendChild(document.createTextNode(opcao.label));
+                
+                divItem.appendChild(labelElement);
+                checkboxContainer.appendChild(divItem);
+                input.addEventListener('change', atualizarDespachoTexto);
+            });
+
+            const desfechoTextoConstante = "Lembre-se que esta será a foto oficial de sua carteira profissional.\n\nAtenciosamente,\nEquipe CAU/AP";
+
+            function atualizarDespachoTexto() {
+                const itensSelecionados = [];
+                
+                // Pegar texto do radio button selecionado
+                const radioSelecionado = radioGroupContainer.querySelector('input[name="saudacaoProfissional"]:checked');
+                if (radioSelecionado) {
+                    itensSelecionados.push(radioSelecionado.dataset.texto);
+                }
+
+                // Pegar textos dos checkboxes selecionados
+                checkboxContainer.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                    itensSelecionados.push(cb.dataset.texto);
+                });
+
+                const textoDosItens = itensSelecionados.join("\n");
+                
+                if (textoDosItens === "") {
+                    despachoOutput.value = desfechoTextoConstante;
+                } else {
+                    despachoOutput.value = textoDosItens + "\n\n" + desfechoTextoConstante;
+                }
+
+                // Chamar a função de copiar automaticamente se o texto for gerado
+                if (despachoOutput.value.trim() !== desfechoTextoConstante.trim()) { // Copia só se houver algo além do desfecho
+                    navigator.clipboard.writeText(despachoOutput.value)
+                        .then(() => {
+                            // console.log("Texto copiado automaticamente.");
+                            // Aqui você poderia adicionar um feedback visual para o usuário, como um pequeno "Copiado!"
+                        })
+                        .catch(err => {
+                            console.error('Erro ao copiar texto automaticamente: ', err);
+                        });
+                }
+            }
+
+            btnDesmarcar.addEventListener('click', function () {
+                // Desmarcar radio buttons
+                radioGroupContainer.querySelectorAll('input[type="radio"]').forEach(rb => {
+                    rb.checked = false;
+                });
+                // Desmarcar checkboxes
+                checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    cb.checked = false;
+                });
+                atualizarDespachoTexto(); 
+            });
+
+            // Se os botões "Copiar", "Atualizar", "Deletar" forem reintroduzidos no HTML,
+            // descomente e adapte as funções abaixo:
+            /*
+            btnCopiar.addEventListener('click', function () {
+                const radioSelecionado = radioGroupContainer.querySelector('input[name="saudacaoProfissional"]:checked');
+                const checkboxesSelecionadosCount = checkboxContainer.querySelectorAll('input[type="checkbox"]:checked').length;
+
+                if (!radioSelecionado && checkboxesSelecionadosCount === 0) {
+                    alert("Nada para copiar. Selecione uma saudação e/ou observações.");
+                    return;
+                }
+                
+                navigator.clipboard.writeText(despachoOutput.value)
+                    .then(() => {
+                        console.log("Texto copiado com sucesso."); 
+                    })
+                    .catch(err => {
+                        console.error('Erro ao copiar texto: ', err);
+                        alert("Erro ao copiar. Por favor, tente manualmente ou verifique as permissões do navegador.");
+                    });
+            });
+
+            btnAtualizar.addEventListener('click', function () {
+                alert("Botão 'Atualizar' clicado.\n(A funcionalidade específica depende da sua implementação.)");
+            });
+
+            btnDeletar.addEventListener('click', function () {
+                alert("Botão 'Deletar' clicado.\n(A funcionalidade específica depende da sua implementação.)");
+            });
+            */
+
+            atualizarDespachoTexto(); 
+        });
+    </script>
+</body>
+</html>

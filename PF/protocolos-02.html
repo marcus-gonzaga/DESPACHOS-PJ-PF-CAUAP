@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../styles.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>Protocolos - Retificar Dados não Retificáveis - Despachos CAU/AP</title>
+    </head>
+   
+    <body>
+        <div id="header-placeholder"></div>
+        <main>
+            <div class="container mt-4">
+                <h3 style="text-align: center;">RRT - Retificação</h3> </div>
+            <div id="menu-esquerda">
+                <div class="protocolos-01">
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <fieldset>
+                                    <legend style="color: #44546a;">Permissão de Retificação</legend>
+                                    <li><a id="protocolos-01" href="protocolos-01.html">Permissão Aprovada</a></li>
+                                    <li><a id="protocolos-02" href="protocolos-02.html">Retificar Dados não Retificáveis</a></li>
+                                    <li><a id="protocolos-03" href="protocolos-03.html">Permissão de Retificação Sem Dados</a></li>
+                                    <li><a id="protocolos-04" href="protocolos-04.html">Remoção de Baixa</a></li>
+                                    <li><a id="protocolos-05" href="protocolos-05.html">RRT Não Baixado</a></li>
+                                </fieldset>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="despacho">
+                <div>
+                    <textarea name="" id="despachoTexto" cols="100" rows="15">
+Olá! Informamos que sua solicitação de permissão de retificação de RRT baixado não poderá ser aprovada. &lt;br&gt;&lt;br&gt;
+Não é permitido retificar a data de início, data de celebração, grupo de atividades, modalidade do RRT, UF do endereço e remoção da empresa contratada, em conformidade com a Resolução Nº 91 - CAU/BR. &lt;br&gt;&lt;br&gt;
+Caso seja necessário, deverá emitir um novo RRT. &lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+Atenciosamente, &lt;br&gt;
+GTEC – Gerência Técnica – CAU/AP
+                    </textarea>
+                </div>
+                <div id="container-button">
+                    <button id="copiar">Copiar</button>
+                    <button id="atualizar">Atualizar</button>
+                </div>
+            </div>
+            <div id="menu-direita">
+                <div class="protocolos-07">
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <fieldset>
+                                    <legend style="color:#44546a">Envio de Certidões por Protocolo</legend>                             
+                                    <li><a id="protocolos-07" href="protocolos-07.html">Certidão de ISS - Envio Virtual</a></li>
+                                    <li><a id="protocolos-08" href="protocolos-08.html">Certidão de ISS - Retirada Presencial</a></li>   
+                                </fieldset>
+                                <br>
+                                <fieldset>
+                                    <legend style="color:#44546a">Informação via Protocolo</legend>
+                                    <li><a id="protocolos-09" href="protocolos-09.html">RRT Encamindado para GAD</a></li>
+                                    <li><a id="protocolos-10" href="protocolos-10.html">RRT Corrigido Via GAD</a></li>
+                                    <li><a id="protocolos-11" href="protocolos-11.html">Extemporâneo - Dúvidas Sobre Multa</a></li>
+                                </fieldset>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <hr>
+        </main>
+        <div id="footer-placeholder"></div>
+        <script>
+            function loadHTML(url, elementId) {
+                const finalUrl = `${window.location.origin}/${url}`; 
+                fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`); }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById(elementId).innerHTML = html;
+                        if (elementId === 'header-placeholder') {
+                            setTimeout(() => { if (typeof $ !== 'undefined' && $.fn.dropdown) { $('[data-toggle="dropdown"]').dropdown(); } else { console.warn("jQuery ou Bootstrap Dropdown não encontrado."); } }, 100); 
+                        }
+                    })
+                    .catch(error => console.error('Erro ao carregar HTML partial:', error));
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                loadHTML('header-partial.html', 'header-placeholder');
+                loadHTML('footer-partial.html', 'footer-placeholder');
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const copiarBotao = document.getElementById("copiar");
+                const textarea = document.getElementById("despachoTexto");
+                copiarBotao.addEventListener("click", function() { 
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999); 
+                    document.execCommand("copy");
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function() {
+                const atualizarBotao = document.getElementById("atualizar");
+                atualizarBotao.addEventListener("click", function() { location.reload(); });
+            });
+        </script>
+    </body>
+</html>

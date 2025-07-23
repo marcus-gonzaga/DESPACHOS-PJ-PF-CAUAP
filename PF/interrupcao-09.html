@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../styles.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <title>Reativação - Registro Provisório - Despachos CAU/AP</title>
+    </head>
+    <body>
+        <div id="header-placeholder"></div>
+        <main>
+            <div class="container mt-4">
+                <h3 style="text-align: center;">Interrupção de Pessoa Física</h3>
+            </div>
+            <div id="menu-esquerda">
+                <div>
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <fieldset>
+                                    <legend style="color:#44546a">Interrupção</legend>
+                                    <li><a id="interrupcao-01" href="interrupcao-01.html">Interrupção Aprovada</a></li>
+                                    <li><a id="interrupcao-02" href="interrupcao-02.html">RRTs Sem Solicitação de Baixa</a></li>
+                                    <li><a id="interrupcao-03" href="interrupcao-03.html">Responsabilidade Técnica Ativa</a></li>
+                                    <li><a id="interrupcao-04" href="interrupcao-04.html">Responsabilidade Técnica e RRT</a></li>
+                                    <li><a id="interrupcao-05" href="interrupcao-05.html">Processo Fiscalizatório ou Ético-Disciplinar em Tramitação</a></li>
+                                    <li><a id="interrupcao-06" href="interrupcao-06.html">Registro Provisório Vencido</a></li>
+                                    <li><a id="interrupcao-07" href="interrupcao-07.html">Registro já está Interrompido</a></li>
+                                </fieldset>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="despacho">
+                <div>
+                    <textarea name="" id="despachoTexto" cols="100" rows="15">
+R02 D XX
+<br><br>
+Olá! Como seu registro provisório venceu, ele fica suspenso, não cabendo esta solicitação. <br>
+Para prosseguimento de ativação do registro profissional, é preciso que encaminhe seu diploma (frente e verso) em um novo protocolo, com o assunto: <b>ENVIO DE DIPLOMA PARA REGISTRO DEFINITIVO</b>. <br>
+Esta solicitação será arquivada. <br> <br>
+Atenciosamente, <br>
+GTEC – Gerência Técnica – CAU/AP
+                    </textarea>
+                </div>
+                <div id="container-button">
+                    <button id="copiar">Copiar</button>
+                    <button id="atualizar">Atualizar</button>
+                </div>
+            </div>
+            <div id="menu-direita">
+                <div>
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <fieldset>
+                                    <legend style="color: #44546a;">Reativação</legend>
+                                    <li><a id="interrupcao-08" href="interrupcao-08.html">Reativação Aprovada</a></li>
+                                    <li><a id="interrupcao-09" href="interrupcao-09.html">Registro Provisório</a></li>
+                                    <li><a id="interrupcao-10" href="interrupcao-10.html">Débitos Financeiros</a></li>
+                                    <li><a id="interrupcao-11" href="interrupcao-11.html">Mais de Uma Reativação no Ano - Pagamento da Taxa de Expediente</a></li>
+                                    <li><a id="interrupcao-12" href="interrupcao-12.html">Pendência da Interrupção de Registro</a></li>
+                                    <li><a id="interrupcao-13" href="interrupcao-13.html">Encaminhamento ao GFIN (Tramitação de Protocolo)</a></li>
+                                    <li><a id="interrupcao-14" href="interrupcao-14.html">Observação</a></li>
+                                </fieldset>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <hr>
+        </main>
+        <div id="footer-placeholder"></div>
+        <script>
+            function loadHTML(url, elementId) {
+                const finalUrl = `${window.location.origin}/${url}`; 
+                fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`); }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById(elementId).innerHTML = html;
+                        if (elementId === 'header-placeholder') {
+                            setTimeout(() => { if (typeof $ !== 'undefined' && $.fn.dropdown) { $('[data-toggle="dropdown"]').dropdown(); } else { console.warn("jQuery ou Bootstrap Dropdown não encontrado."); } }, 100); 
+                        }
+                    })
+                    .catch(error => console.error('Erro ao carregar HTML partial:', error));
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                loadHTML('header-partial.html', 'header-placeholder');
+                loadHTML('footer-partial.html', 'footer-placeholder');
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const copiarBotao = document.getElementById("copiar");
+                const textarea = document.getElementById("despachoTexto");
+                copiarBotao.addEventListener("click", function() { 
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999); 
+                    document.execCommand("copy");
+                });
+            });
+            document.addEventListener("DOMContentLoaded", function() {
+                const atualizarBotao = document.getElementById("atualizar");
+                atualizarBotao.addEventListener("click", function() { location.reload(); });
+            });
+        </script>
+    </body>
+</html>

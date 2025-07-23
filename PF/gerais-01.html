@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <!-- Links para CSS externos (Bootstrap, Font Awesome e seu CSS padronizado) -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../styles.css"> <!-- Caminho ajustado para o styles.css (na raiz) -->
+
+        <!-- Favicon -->
+        <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon está na pasta PF -->
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        
+        <title>RRTs - Despachos CAU/AP</title> <!-- Título mais descritivo -->
+    </head>
+
+    <body>
+        <!-- Placeholder para o Cabeçalho (Conteúdo de header-partial.html será injetado aqui) -->
+        <div id="header-placeholder"></div>
+            
+        <!--------------------------------------- Conteúdo Principal da Página Gerais (RRTs) ---------------------------------------->
+        <main>
+            <div class="container mt-4">
+                <h3 style="text-align: center;">RRTs - Despachos </h3> </div>
+
+            <div id="menu-esquerda">
+                <div class="index">
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <fieldset>
+                                    <legend style="color:#44546a">Extemporâneo</legend>
+                                    <li><a id="index" href="cat-12.html">RRT Aprovado</a></li>
+                                    <li><a id="rrts-02" href="rrts-02.html">RRT Aprovado (Retificador)</a></li>
+                                    <li><a id="rrts-03" href="rrts-03.html">RRT Aprovado - Atestado Não Aprova na CAT-A</a></li>
+                                    <li><a id="rrts-04" href="rrts-04.html">1 Dado Divergente</a></li>
+                                    <li><a id="rrts-05" href="rrts-05.html">Dados Divergentes</a></li>
+                                    <li><a id="rrts-06" href="rrts-06.html">Falta Documento - Contratante PF</a></li>
+                                    <li><a id="rrts-07" href="rrts-07.html">Falta Documento - Contratante PJ</a></li>
+                                    <li><a id="rrts-08" href="rrts-08.html">Faltam Documentos de Cargo e Função</a></li>
+                                    <li><a id="rrts-09" href="rrts-09.html">Erro no Arquivo</a></li>
+                                    <li><a id="rrts-10" href="rrts-10.html">Situação de Emergência</a></li>
+                                    <li><a id="rrts-11" href="rrts-11.html">Atividade Não Contemplada</a></li>
+                                    <li><a id="rrts-12" href="rrts-12.html">Mais de um Endereço</a></li>
+                                    <li><a id="rrts-13" href="rrts-13.html">Atividade de Regularização</a></li>
+                                    <li><a id="rrts-14" href="rrts-14.html">Outro responsável Técnico</a></li>
+                                    <li><a id="rrts-15" href="rrts-15.html">Múltiplo Mensal</a></li>
+                                </fieldset>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="despacho">
+                <div>
+                    <textarea name="" id="despachoTexto" cols="100" rows="24">
+D XX<br> <br>
+RRT Nº XXXXXXXXXX <br><br>
+RRT analisado e <b>aprovado</b>, por delegação de competência da Comissão de Exercício Profissional – CEFEEP – CAU/AP. <br><br>
+A emissão do RRT Extemporâneo Inicial fica condicionada ao pagamento da <b>segunda taxa após aprovação</b>, conforme Resolução do CAU/BR nº 184 de 22 de novembro de 2019 - Art. 18, item II. <br><br>
+A falta de pagamento desta taxa no prazo máximo de 10 dias inviabilizará a conclusão do RRT e sujeitará o profissional às cominações legais cabíveis no âmbito da Fiscalização do CAU/AP. <b>O boleto já pode ser gerado na página do RRT</b>. <br><br><br>
+
+Informamos que é de responsabilidade do Arquiteto e Urbanista assegurar que as informações registradas no RRT são verídicas. <br> <br>
+
+Para eventual solicitação de “CAT-A”, será necessário atender ao disposto na Resolução Nº 93 – CAU/BR. <br><br><br>
+
+Atenciosamente, <br><b>
+GTEC – Gerência Técnica – CAU/AP
+                    </textarea>
+                </div>
+                
+                <div id="container-button">
+                    <button id="copiar">Copiar</button>
+                    <button id="atualizar">Atualizar</button>
+                </div>
+            </div>
+
+            <div id="menu-direita">
+                <div class="exterior-01">
+                    <div class="container">
+                        <div class="lateral">
+                            <ul class="navegacao">
+                                <fieldset>
+                                    <legend style="color: #44546a;">Exterior</legend>
+                                    <li><a id="exterior-01" href="exterior-01.html">Sem Documentos</a></li>
+                                    <li><a id="exterior-02" href="exterior-02.html">Emitido por Engano</a></li>
+                                    <li><a id="exterior-03" href="exterior-03.html">Em Duplicidade para um Aditivo</a></li>
+                                    <li><a id="exterior-04" href="exterior-04.html">Sem Tradução</a></li>
+                                    <li><a id="exterior-05" href="exterior-05.html">Aprovado</a></li>
+                                </fieldset>
+                                <br>
+                                <fieldset>
+                                    <legend style="color: #44546a;">Derivado</legend>
+                                    <li><a id="derivado-01" href="derivado-01.html">Derivado - FALTA ART</a></li>
+                                    <li><a id="derivado-02" href="derivado-02.html">Derivado - Dados Divergentes</a></li>
+                                    <li><a id="derivado-03" href="derivado-03.html">Derivado Reficador</a></li>
+                                    <li><a id="derivado-04" href="derivado-04.html">Derivado Aprovado</a></li>
+                                </fieldset>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+            <hr>
+        </main>
+        
+        <!-- Placeholder para o Rodapé (Conteúdo de footer-partial.html e scripts serão injetados aqui) -->
+        <div id="footer-placeholder"></div>
+        
+        <!-- Script de Inclusão JavaScript (Este script deve estar em CADA arquivo HTML principal) -->
+        <script>
+            // Função para carregar conteúdo HTML de um arquivo e injetá-lo em um elemento
+            function loadHTML(url, elementId) {
+                // Sempre carrega os arquivos parciais a partir da raiz do domínio
+                const finalUrl = `${window.location.origin}/${url}`; 
+
+                fetch(finalUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status} for ${finalUrl}`);
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        document.getElementById(elementId).innerHTML = html;
+                        // Re-inicializa os componentes do Bootstrap que podem ter sido injetados
+                        if (elementId === 'header-placeholder') {
+                            setTimeout(() => {
+                                if (typeof $ !== 'undefined' && $.fn.dropdown) {
+                                    $('[data-toggle="dropdown"]').dropdown();
+                                } else {
+                                    console.warn("jQuery ou Bootstrap Dropdown não encontrado. Verifique se os scripts foram carregados.");
+                                }
+                            }, 100); 
+                        }
+                    })
+                    .catch(error => console.error('Erro ao carregar HTML partial:', error));
+            }
+
+            // Carrega o cabeçalho e o rodapé quando o DOM estiver pronto
+            document.addEventListener('DOMContentLoaded', function() {
+                loadHTML('header-partial.html', 'header-placeholder');
+                loadHTML('footer-partial.html', 'footer-placeholder');
+            });
+        </script>
+
+        <!-- Scripts ESPECÍFICOS desta página para o funcionamento dos botões -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const copiarBotao = document.getElementById("copiar");
+                const textarea = document.getElementById("despachoTexto"); // ID da textarea foi definido
+
+                copiarBotao.addEventListener("click", function() {
+                    textarea.select();
+                    // Para dispositivos móveis ou alguns navegadores, use setSelectionRange
+                    textarea.setSelectionRange(0, 99999); 
+                    document.execCommand("copy");
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded", function() {
+                const atualizarBotao = document.getElementById("atualizar");
+                atualizarBotao.addEventListener("click", function() {
+                    location.reload(); // Esta linha recarrega a página
+                });
+            });
+        </script>
+    </body>
+</html>
