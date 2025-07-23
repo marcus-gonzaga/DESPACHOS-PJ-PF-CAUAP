@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despachos PJ/PF - CAU/AP</title>
+    <!-- Seus estilos e outros metadados aqui -->
+</head>
+<body>
+    <!-- Placeholder para o header -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Conteúdo principal da página -->
+    <main>
+        <h1>Bem-vindo ao Sistema de Despachos PJ/PF do CAU/AP</h1>
+        <!-- Seu conteúdo aqui -->
+    </main>
+    
+    <!-- Placeholder para o footer -->
+    <div id="footer-placeholder"></div>
+    
+    <script>
+        // Função para carregar partials com tratamento de erros
+        async function loadPartial(url, elementId) {
+            try {
+                const response = await fetch(url);  // Caminho relativo: assumindo raiz
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar ${url}: ${response.status}`);  // Captura 404 ou outros
+                }
+                const text = await response.text();  // Use text() para HTML, não json()
+                document.getElementById(elementId).innerHTML = text;
+            } catch (error) {
+                console.error('Falha ao carregar partial:', error);
+                // Opcional: Mostrar mensagem amigável no DOM
+                document.getElementById(elementId).innerHTML = '<p>Erro ao carregar componente. Tente recarregar a página.</p>';
+            }
+        }
+
+        // Carregar header e footer
+        loadPartial('./header-partial.html', 'header-placeholder');  // Caminho corrigido com './' para raiz
+        loadPartial('./footer-partial.html', 'footer-placeholder');
+    </script>
+</body>
+</html>
