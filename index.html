@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despachos PJ/PF - CAU/AP</title>
+    
+    <!-- Link para o CSS do Bootstrap (sempre antes do seu CSS personalizado) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- Link para o seu CSS personalizado (para sobreescrever ou adicionar estilos) -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Outros metadados ou links de fontes, se houver -->
+</head>
+<body>
+    <!-- Placeholder onde o conteúdo do header-partial.html será injetado -->
+    <div id="header-placeholder"></div>
+    
+    <!-- Conteúdo principal da sua página -->
+    <main>
+        <h1>Bem-vindo ao Sistema de Despachos PJ/PF do CAU/AP</h1>
+        <p>Gerência de Fiscalização e Registros - CAU/AP</p>
+        <!-- Seu conteúdo específico da página inicial aqui -->
+    </main>
+    
+    <!-- Placeholder onde o conteúdo do footer-partial.html será injetado -->
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts JavaScript -->
+    <!-- jQuery (necessário para o Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.js (necessário para o Bootstrap, especialmente para tooltips e popovers) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <!-- Script principal do Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Seu script personalizado que carrega o header e o footer -->
+    <!-- É importante que este script seja carregado *depois* dos scripts do Bootstrap, -->
+    <!-- e depois que os elementos placeholder existam no DOM (por isso no final do <body>) -->
+    <script src="js/loadContent.js"></script>
+
+</body>
+</html>
