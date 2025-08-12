@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de CNPJs - Multi-API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .container {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .cnpj-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .cnpj-column {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: monospace;
+      margin-bottom: 15px;
+      height: 200px;
+    }
+    
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    
+    button:hover {
+      background-color: #2980b9;
+    }
+    
+    button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
+    
+    #exportarCsvBtn {
+      background-color: #2ecc71;
+    }
+    
+    #limparBtn {
+      background-color: #e74c3c;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    
+    th {
+      background-color: #f2f2f2;
+      position: sticky;
+      top: 0;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    
+    .error {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    
+    .success {
+      color: #27ae60;
+    }
+    
+    .warning {
+      color: #f39c12;
+    }
+    
+    .progress-container {
+      margin: 20px 0;
+      display: none;
+    }
+    
+    progress {
+      width: 100%;
+      height: 20px;
+    }
+    
+    .status-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    
+    .status {
+      font-weight: bold;
+    }
+    
+    .timer {
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    
+    .config-section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    
+    .config-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+    
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+      margin-right: 10px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 24px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: #2ecc71;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+    
+    .api-info {
+      font-size: 12px;
+      color: #7f8c8d;
+      margin-left: 10px;
+    }
+    
+    @media (max-width: 1200px) {
+      .cnpj-column {
+        min-width: 250px;
+      }
+    }
+    
+    @media (max-width: 900px) {
+      .cnpj-column {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <main>
+    <div class="container">
+      <h1>Consulta de CNPJs - Multi-API</h1>
+      
+      <div class="config-section">
+        <div class="config-title">Selecione as APIs para consulta:</div>
+        
+        <!-- Primeira Coluna - CNPJá -->
+        <div class="toggle-container">
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleCnpja" checked>
+            <span class="slider"></span>
+          </label>
+          <label for="toggleCnpja">API CNPJá</label>
+          <div class="api-info">5 consultas/minuto</div>
+        </div>
+        
+        <!-- Segunda Coluna - Minha Receita -->
+        <div class="toggle-container">
+          <label class="toggle-switch">
+            <input type="checkbox" id="toggleMinhaReceita" checked>
+            <span class="slider"></span>
+          </label>
+          <label for="toggleMinhaReceita">API Minha Receita</label>
+          <div class="api-info">1 consulta/segundo</div>
+        </div>
+      </div>
+      
+      <div>
+        <label for="cnpjs">Insira os CNPJs (um por linha, com ou sem formatação):</label><br>
+        <div class="cnpj-columns" id="cnpjColumns">
+          <div class="cnpj-column">
+            <textarea id="cnpjs1" placeholder="CNPJs serão distribuídos automaticamente..."></textarea>
+          </div>
+          <div class="cnpj-column">
+            <textarea id="cnpjs2" style="display: none;"></textarea>
+          </div>
+          <div class="cnpj-column">
+            <textarea id="cnpjs3" style="display: none;"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button id="consultarBtn">Consultar CNPJs</button>
+        <button id="limparBtn">Limpar Tudo</button>
+        <button id="exportarCsvBtn" disabled>Exportar para CSV</button>
+      </div>
+      
+      <div class="progress-container" id="progressContainer">
+        <progress id="progressBar" value="0" max="100"></progress>
+        <div class="status-container">
+          <div class="status" id="statusText">Consultando CNPJs... (0/0)</div>
+          <div class="timer" id="timerText">Tempo estimado: --:--</div>
+        </div>
+        <div class="status" id="apiStatusText"></div>
+      </div>
+      
+      <table id="resultTable">
+        <thead>
+          <tr>
+            <th>CNPJ</th>
+            <th>Nome da Empresa</th>
+            <th>Nome Fantasia</th>
+            <th>Status na Receita</th>
+            <th>Data da Situação</th>
+            <th>Município/UF</th>
+            <th>Fonte</th>
+            <th>Status da Consulta</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Resultados serão inseridos aqui -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <div id="footer-placeholder"></div>
+  <script src="../js/loadContent.js"></script> <!-- Inclui o script centralizado -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Elementos da interface
+      const cnpjColumns = document.getElementById('cnpjColumns');
+      const cnpjs1 = document.getElementById('cnpjs1');
+      const cnpjs2 = document.getElementById('cnpjs2');
+      const cnpjs3 = document.getElementById('cnpjs3');
+      const consultarBtn = document.getElementById('consultarBtn');
+      const limparBtn = document.getElementById('limparBtn');
+      const exportarCsvBtn = document.getElementById('exportarCsvBtn');
+      const resultTable = document.getElementById('resultTable').querySelector('tbody');
+      const progressContainer = document.getElementById('progressContainer');
+      const progressBar = document.getElementById('progressBar');
+      const statusText = document.getElementById('statusText');
+      const timerText = document.getElementById('timerText');
+      const apiStatusText = document.getElementById('apiStatusText');
+      const toggleCnpja = document.getElementById('toggleCnpja');
+      const toggleMinhaReceita = document.getElementById('toggleMinhaReceita');
+      
+      // Estado da aplicação
+      let resultados = [];
+      let apiUsage = {
+        cnpja: { count: 0, lastReset: Date.now(), limit: 5 },
+        minhaReceita: { count: 0, lastReset: Date.now(), limit: Infinity }
+      };
+      let timerInterval;
+      let startTime;
+      let estimatedTime = 0;
+
+      // Configurações das APIs
+      const API_CONFIG = {
+        cnpja: {
+          url: cnpj => `https://open.cnpja.com/office/${cnpj}`,
+          limit: 5,
+          interval: 12000 // 12 segundos (5/min)
+        },
+        minhaReceita: {
+          url: cnpj => `https://minhareceita.org/${cnpj}`,
+          limit: Infinity,
+          interval: 1000 // 1 segundo
+        }
+      };
+
+      // Distribui os CNPJs em colunas
+      function distribuirCnpjs() {
+        const cnpjsInput = cnpjs1.value.trim();
+        const linhas = cnpjsInput.split('\n').filter(line => line.trim() !== '');
+        
+        // Resetar colunas
+        cnpjs1.value = '';
+        cnpjs2.style.display = 'none';
+        cnpjs2.value = '';
+        cnpjs3.style.display = 'none';
+        cnpjs3.value = '';
+        
+        if (linhas.length === 0) return;
+        
+        // Calcular número de colunas necessárias (1-3)
+        const numColunas = Math.min(3, Math.ceil(linhas.length / 15));
+        
+        // Distribuir linhas pelas colunas
+        const linhasPorColuna = Math.ceil(linhas.length / numColunas);
+        
+        for (let i = 0; i < linhas.length; i++) {
+          const coluna = Math.floor(i / linhasPorColuna) + 1;
+          const textarea = coluna === 1 ? cnpjs1 : 
+                          coluna === 2 ? cnpjs2 : cnpjs3;
+          
+          if (coluna > 1) textarea.style.display = 'block';
+          textarea.value += (textarea.value ? '\n' : '') + linhas[i];
+        }
+      }
+
+      // Função para normalizar CNPJ (14 dígitos com zeros à esquerda)
+      function normalizarCnpj(cnpj) {
+        const apenasDigitos = cnpj.replace(/\D/g, '');
+        const cnpjNormalizado = apenasDigitos.padStart(14, '0');
+        return cnpjNormalizado.length > 14 ? cnpjNormalizado.substring(0, 14) : cnpjNormalizado;
+      }
+      
+      // Calcular tempo estimado
+      function calcularTempoEstimado(totalCnpjs) {
+        if (!toggleCnpja.checked && !toggleMinhaReceita.checked) return 0;
+        
+        const usandoAmbas = toggleCnpja.checked && toggleMinhaReceita.checked;
+        
+        if (usandoAmbas) {
+          // Calcular quantos CNPJs cada API vai processar
+          const velocidadeCnpja = 5 / 60; // 5 por minuto = 0.0833 por segundo
+          const velocidadeMinhaReceita = 1; // 1 por segundo
+          const velocidadeTotal = velocidadeCnpja + velocidadeMinhaReceita;
+          
+          return Math.ceil(totalCnpjs / velocidadeTotal);
+        } else if (toggleCnpja.checked) {
+          return Math.ceil(totalCnpjs / (5 / 60));
+        } else {
+          return totalCnpjs; // 1 por segundo
+        }
+      }
+
+      // Atualizar timer
+      function atualizarTimer() {
+        const tempoDecorrido = Math.floor((Date.now() - startTime) / 1000);
+        const tempoRestante = Math.max(0, estimatedTime - tempoDecorrido);
+        
+        const minutos = Math.floor(tempoRestante / 60);
+        const segundos = tempoRestante % 60;
+        
+        timerText.textContent = `Tempo estimado: ${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        
+        if (tempoRestante <= 0) {
+          clearInterval(timerInterval);
+        }
+      }
+
+      // Iniciar timer
+      function iniciarTimer(totalCnpjs) {
+        estimatedTime = calcularTempoEstimado(totalCnpjs);
+        startTime = Date.now();
+        
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(atualizarTimer, 1000);
+        atualizarTimer();
+      }
+      
+      // Limpar tudo
+      limparBtn.addEventListener('click', function() {
+        resultTable.innerHTML = '';
+        cnpjs1.value = '';
+        cnpjs2.value = '';
+        cnpjs3.value = '';
+        cnpjs2.style.display = 'none';
+        cnpjs3.style.display = 'none';
+        resultados = [];
+        exportarCsvBtn.disabled = true;
+        progressBar.value = 0;
+        progressContainer.style.display = 'none';
+        resetApiCounters();
+        clearInterval(timerInterval);
+        timerText.textContent = 'Tempo estimado: --:--';
+      });
+      
+      // Observar mudanças no textarea principal
+      cnpjs1.addEventListener('input', distribuirCnpjs);
+      
+      // Resetar contadores de API
+      function resetApiCounters() {
+        const now = Date.now();
+        apiUsage = {
+          cnpja: { count: 0, lastReset: now, limit: 5 },
+          minhaReceita: { count: 0, lastReset: now, limit: Infinity }
+        };
+      }
+      
+      // Verificar e resetar contadores se necessário
+      function checkApiRateLimits(api) {
+        const now = Date.now();
+        const oneMinute = 60000;
+        
+        if (now - apiUsage[api].lastReset > oneMinute) {
+          apiUsage[api].count = 0;
+          apiUsage[api].lastReset = now;
+        }
+      }
+      
+      // Consultar CNPJ na API selecionada
+      async function consultarCnpj(cnpj, api) {
+        try {
+          checkApiRateLimits(api);
+          
+          if (apiUsage[api].count >= apiUsage[api].limit) {
+            throw new Error(`Limite de consultas atingido para ${api}`);
+          }
+          
+          const cnpjNormalizado = normalizarCnpj(cnpj);
+          const config = API_CONFIG[api];
+          const url = config.url(cnpjNormalizado);
+          
+          apiUsage[api].count++;
+          
+          const response = await fetch(url);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          return processarResposta(cnpjNormalizado, data, api);
+          
+        } catch (error) {
+          return {
+            CNPJ: normalizarCnpj(cnpj),
+            Nome: 'Erro na consulta',
+            NomeFantasia: '',
+            Status: 'Erro',
+            DataSituacao: 'Não disponível',
+            MunicipioUF: '',
+            Fonte: getApiName(api),
+            StatusConsulta: `Falha: ${error.message}`,
+            Detalhes: null
+          };
+        }
+      }
+      
+      function getApiName(api) {
+        const names = {
+          cnpja: 'CNPJá',
+          minhaReceita: 'Minha Receita'
+        };
+        return names[api] || api;
+      }
+      
+      // Processar resposta da API
+      function processarResposta(cnpj, data, api) {
+        if (api === 'cnpja') {
+          return {
+            CNPJ: cnpj,
+            Nome: data.company?.name || 'Não encontrado',
+            NomeFantasia: data.company?.alias || '',
+            Status: data.status?.text || 'Desconhecido',
+            DataSituacao: data.statusDate || 'Não disponível',
+            MunicipioUF: `${data.address?.city || ''}/${data.address?.state || ''}`,
+            Fonte: 'CNPJá',
+            StatusConsulta: 'Sucesso',
+            Detalhes: data
+          };
+        } else {
+          return {
+            CNPJ: cnpj,
+            Nome: data.razao_social || 'Não encontrado',
+            NomeFantasia: data.nome_fantasia || '',
+            Status: data.descricao_situacao_cadastral || 'Desconhecido',
+            DataSituacao: data.data_situacao_cadastral || 'Não disponível',
+            MunicipioUF: `${data.municipio || ''}/${data.uf || ''}`,
+            Fonte: 'Minha Receita',
+            StatusConsulta: data.erro ? `Erro: ${data.erro}` : 'Sucesso',
+            Detalhes: data
+          };
+        }
+      }
+      
+      // Adicionar linha na tabela
+      function adicionarLinhaTabela(resultado) {
+        const row = document.createElement('tr');
+        
+        row.innerHTML = `
+          <td>${resultado.CNPJ}</td>
+          <td>${resultado.Nome}</td>
+          <td>${resultado.NomeFantasia}</td>
+          <td>${resultado.Status}</td>
+          <td>${formatarData(resultado.DataSituacao)}</td>
+          <td>${resultado.MunicipioUF}</td>
+          <td>${resultado.Fonte}</td>
+          <td class="${resultado.StatusConsulta.includes('Sucesso') ? 'success' : 
+            resultado.StatusConsulta.includes('Erro') ? 'error' : 'warning'}">${resultado.StatusConsulta}</td>
+          <td>
+            <button class="detalhes-btn" data-cnpj="${resultado.CNPJ}" ${!resultado.Detalhes ? 'disabled' : ''}>
+              Ver Detalhes
+            </button>
+          </td>
+        `;
+        
+        if (resultado.Detalhes) {
+          row.querySelector('.detalhes-btn').addEventListener('click', function() {
+            mostrarDetalhes(resultado.CNPJ, resultado.Detalhes, resultado.Fonte);
+          });
+        }
+        
+        resultTable.appendChild(row);
+      }
+      
+      // Função para consulta paralela
+      async function consultarCnpjsEmParalelo(cnpjs) {
+        const filaConsultas = [...cnpjs];
+        const resultados = [];
+        let consultasAtivas = 0;
+        
+        // Função para processar uma API específica
+        async function processarApi(api) {
+          while (filaConsultas.length > 0 || consultasAtivas > 0) {
+            if (filaConsultas.length === 0) {
+              await new Promise(resolve => setTimeout(resolve, 100));
+              continue;
+            }
+            
+            const cnpj = filaConsultas.shift();
+            if (!cnpj) continue;
+            
+            consultasAtivas++;
+            try {
+              const resultado = await consultarCnpj(cnpj, api);
+              resultados.push(resultado);
+              adicionarLinhaTabela(resultado);
+              
+              // Atualizar progresso
+              progressBar.value = resultados.length;
+              statusText.textContent = `Consultando CNPJs... (${resultados.length}/${cnpjs.length})`;
+              
+              // Aguardar intervalo mínimo entre consultas
+              await new Promise(resolve => setTimeout(resolve, API_CONFIG[api].interval));
+            } catch (error) {
+              console.error(`Erro na consulta ${api}:`, error);
+            } finally {
+              consultasAtivas--;
+            }
+          }
+        }
+
+        // Iniciar consultas paralelas
+        const promises = [];
+        if (toggleCnpja.checked) {
+          promises.push(processarApi('cnpja'));
+        }
+        if (toggleMinhaReceita.checked) {
+          promises.push(processarApi('minhaReceita'));
+        }
+
+        await Promise.all(promises);
+        return resultados;
+      }
+
+      // Consultar CNPJs
+      consultarBtn.addEventListener('click', async function() {
+        // Obter todos os CNPJs de todas as colunas
+        const cnpjsInput = [cnpjs1.value, cnpjs2.value, cnpjs3.value]
+          .join('\n')
+          .trim();
+        
+        if (!cnpjsInput) {
+          alert('Por favor, insira pelo menos um CNPJ');
+          return;
+        }
+        
+        if (!toggleCnpja.checked && !toggleMinhaReceita.checked) {
+          alert('Selecione pelo menos uma API para consulta');
+          return;
+        }
+        
+        // Normaliza todos os CNPJs antes de processar
+        const cnpjs = cnpjsInput.split('\n')
+          .map(cnpj => normalizarCnpj(cnpj.trim()))
+          .filter(cnpj => cnpj !== '00000000000000' && cnpj !== '');
+        
+        if (cnpjs.length === 0) {
+          alert('Nenhum CNPJ válido encontrado');
+          return;
+        }
+        
+        consultarBtn.disabled = true;
+        progressContainer.style.display = 'block';
+        progressBar.max = cnpjs.length;
+        progressBar.value = 0;
+        statusText.textContent = `Consultando CNPJs... (${resultados.length}/${cnpjs.length})`;
+        
+        const apisAtivas = [];
+        if (toggleCnpja.checked) apisAtivas.push('CNPJá');
+        if (toggleMinhaReceita.checked) apisAtivas.push('Minha Receita');
+        
+        apiStatusText.textContent = `APIs ativas: ${apisAtivas.join(', ')}`;
+        
+        resultTable.innerHTML = '';
+        resultados = [];
+        resetApiCounters();
+        
+        // Iniciar timer com estimativa
+        iniciarTimer(cnpjs.length);
+        
+        // Usar a função de consulta paralela
+        resultados = await consultarCnpjsEmParalelo(cnpjs);
+        
+        consultarBtn.disabled = false;
+        exportarCsvBtn.disabled = false;
+        statusText.textContent = `Consulta concluída! (${cnpjs.length} CNPJs verificados)`;
+        clearInterval(timerInterval);
+        timerText.textContent = 'Consulta concluída!';
+      });
+      
+      // Exportar para CSV
+      exportarCsvBtn.addEventListener('click', function() {
+        if (resultados.length === 0) {
+          alert('Nenhum resultado disponível para exportar.');
+          return;
+        }
+
+        const headers = ['CNPJ', 'Nome da Empresa', 'Nome Fantasia', 'Status na Receita', 
+                         'Data da Situação', 'Municipio/UF', 'Fonte', 'Status da Consulta'];
+        let csvContent = headers.join(';') + '\n';
+        
+        resultados.forEach(result => {
+          csvContent += `"${result.CNPJ}";"${result.Nome.replace(/"/g, '""')}";` +
+                       `"${result.NomeFantasia.replace(/"/g, '""')}";` +
+                       `"${result.Status}";"${formatarData(result.DataSituacao)}";` +
+                       `"${result.MunicipioUF}";"${result.Fonte}";"${result.StatusConsulta}"\n`;
+        });
+
+        const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.setAttribute('href', url);
+        link.setAttribute('download', `cnpjs_${new Date().toISOString().slice(0,10)}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+      
+      // Funções auxiliares
+      function formatarData(dataString) {
+        if (!dataString || dataString === 'Não disponível') return dataString;
+        
+        try {
+          if (dataString.match(/^\d{4}-\d{2}-\d{2}/)) {
+            const [year, month, day] = dataString.split('-');
+            return `${day}/${month}/${year}`;
+          }
+          
+          if (dataString.match(/^\d{2}\/\d{2}\/\/\d{4}/)) {
+            return dataString;
+          }
+          
+          const data = new Date(dataString);
+          if (!isNaN(data)) {
+            return data.toLocaleDateString('pt-BR');
+          }
+          
+          return dataString;
+        } catch {
+          return dataString;
+        }
+      }
+      
+      function mostrarDetalhes(cnpj, dados, fonte) {
+        const detalhesStr = JSON.stringify(dados, null, 2);
+        alert(`Detalhes completos para CNPJ ${cnpj} (${fonte}):\n\n${detalhesStr}`);
+      }
+
+      // Distribuir CNPJs inicialmente se já houver conteúdo
+      distribuirCnpjs();
+    });
+  </script>
+</body>
+</html>

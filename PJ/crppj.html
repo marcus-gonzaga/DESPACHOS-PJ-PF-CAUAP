@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../styles.css">
+        <title>CRPPJ</title>
+    </head>
+    <body>
+        <div id="header-placeholder"></div>
+        <main>
+            <div class="container-fluid">
+                <div class="row p-3">
+                    <div class="col-md-12">
+                        <h3 class="d-flex align-items-center mt-2">CRPPJ</h3>
+                        <div class="mb-3 mt-3">
+                            <button class="btn btn-sm btn-secondary mt-2" style="width: 90px" id="restartButton"><i class="fa fa-rotate-right pr-1"></i>Reiniciar</button>
+                            <button class="btn btn-sm btn-secondary mt-2" style="width: 105px" id="cleanButton"><i class="fa fa-eraser pr-1"></i>Desmarcar</button>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho1" data-text="">
+                            <label class="form-check-label" for="despacho1">
+                                <span contenteditable="false">Destinatário.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal1"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal1"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho2" data-text="">
+                            <label class="form-check-label" for="despacho2">
+                                <span contenteditable="false">Cancelamento Certidão.<strong>&nbsp;(Tramitação E-MAIL)</strong></span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal2"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal2"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho3" data-text="">
+                            <label class="form-check-label" for="despacho3">
+                                <span contenteditable="false">Resposta Protocolo do Cancelamento da Certidão.</strong></span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal3"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal3"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho4" data-text="">
+                            <label class="form-check-label" for="despacho4">
+                                <span contenteditable="false">Orientação Cancelamento da Certidão.<strong>&nbsp;(Tramitação E-MAIL)</strong></span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal4"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal4"></i>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input type="checkbox" class="form-check-input" id="despacho5" data-text="">
+                            <label class="form-check-label" for="despacho5">
+                                <span contenteditable="false">Fechos e identificação do CAU/AP.</span>
+                            </label>
+                            <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal5"></i>
+                            <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal5"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal1" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(1)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal2">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal2" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(2)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal3">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal3" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(3)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal4">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal4" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(4)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal" id="editModal5">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar Despacho</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <textarea class="form-control" rows="12" id="editTextModal5" style="line-height: 1;"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" onclick="saveEdit(5)">Salvar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="dataTextDisplay">
+                            <h4 class="ml-3">Despacho:</h4>
+                            <textarea id="selectedDataText" class="form-control border-dark" rows="10" style="line-height: 1;"></textarea>
+                            <div class="mt-3 text-center">
+                                <button class="btn btn-primary d-inline m-1" style="width: 90px" id="updateButton">Atualizar</button>
+                                <button class="btn btn-danger d-inline m-1" style="width: 90px" id="deleteButton">Deletar</button>
+                                <button class="btn btn-success d-inline m-1" style="width: 90px" id="copyButton">Copiar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="footer-placeholder"></div>
+        <script src="../js/loadContent.js"></script> <!-- Inclui o script centralizado -->
+        <script>
+            function saveEdit(despachoNumber) {
+                const editTextModal = $('#editTextModal' + despachoNumber).val();
+                const checkbox = $('#despacho' + despachoNumber);
+                checkbox.find('span').text(editTextModal);
+                checkbox.data('text', editTextModal);
+                $('#dataTextDisplay' + despachoNumber).text(editTextModal);
+                $('#editModal' + despachoNumber).modal('hide');
+            }
+            $('#copyButton').click(function() {
+                const selectedDataText = $('#selectedDataText').val();
+                if (selectedDataText !== 'Nenhum selecionado') {
+                    const el = document.createElement('textarea');
+                    el.value = selectedDataText;
+                    document.body.appendChild(el);
+                    el.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(el);
+                }
+            });
+            $('#updateButton').click(function() {
+                const selectedCheckboxes = $('input[type="checkbox"]:checked');
+                const selectedDataText = Array.from(selectedCheckboxes).map(checkbox => $(checkbox).data('text')).join('\n');
+                $('#selectedDataText').val(selectedDataText || 'Nenhum selecionado');
+                $('#selectedDataText').height('auto');
+                $('#selectedDataText').height($('#selectedDataText')[0].scrollHeight);
+            });
+            $(document).ready(function() {
+                $('#deleteButton').click(function() {
+                    $('#selectedDataText').val('');
+                });
+            });
+            $(document).ready(function() {
+                $('#restartButton').click(function() {
+                    location.reload();
+                });
+            });
+            $(document).ready(function() {
+                function desmarcarTodasCheckboxes() {
+                    $('input[type="checkbox"]').prop('checked', false);
+                }
+                $('.collapse').on('hidden.bs.collapse', function() {
+                    $(this).find('input[type="checkbox"]').prop('checked', false);
+                });
+                $('#cleanButton').click(function() {
+                    desmarcarTodasCheckboxes();
+                    $('.collapse.show').collapse('hide');
+                });
+            });
+            var texto_1 = `Prezados,
+`;
+            document.getElementById('despacho1').setAttribute('data-text', texto_1);
+            document.getElementById('editTextModal1').value = texto_1;
+            var texto_2 = `Certidão cancelada, conforme solicitado em Protocolo n° xxxxxxx.
+`;
+            document.getElementById('despacho2').setAttribute('data-text', texto_2);
+            document.getElementById('editTextModal2').value = texto_2;
+            var texto_3 = `Informamos que a Certidão de Registro e Quitação de Pessoa Jurídica n° xxxxxxxx foi cancelada conforme solicitado.
+
+Para emitir uma nova Certidão, por gentileza acessar o SICCAU da empresa.
+
+Para acesso ao SICCAU
+<a href="acesso.caubr.gov.br/" target="blank">acesso.caubr.gov.br/</a>
+- digitar o CNPJ e a senha da empresa.
+`;
+            document.getElementById('despacho3').setAttribute('data-text', texto_3);
+            document.getElementById('editTextModal3').value = texto_3;
+            var texto_4 = `Informo que a empresa possui a Certidão de Registro e Quitação de Pessoa Jurídica n° vigente, para cancelar esta Certidão para emissão de uma nova, por gentileza realizar abertura de Protocolo no SICCAU da empresa.
+
+Para realizar abertura de Protocolo de Cancelamento de Certidão
+Acessar: https://www.causp.gov.br - clicar em "SICCAU" - no campo "Fazer login" digitar o CNPJ e a senha da empresa.
+Dentro do ambiente SICCAU da empresa - clicar em "Protocolos" - "Cadastrar Protocolo" - "Certidões" - CANCELAMENTO DE CRQ DE PESSOA JURÍDICA.
+
+Assim que realizar a abertura do protocolo, por gentileza, retornar.
+`;
+            document.getElementById('despacho4').setAttribute('data-text', texto_4);
+            document.getElementById('editTextModal4').value = texto_4;
+            var texto_5 = `
+
+Atenciosamente, 
+Equipe CAU/AP.`;
+            document.getElementById('despacho5').setAttribute('data-text', texto_5);
+            document.getElementById('editTextModal5').value = texto_5;
+        </script>
+    </body>
+</html>
