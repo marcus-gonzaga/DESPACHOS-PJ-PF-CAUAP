@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="../styles.css">
+        <title>Carteira Profissional</title>
+        
+        <style>
+            .edit-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: #005abb;
+            }
+            .info-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: rgba(235, 153, 1, 0.884);
+            }
+            
+            body{
+                min-width: 650px;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #f7f8fa;
+            }
+            
+            header {
+                background-color: #005abb;
+                color: white;
+                padding: 10px;
+                margin-bottom: 0px;
+                text-align: center;
+            }
+            
+            ul {
+                padding: 0px;
+                margin: 0px;
+                list-style: none;
+            }
+            
+            .lateral ul li {
+                background: #14385d;
+            }
+
+            li {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #menu-esquerda {
+                float: left;
+                width: 20%;
+            }
+
+            #menu-direita {
+                float: left;
+                width: 20%;
+            }
+            
+            .despacho {
+                float: left;
+                width: 58%;
+                margin: 0px 5px;
+            }
+                        
+            .lateral ul a {
+                font-size: 0.9em;
+                display: block;
+                padding: 0.5em 1.5em;
+                text-decoration: none;
+                color: azure;
+            }
+
+            .lateral ul a:hover {
+                background-color: #244575;
+            }
+                    
+            textarea {
+                margin: 10px 20px;
+                width: 94%;
+                max-width: 94%;
+            }
+
+            #container-button{
+                text-align: center;
+                margin: 10px;
+            }
+            
+            button {
+                padding: 10px 20px;
+                margin: 5px;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+            }
+
+            #atualizar {
+                background-color: #0074D9;
+                font-weight: bold;
+                width: 100px;
+            }
+
+            #copiar {
+                background-color: #30a030;
+                font-weight: bold;
+                width: 100px;
+            }
+
+            #abas-atividades {
+                text-align: center;
+                margin: 5px 0px;
+            }
+            
+            .clear {
+                clear: both;
+            }
+
+            legend {
+                font-size: larger;
+            }
+
+            .mt-4 {
+                color: #44546a;
+            }
+            
+            .page-container {
+                max-width: 1300px;
+                margin: 0 auto;
+                padding: 1.5rem;
+                background-color: #ffffff;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.075);
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+                color: #343a40;
+                margin-bottom: 0.5rem;
+                border-bottom: 2px solid #dee2e6;
+                padding-bottom: 0.5rem;
+            }
+
+            .content-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            @media (min-width: 992px) {
+                .content-grid {
+                    grid-template-columns: 1.2fr 1fr;
+                }
+            }
+            
+            .options-column h3, .despacho-column h3 {
+                font-size: 1.25rem;
+                color: #495057;
+                margin-top: 0; 
+                margin-bottom: 1rem;
+            }
+            
+            .input-group-label {
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+                display: block;
+                color: #495057;
+            }
+
+            .radio-group {
+                display: flex;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+                padding: 0.5rem;
+                background-color: #f8f9fa;
+                border-radius: 4px;
+            }
+
+            .radio-group label, .checkbox-options label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                padding: 0.5rem;
+                border-radius: 4px;
+                transition: background-color 0.2s ease-in-out;
+            }
+            
+            .radio-group label:hover, .checkbox-options label:hover {
+                background-color: #e9ecef; 
+            }
+            
+            .radio-group input[type="radio"], .checkbox-options input[type="checkbox"] {
+                margin-right: 0.75rem;
+                transform: scale(1.1); 
+                accent-color: #007bff; 
+            }
+
+            .checkbox-options {
+                display: grid;
+                grid-template-columns: 1fr; 
+                gap: 0.75rem 1.5rem; 
+                margin-bottom: 1.5rem;
+            }
+            
+            @media (min-width: 768px) {
+                 .checkbox-options {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            #despachoOutputCarteira {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0.75rem;
+                border: 1px solid #ced4da;
+                border-radius: 4px;
+                font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+                min-height: 450px; 
+                background-color: #f8f9fa; 
+                color: #495057;
+                font-size: 0.95em;
+                resize: vertical; 
+            }
+
+            .action-buttons-group {
+                margin-top: 1rem;
+                display: flex;
+                flex-wrap: wrap; 
+                gap: 0.75rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.2rem;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 0.95em;
+                font-weight: 500;
+                color: white;
+                transition: opacity 0.2s ease, background-color 0.2s ease;
+                text-align: center;
+            }
+            
+            .btn:hover {
+                opacity: 0.85;
+            }
+
+            .btn-desmarcar { background-color: #6c757d; border-color: #6c757d; } 
+            .btn-copiar { background-color: #007bff; border-color: #007bff; }   
+            .btn-atualizar { background-color: #28a745; border-color: #28a745; } 
+            .btn-deletar { background-color: #dc3545; border-color: #dc3545; }
+        </style>
+    </head>
+
+    <body>
+        <!--------------------------------------- nav superior ---------------------------------------->
+        <nav class="navbar navbar-expand-lg navbar-dark siccau-color">
+            <!-- brand -->
+            <a href="../index.html"><img src="../cau.png" width="233" height="75" alt="Início" class="img-fluid"></a>
+            <!-- collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" >
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+                   
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav ">
+                    <!-- Dropdown PARA DESPACHOS PESSOA JURIDICA -->
+                    <li class="nav-item dropdown active ">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Jurídica</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../PJ/registro_empresa.html">Registro de Empresa</a>                           
+                            <a class="dropdown-item" href="../PJ/alteracao_cadastral.html">Alteração Cadastral</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_email.html">Inclusão de email</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa.html">Baixa de Registro</a>
+                            <a class="dropdown-item" href="../PJ/baixa_registro_empresa_oficio.html">Baixa de Registro de Ofício</a>
+                            <a class="dropdown-item" href="../PJ/interrupcao_registro_empresa.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="../PJ/inclusao_responsavel_tecnico.html">Inclusão de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/baixa_responsavel_tecnico.html">Baixa de Responsável Técnico</a>
+                            <a class="dropdown-item" href="../PJ/desconto_anuidade.html">Desconto de Anuidade</a>
+                            <a class="dropdown-item" href="../PJ/crqpj.html">CRQPJ</a>
+                            <a class="dropdown-item" href="../PJ/despachos_gerais.html">Despachos Gerais</a>
+                            <a class="dropdown-item" href="../PJ/ConsultaCNAE.html">Consulta CNAE</a>
+                            <a class="dropdown-item" href="../PJ/ConsultadeCNPJs_MultiAPI.html">Consulta Status de CNPJ</a>                            
+                        </div>
+                    </li>
+                
+                    <!-- Dropdown com atividades PARA DESPACHOS PESSOA FÍSICA-->
+                    <li class="nav-item dropdown active ">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 250px; height: 100%; font-size: 20px;margin-right: 20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Física</a>
+                        <div class="dropdown-menu">              
+                            <a class="dropdown-item" href="rrts-01.html">RRTs</a>
+                            <a class="dropdown-item" href="cat-01.html">CAT-A</a>
+                            <a class="dropdown-item" href="rda-01.html">RDA</a>
+                            <a class="dropdown-item" href="status-01.html">Status de RRT</a>
+                            <a class="dropdown-item" href="interrupcao-01.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="protocolos-01.html">Protocolos</a>
+                            <a class="dropdown-item" href="email-01.html">E-mail</a>
+                            <a class="dropdown-item" href="siccau-01.html">SICCAU</a>
+                            <a class="dropdown-item" href="Análise_de_Carteira_Profissional.html">Carteira Profissional</a>                                                    
+                        </div>
+                    </li>
+                
+                    <!-- links demais páginas -->
+                    <ul class="navbar-nav flex-wrap">
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="piso-semanal.html" target="_blank">Calculadora Piso</a>
+                        </li>
+                  		<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://cau-painel.idproof.com.br/login", target="_blank">Carteira Digital</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://acesso.caubr.gov.br/", target="_blank">SICCAU</a>
+                        </li> 
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/", target="_blank">Resoluções</a>
+                        </li>
+						
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php", target="_blank">Helpdesk</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://ria.caubr.gov.br", target="_blank">RIA</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://gad.caubr.gov.br", target="_blank">GAD</a>
+                        </li>
+						
+				    </ul>
+                </ul>
+            </div>
+        </nav>
+            
+        <!--------------------------------------- area elaboração do despacho ---------------------------------------->
+        <div class="page-container">
+            <h2 class="page-title">Despacho para Carteira Profissional</h2>
+
+            <div class="content-grid">
+                <div class="options-column">
+                    <h3>Selecione os apontamentos:</h3>
+                    <form id="opcoesFormCarteira">
+                        
+                        <label class="input-group-label" for="generoProfissionalRadioGroup">Saudação:</label>
+                        <div class="radio-group" id="generoProfissionalRadioGroup">
+                            <!-- Radio buttons serão inseridos aqui -->
+                        </div>
+                        
+                        <label class="input-group-label" for="checkboxContainerCarteira">Observações sobre a foto:</label>
+                        <div class="checkbox-options" id="checkboxContainerCarteira">
+                            <!-- Checkboxes serão inseridos aqui -->
+                        </div>
+                    </form>
+                    <button id="btnDesmarcarTodosCarteira" class="btn btn-desmarcar">Desmarcar Todos</button>
+                </div>
+
+                <div class="despacho-column">
+                    <h3>Texto do Despacho:</h3>
+                    <textarea id="despachoOutputCarteira" readonly placeholder="Selecione as opções para gerar o texto do despacho..."></textarea>
+                    <div class="action-buttons-group">
+                        <button id="btnCopiarDespacho" class="btn btn-copiar">Copiar</button>
+                        <button id="btnAtualizarDespacho" class="btn btn-atualizar">Atualizar</button>
+                        <button id="btnDeletarDespacho" class="btn btn-deletar">Deletar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--------------------------------------- footer  ---------------------------------------->
+        <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-3">
+            <p class="m-1">Gerência de Fiscalização e Registros - CAU/AP</p>
+        </footer>
+    
+        <!-- JavaScript (Opcional) -->
+        <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const radioGroupContainer = document.getElementById('generoProfissionalRadioGroup');
+                const checkboxContainer = document.getElementById('checkboxContainerCarteira');
+                const despachoOutput = document.getElementById('despachoOutputCarteira');
+                const btnDesmarcar = document.getElementById('btnDesmarcarTodosCarteira');
+                const btnCopiar = document.getElementById('btnCopiarDespacho');
+                const btnAtualizar = document.getElementById('btnAtualizarDespacho');
+                const btnDeletar = document.getElementById('btnDeletarDespacho');
+
+                const opcoesSaudacao = [
+                    { id: 'optArquiteta', label: 'Arquiteta', textoDespacho: 'Prezada Arquiteta, analisamos a foto enviada e pedimos que envie outra. Esta foi recusada porque:' },
+                    { id: 'optArquiteto', label: 'Arquiteto', textoDespacho: 'Prezado Arquiteto, analisamos a foto enviada e pedimos que envie outra. Esta foi recusada porque:' }
+                ];
+
+                const opcoesObservacoes = [
+                    { id: 'optLonge', label: 'Está muito longe', textoDespacho: '- Está muito longe;' },
+                    { id: 'optSombraRosto', label: 'Há sombra no seu rosto', textoDespacho: '- Há sombra no seu rosto' },
+                    { id: 'optSombraCabeca', label: 'Há sombra atrás da cabeça', textoDespacho: '- Há sombra atrás da cabeça' },
+                    { id: 'optReflexoRosto', label: 'Há reflexo no seu rosto', textoDespacho: '- Há reflexo no seu rosto' },
+                    { id: 'optObjetoFundo', label: 'Há outro objeto aparecendo ao fundo', textoDespacho: '- Há outro objeto aparecendo ao fundo' },
+                    { id: 'optObjetoOmbro', label: 'Há outro objeto sobre seu ombro', textoDespacho: '- Há outro objeto sobre seu ombro' },
+                    { id: 'optOlhandoBaixo', label: 'Está olhando para baixo', textoDespacho: '- Está olhando para baixo' },
+                    { id: 'optOlhandoCima', label: 'Está olhando para cima', textoDespacho: '- Está olhando para cima' },
+                    { id: 'optArmacaoPesada', label: 'Armação muito pesada', textoDespacho: '- Armação muito pesada' },
+                    { id: 'optOculosCobrindo', label: 'Óculos cobrindo os olhos', textoDespacho: '- Óculos cobrindo os olhos' },
+                    { id: 'optSemCamisa', label: 'Está sem camisa', textoDespacho: '- Está sem camisa' },
+                    { id: 'optFundoEscuro', label: 'Fundo muito escuro', textoDespacho: '- Fundo muito escuro' },
+                    { id: 'optReflexoOculos', label: 'Há reflexo nos óculos', textoDespacho: '- Há reflexo nos óculos' },
+                    { id: 'optCorDesbotada', label: 'Cor desbotada', textoDespacho: '- Cor desbotada' },
+                    { id: 'optReflexoFundo', label: 'Há reflexo ao fundo', textoDespacho: '- Há reflexo ao fundo' },
+                    { id: 'optRostoCima', label: 'O rosto está para cima', textoDespacho: '- O rosto está para cima' },
+                    { id: 'optRostoBaixo', label: 'O rosto está para baixo', textoDespacho: '- O rosto está para baixo' }
+                ];
+
+                // Popular Radio Buttons para Saudação
+                opcoesSaudacao.forEach(opcao => {
+                    const labelElement = document.createElement('label');
+                    const input = document.createElement('input');
+                    
+                    input.type = 'radio';
+                    input.id = opcao.id;
+                    input.name = 'saudacaoProfissional';
+                    input.value = opcao.id;
+                    input.dataset.texto = opcao.textoDespacho;
+                    
+                    labelElement.htmlFor = opcao.id;
+                    labelElement.appendChild(input);
+                    labelElement.appendChild(document.createTextNode(opcao.label));
+                    
+                    radioGroupContainer.appendChild(labelElement);
+                    input.addEventListener('change', atualizarDespachoTexto);
+                });
+
+                // Popular Checkboxes para Observações
+                opcoesObservacoes.forEach(opcao => {
+                    const divItem = document.createElement('div'); 
+                    const labelElement = document.createElement('label');
+                    const input = document.createElement('input');
+                    
+                    input.type = 'checkbox';
+                    input.id = opcao.id;
+                    input.name = 'despachoObservacao'; 
+                    input.dataset.texto = opcao.textoDespacho;
+                    
+                    labelElement.htmlFor = opcao.id;
+                    labelElement.appendChild(input);
+                    labelElement.appendChild(document.createTextNode(opcao.label));
+                    
+                    divItem.appendChild(labelElement);
+                    checkboxContainer.appendChild(divItem);
+                    input.addEventListener('change', atualizarDespachoTexto);
+                });
+
+                const desfechoTextoConstante = "Lembre-se que esta será a foto oficial de sua carteira profissional.\n\nAtenciosamente,\nEquipe CAU/AP";
+
+                function atualizarDespachoTexto() {
+                    const itensSelecionados = [];
+                    
+                    // Pegar texto do radio button selecionado
+                    const radioSelecionado = radioGroupContainer.querySelector('input[name="saudacaoProfissional"]:checked');
+                    if (radioSelecionado) {
+                        itensSelecionados.push(radioSelecionado.dataset.texto);
+                    }
+
+                    // Pegar textos dos checkboxes selecionados
+                    checkboxContainer.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                        itensSelecionados.push(cb.dataset.texto);
+                    });
+
+                    const textoDosItens = itensSelecionados.join("\n");
+                    
+                    if (textoDosItens === "") {
+                        despachoOutput.value = desfechoTextoConstante;
+                    } else {
+                        despachoOutput.value = textoDosItens + "\n\n" + desfechoTextoConstante;
+                    }
+                }
+
+                btnDesmarcar.addEventListener('click', function () {
+                    // Desmarcar radio buttons
+                    radioGroupContainer.querySelectorAll('input[type="radio"]').forEach(rb => {
+                        rb.checked = false;
+                    });
+                    // Desmarcar checkboxes
+                    checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        cb.checked = false;
+                    });
+                    atualizarDespachoTexto(); 
+                });
+
+                btnCopiar.addEventListener('click', function () {
+                    const radioSelecionado = radioGroupContainer.querySelector('input[name="saudacaoProfissional"]:checked');
+                    const checkboxesSelecionados = checkboxContainer.querySelectorAll('input[type="checkbox"]:checked');
+                    
+                    if (!radioSelecionado && checkboxesSelecionados.length === 0) {
+                        alert('Por favor, selecione pelo menos uma opção antes de copiar.');
+                        return;
+                    }
+                    
+                    despachoOutput.select();
+                    document.execCommand('copy');
+                    alert('Texto copiado para a área de transferência!');
+                });
+
+                btnAtualizar.addEventListener('click', function () {
+                    atualizarDespachoTexto();
+                    alert('Despacho atualizado!');
+                });
+
+                btnDeletar.addEventListener('click', function () {
+                    if (confirm('Tem certeza que deseja deletar todo o conteúdo?')) {
+                        // Desmarcar todos os elementos
+                        radioGroupContainer.querySelectorAll('input[type="radio"]').forEach(rb => {
+                            rb.checked = false;
+                        });
+                        checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                            cb.checked = false;
+                        });
+                        despachoOutput.value = '';
+                        alert('Conteúdo deletado!');
+                    }
+                });
+
+                // Inicializar com texto padrão
+                atualizarDespachoTexto();
+            });
+        </script>
+    </body>
+</html>
+
