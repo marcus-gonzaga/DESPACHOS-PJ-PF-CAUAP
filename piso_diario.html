@@ -1,0 +1,547 @@
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="PF/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="PF/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="styles.css">
+        <title>Cálculo do Piso Diário</title>
+        
+        <style>
+            
+            .edit-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: #005abb;
+                /* #14385d */
+            }
+            .info-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                color: rgba(235, 153, 1, 0.884);
+                /* #fcdb04 */
+            }
+		
+            body{
+                
+            min-width: 650px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f7f8fa;
+                
+            }
+			header {
+            background-color: #005abb;
+            color: white;
+            padding: 10px;
+            margin-bottom: 0px;
+            text-align: center;
+            }
+			ul {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            }
+			.lateral ul {
+          
+            }
+
+            .lateral ul li {
+            background: #14385d;
+         
+            }
+
+            li {
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #menu-esquerda {
+            float: left;
+            width: 20%;
+            }
+
+            #menu-direita {
+                float: left;
+                width: 20%;
+                
+            }
+			.despacho {
+            float: left;
+            /* background: #b3b7be; */
+            width: 58%;
+            margin: 0px 5px;
+            }
+                        
+            .lateral ul a {
+            font-size: 0.9em;
+            display: block;
+            padding: 0.5em 1.5em;
+            text-decoration: none;
+            color: azure;
+            }
+
+            .lateral ul a:hover {
+            background-color: #244575;
+            }
+                    
+            textarea {
+                margin: 10px 20px;
+                width: 94%;
+                max-width: 94%;
+            }
+
+            #container-button{
+                text-align: center;
+                margin: 10px;
+            }
+			button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+      
+            }
+
+            #atualizar {
+            background-color: #0074D9;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #copiar {
+            background-color: #30a030;
+            font-weight: bold;
+            width: 100px;
+            }
+
+            #abas-atividades {
+                text-align: center;
+                margin: 5px 0px;
+            }
+			
+			.clear {
+            clear: both;
+            }
+
+            legend {
+            font-size: larger;
+            }
+
+            fieldset {
+            }
+			.mt-4 {
+       /* background-color: #44546a; */
+       /* padding: 20px; /* Ajuste o preenchimento conforme necessário */
+        color: #44546a; /* Define a cor do texto para branco, se necessário */
+    }
+			
+        </style>
+		
+		<script>
+    function calcularPiso() {
+      var salario_minimo = parseFloat(document.getElementById('entrada_salario_minimo').value.replace(',', '.'));
+
+      // Carga horária no formato "hh:mm" e dividida em horas e minutos
+      var carga_horaria_em_horas = document.getElementById('entrada_carga_horaria').value;
+      var partes_carga_horaria = carga_horaria_em_horas.split(':');
+      var horas = parseInt(partes_carga_horaria[0]);
+      var minutos = parseInt(partes_carga_horaria[1]);
+      var carga_horaria = horas + minutos / 60; // Converta para horas
+
+    
+
+      if (isNaN(salario_minimo) || isNaN(carga_horaria)) {
+        alert("Por favor, insira valores numéricos válidos.\n\n - Salário mínimo (Exemplo: R$ 1320,00)\n - Carga horária (formato hh:mm exemplo: 08:30)\n");
+        return;
+      }
+
+      var resultadoDiv = document.getElementById('resultado');
+
+      if (carga_horaria > 6) {
+        var qtd_salarios_a_receber = 6 + ((carga_horaria - 6) * 1.25);
+      } else {
+        var qtd_salarios_a_receber = carga_horaria;
+      }
+
+      // toFixed condicionalmente para exibir casas decimais apenas quando necessário
+      var qtd_salarios_formatado = qtd_salarios_a_receber % 1 === 0 ? qtd_salarios_a_receber.toFixed(0) : qtd_salarios_a_receber.toFixed(2);
+
+      var valor_salario_mensal_a_receber = qtd_salarios_a_receber * salario_minimo;
+
+      resultadoDiv.className = 'bd-callout bd-callout-info';
+      
+      resultadoDiv.innerHTML = "Salário mínimo nacional informado: R$ " + salario_minimo.toFixed(2) + "<br>Carga horária diária informada: " + carga_horaria_em_horas + " horas" + "<br>Quantidade de salário mínimo nacional a receber: " + qtd_salarios_formatado + "<br>Valor do salário mínimo profissional mensal a receber: R$ " + valor_salario_mensal_a_receber.toFixed(2);
+
+    }
+
+    function limparCampos() {
+      document.getElementById('entrada_salario_minimo').value = ''; // Limpa o campo do salário mínimo
+      document.getElementById('entrada_carga_horaria').value = ''; // Limpa o campo da carga horária
+      document.getElementById('resultado').innerHTML = ''; // Limpa a área de resultado
+      document.getElementById('resultado').className = ''; // limpa nome da classe
+    }
+    
+  </script>
+
+    </head>
+
+    <body>
+            
+        <!--------------------------------------- nav superior ---------------------------------------->
+
+       <nav class="navbar navbar-expand-lg navbar-dark siccau-color">
+			
+			<!-- brand -->
+         <a href="../Index.html"><img src="cau.png" width="233" height="75" alt="Início" class="img-fluid"></a>
+		<!-- collapse button -->
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="index.html" >
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+                   
+            <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+                <ul class="navbar-nav ">
+
+                    <!-- Dropdown PARA DESPACHOS PESSOA JURIDICA -->
+                    <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */  bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Jurídica</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="PJ/registro_empresa.html">Registro de Empresa</a>                           
+                            <a class="dropdown-item" href="PJ/alteracao_cadastral.html">Alteração Cadastral</a>
+                            <a class="dropdown-item" href="PJ/inclusao_email.html">Inclusão de email</a>
+                            <a class="dropdown-item" href="PJ/baixa_registro_empresa.html">Baixa de Registro</a>
+                            <a class="dropdown-item" href="PJ/baixa_registro_empresa_oficio.html">Baixa de Registro de Ofício</a>
+                            <a class="dropdown-item" href="PJ/interrupcao_registro_empresa.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="PJ/inclusao_responsavel_tecnico.html">Inclusão de Responsável Técnico</a>
+                            <a class="dropdown-item" href="PJ/baixa_responsavel_tecnico.html">Baixa de Responsável Técnico</a>
+                            <a class="dropdown-item" href="PJ/desconto_anuidade.html">Desconto de Anuidade</a>
+                            <a class="dropdown-item" href="PJ/crqpj.html">CRQPJ</a>
+                            <a class="dropdown-item" href="PJ/despachos_gerais.html">Despachos Gerais</a>
+							<a class="dropdown-item" href="PJ/consulta_cnae.html">Consulta CNAE</a>                            
+                        </div>
+                    </li>
+				
+					<!-- Dropdown com atividades PARA DESPACHOS PESSOA FÍSICA-->
+                   <li class="nav-item dropdown active ">
+                   <a class="nav-link dropdown-toggle d-flex align-items-center" {position: absolute; /* Position the menu relative to the button */ bottom: 0; /* Align the menu to the bottom */  left: 0; /* Align the menu to the left edge of the button */} style="width: 250px; height: 100%; font-size: 20px;margin-right: 20px;" href="href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Física</a>
+                        <div class="dropdown-menu">              
+                            <a class="dropdown-item" href="PF/rrts-01.html">RRTs</a>
+                            <a class="dropdown-item" href="PF/cat-01.html">CAT-A</a>
+                            <a class="dropdown-item" href="PF/rda-01.html">RDA</a>
+                            <a class="dropdown-item" href="PF/status-01.html">Status de RRT</a>
+                            <a class="dropdown-item" href="PF/interrupcao-01.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="PF/protocolos-01.html">Protocolos</a>
+                            <a class="dropdown-item" href="PF/email-01.html">E-mail</a>
+                            <a class="dropdown-item" href="PF/siccau-01.html">SICCAU</a>                                                    
+                        </div>
+                    </li>
+					
+				
+					<!-- links demais páginas -->
+                    <ul class="navbar-nav flex-wrap">
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="piso-semanal.html" target="_blank">Calculadora Piso</a>
+                        </li>
+                  		<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://cau-painel.idproof.com.br/login", target="_blank">Carteira Digital</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://acesso.caubr.gov.br/", target="_blank">SICCAU</a>
+                        </li> 
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/", target="_blank">Resoluções</a>
+                        </li>
+						
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php", target="_blank">Helpdesk</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://ria.caubr.gov.br", target="_blank">RIA</a>
+                        </li>
+						<li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://gad.caubr.gov.br", target="_blank">GAD</a>
+                        </li>
+						
+				    </ul>
+                </ul>
+            </div>
+        </nav>
+            
+	<!-- Objetivos da Página -->
+<body>
+
+   
+    
+
+
+    <div class="container" style="width: 35%;">
+      <br>
+      <br>
+      <h2 style="text-align: center; color: gray">Calculadora de Piso Salarial</h2>
+      <br>
+      
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="piso-semanal.html">Carga Horária Semanal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="piso_diario.html">Carga Horária Diária</a>
+        </li>
+
+
+      </ul>
+
+      <br>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" id="btnGroupAddon">R$</div>
+        </div>
+        <input type="text" width="50%" class="form-control" id="entrada_salario_minimo" placeholder="Digite o valor do salário mínimo" aria-label="Exemplo de grupo de input" aria-describedby="btnGroupAddon">
+      </div>
+
+      
+      <br>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text" id="btnGroupAddon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M464 256A208 208 0 1 1 48 256a208 208 0 1 1 416 0zM0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/></svg></div>
+        </div>
+        <input type="text" class="form-control" id="entrada_carga_horaria" placeholder="Digite a carga horária diária (formato hh:mm)" aria-label="Exemplo de grupo de input" aria-describedby="btnGroupAddon">
+      </div>
+      <br>
+
+      <div style="text-align: center;">
+      <button type="button" class="btn btn-outline-success" onclick="calcularPiso()">Calcular</button>
+      <button type="button" class="btn btn-outline-danger" onclick="limparCampos()">Deletar</button>
+      </div>
+      </br>
+
+      
+    
+    </div>
+
+    <div class="container justify-content-center" style="width: 50%;">
+
+      <div id="resultado"></div>
+
+    </div>
+        
+    <div class="bd-callout bd-callout-info" style="margin: 30px;">
+      <table class="table table-hover">
+        
+
+        <thead>
+          <h4>Série Histórica do Salário Mínimo Nacional:</h4>  
+          <br>   
+          <tr>
+            <th scope="col">Ano</th>
+            <th scope="col">Vigência</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Ato Legal</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <th scope="row">2024</th>
+          <td>01/01/2024</td>
+          <td>R$ 1.412,00</td>
+          <td><a target="_blank" href="https://www.in.gov.br/web/dou/-/decreto-n-11.864-de-27-de-dezembro-de-2023-533866504">Decreto 11.864/2023</a></td>
+        </tr>
+
+          <tr>
+            <th scope="row">2023</th>
+            <td>01/05/2023</td>
+            <td>R$ 1.320,00</td>
+            <td><a target="_blank" href="http://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/L14663.htm">Lei 14.663/2023</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2023</th>
+            <td>01/01/2023</td>
+            <td>R$ 1.302,00</td>
+            <td><a target="_blank" href="https://www.in.gov.br/en/web/dou/-/medida-provisoria-n-1.143-de-12-de-dezembro-de-2022-449723945">MP 1143/2022</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2022</th>
+            <td>01/01/2022</td>
+            <td>R$ 1.212,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2022/Lei/L14358.htm">Lei 14.358/2022</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2021</th>
+            <td>01/01/2021</td>
+            <td>R$ 1.100,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2021/Lei/L14158.htm">Lei 14.158/2021</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2020</th>
+            <td>01/02/2020</td>
+            <td>R$ 1.045,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2020/Lei/L14013.htm">Lei 14.013/2020</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2020</th>
+            <td>01/01/2020</td>
+            <td>R$ 1.039,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2020/Lei/L14013.htm">MP 916/2019</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2019</th>
+            <td>01/01/2019</td>
+            <td>R$ 998,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2019-2022/2019/Decreto/D9661.htm">Decreto 9.661/2019</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2018</th>
+            <td>01/01/2018</td>
+            <td>R$ 954,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2015-2018/2017/Decreto/D9255.htm">Decreto 9.255/2017</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2017</th>
+            <td>01/01/2017</td>
+            <td>R$ 937,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2016/decreto/D8948.htm">Decreto 8.948/2016</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2016</th>
+            <td>01/01/2016</td>
+            <td>R$ 880,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/decreto/d8618.htm">Decreto 8.618/2015</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2015</th>
+            <td>01/01/2015</td>
+            <td>R$ 788,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/CCIVIL_03/_Ato2011-2014/2014/Decreto/D8381.htm">Decreto 8.381/2014</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2014</th>
+            <td>01/01/2014</td>
+            <td>R$ 724,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/CCIVIL_03/_Ato2011-2014/2013/Decreto/D8166.htm">Decreto 8.166/2013</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2013</th>
+            <td>01/01/2013</td>
+            <td>R$ 678,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2011-2014/2012/Decreto/D7872.htm">Decreto 7.872/2012</a></td>
+          </tr>
+
+          <tr>
+            <th scope="row">2012</th>
+            <td>01/01/2012</td>
+            <td>R$ 622,00</td>
+            <td><a target="_blank" href="https://www.planalto.gov.br/ccivil_03/_Ato2011-2014/2011/Decreto/D7655.htm">Decreto 7.655/2011</a></td>
+          </tr>
+
+
+        </tbody>
+
+      </table>
+    </div>
+        
+    <div class="bd-callout bd-callout-info" style="margin: 30px;">
+      <h4>RESOLUÇÃO N° 150, DE 22 DE SETEMBRO DE 2017</h4>     
+        <br>
+        <p>
+        “Art. 4º O valor do salário mínimo profissional, devido aos arquitetos e urbanistas, será definido de acordo com a jornada de trabalho fixada no contrato de trabalho ou efetivamente trabalhada.
+        <br><br>
+        § 1° Para jornada de trabalho de 6 (seis) horas diárias, o salário mínimo profissional será fixado no valor equivalente a 6 (seis) vezes o salário mínimo nacional.
+        <br><br>
+        § 2° Para jornadas de trabalho superiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado da seguinte forma:
+        <br><br>
+        I – até a sexta hora, na forma do § 1°;
+        <br>
+        II – para as horas que excederem da sexta hora, o valor equivalente a 1 (uma) vez o salário mínimo nacional acrescido de 25% (vinte e cinco por cento) para cada hora, devido proporcionalmente nas frações de hora.
+        <br><br>
+        § 3° Para jornadas de trabalho inferiores a 6 (seis) horas diárias, o salário mínimo profissional será fixado de forma proporcional, respeitado o parâmetro do § 1° deste artigo, inclusive quanto às frações de hora.”
+        </p>
+      </div>
+
+      <div class="bd-callout bd-callout-info" style="margin: 30px;">
+        <h4>Carga Horária Semanal (CHS) fórmula:</h4>     
+        <br>
+        <p>
+        Caso as horas sejam informadas por semana, o salário-mínimo a ser recebido deverá obedecer a fórmula abaixo (elaborada pelo Setor Jurídico):
+        <br><br>
+        CARGA HORÁRIA SEMANAL (CHS) FÓRMULA:
+        <br><br>
+        - Até 30 horas semanais:
+        CHS x 0,2 = SM
+        <br>
+        - Superior a 30 horas semanais:
+        6+[(CHS - 30) x 0,2] x 1,25= SM
+        <br><br>
+        Legenda:
+        <br>
+        CHS: Carga horária semanal
+        <br>
+        SM: Salário Mínimo     
+        </p>
+      </div>
+    
+
+
+
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+
+    <script>
+      $('#entrada_salario_minimo').mask('000000000000000,00', {reverse: true});
+      $('#entrada_carga_horaria').mask('00:00');
+      //$('.placeholder').mask("00/00/0000", {placeholder: "__/__/____"});
+    </SCript>
+	<footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-3">
+            <p class="m-1">Gerência de Fiscalização e Registros - CAU/AP</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.b
+  &lt;!-- links demais páginas --&gt;<br>
+&lt;ul class=&quot;navbar-nav flex-wrap&quot;&gt;<br>
+&lt;li class=&quot;nav-item align-items-center justify-content-center&quot;&gt;<br>
+&lt;a class=&quot;nav-link&quot; href=&quot;piso-semanal.html&quot; target=&quot;_blank&quot;&gt;Calculadora Piso&lt;/a&gt;<br>
+&lt;/li&gt;<br>
+&lt;li class=&quot;nav-item align-items-center justify-content-center&quot;&gt;<br>
+&lt;a class=&quot;nav-link&quot; href=&quot;https://cau-painel.idproof.com.br/login&quot;, target=&quot;_blank&quot;&gt;Carteira Digital&lt;/a&gt;<br>
+&lt;/li&gt;<br>
+&lt;li class=&quot;nav-item align-items-center justify-content-center&quot;&gt;<br>
+&lt;a class=&quot;nav-link&quot; href=&quot;https://acesso.caubr.gov.br/&quot;, target=&quot;_blank&quot;&gt;SICCAU&lt;/a&gt;<br>
+&lt;/li&gt; <br>
+&lt;li class=&quot;nav-item align-items-center justify-content-center&quot;&gt;<br>
+&lt;a class=&quot;nav-link&quot; href=&quot;https://transparencia.caubr.gov.br/resolucoes/&quot;, target=&quot;_blank&quot;&gt;Resoluções&lt;/a&gt;<br>
+&lt;/li&gt;<br>
+<br>
+&lt;li class=&quot;nav-item align-items-center justify-content-center&quot;&gt;<br>
+&lt;a class=&quot;nav-link&quot; href=&quot;https://servicos.caubr.gov.br/helpdesk/doku.php&quot;, target=&quot;_blank&quot;&gt;Helpdesk&lt;/a&gt;<br>
+&lt;/li&gt;<br>
+&lt;li class=&quot;nav-item align-items-center justify-content-center&quot;&gt;<br>
+&lt;a class=&quot;nav-link&quot; href=&quot;https://ria.caubr.gov.br&quot;, target=&quot;_blank&quot;&gt;RIA&lt;/a&gt;<br>
+&lt;/li&gt;<br>
+&lt;li class=&quot;nav-item align-items-center justify-content-center&quot;&gt;<br>
+&lt;a class=&quot;nav-link&quot; href=&quot;https://gad.caubr.gov.br&quot;, target=&quot;_blank&quot;&gt;GAD&lt;/a&gt;<br>
+&lt;/li&gt;<br>
+<br>
+&lt;/ul&gt;
+    </body>
+
+
+</html>
