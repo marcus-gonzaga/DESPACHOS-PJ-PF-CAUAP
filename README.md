@@ -1,75 +1,93 @@
-# Portal de Despachos CAU/AP
+Aqui está um exemplo de um **arquivo Readme.md** para o projeto mencionado. Ele contém informações essenciais e segue as boas práticas para documentação de repositórios no GitHub:
 
-Este é o portal de despachos do Conselho de Arquitetura e Urbanismo do Amapá (CAU/AP).
+---
 
-## Estrutura do Site
+# Despachos PJ/PF - CAU/AP
 
-- **index.html** - Página principal
-- **PF/** - Páginas de despachos para Pessoa Física
-- **PJ/** - Páginas de despachos para Pessoa Jurídica
-- **styles.css** - Arquivo de estilos CSS
-- **cau.png** - Logo do CAU/AP
+Bem-vindo ao repositório **Despachos PJ/PF - CAU/AP**! Este projeto é uma aplicação voltada para facilitar a geração e organização de despachos administrativos para Pessoa Jurídica (PJ) e Pessoa Física (PF). Ele foi desenvolvido para apoiar o Conselho de Arquitetura e Urbanismo do Amapá (**CAU/AP**), promovendo eficiência e agilidade na gestão de processos.
 
-## Páginas Principais
+## 🔗 Acesso ao Projeto
 
-### Pessoa Física
-- RRTs
-- CAT-A
-- RDA
-- Status de RRT
-- Interrupção de Registro
-- Protocolos
-- E-mail
-- SICCAU
-- **Carteira Profissional** (Nova página padronizada)
+Você pode acessar o projeto diretamente no GitHub Pages neste [link](https://marcus-gonzaga.github.io/DESPACHOS-PJ-PF-CAUAP/).
 
-### Pessoa Jurídica
-- Registro de Empresa
-- Alteração Cadastral
-- Inclusão de email
-- Baixa de Registro
-- Baixa de Registro de Ofício
-- Interrupção de Registro
-- Inclusão de Responsável Técnico
-- Baixa de Responsável Técnico
-- Desconto de Anuidade
-- CRQPJ
-- Despachos Gerais
-- **Consulta CNAE** (Nova página padronizada)
-- **Consulta Status de CNPJ** (Nova página padronizada)
+---
 
-## Funcionalidades
+## 🛠️ Tecnologias Utilizadas
 
-- Interface responsiva com Bootstrap 4
-- Navegação por menus dropdown
-- Formulários interativos para geração de despachos
-- Consultas a APIs externas para CNPJs
-- Calculadora de piso salarial
-- Links para sistemas externos (SICCAU, RIA, GAD)
+Este projeto foi desenvolvido utilizando os seguintes recursos tecnológicos:
 
-## Hospedagem
+- **HTML**: Estruturação do conteúdo;
+- **CSS**: Estilização dos elementos e layout da página;
+- **JavaScript**: Funcionalidades e interatividade da aplicação;
+- **GitHub Pages**: Hospedagem gratuita para páginas web.
 
-Este site está preparado para hospedagem no GitHub Pages.
+---
 
-## Atualizações Realizadas
+## 📋 Funcionalidades
 
-1. **Padronização de páginas**: Três páginas foram padronizadas com o design do restante do site:
-   - Carteira Profissional → Análise_de_Carteira_Profissional.html
-   - Consulta CNAE → PJ/ConsultaCNAE.html
-   - Consulta de CNPJs → PJ/ConsultadeCNPJs_MultiAPI.html
+- Geração de despachos administrativos para PJ e PF;
+- Interface amigável e simples de usar;
+- Suporte a múltiplas categorias de despachos específicos;
+- Organização para atender às demandas do CAU/AP.
 
-2. **Correção de links**: Todos os links foram atualizados e corrigidos
+---
 
-3. **Atualização de cabeçalhos**: Todos os cabeçalhos foram atualizados com os novos links
+## 🖥️ Demonstração
 
-4. **Remoção de arquivos obsoletos**: A página consulta_cnae.html foi removida
+Na aplicação, você pode acessar e gerar despachos de maneira interativa diretamente pelo navegador, projetada especialmente para atender às exigências do Conselho de Arquitetura e Urbanismo do Amapá.
 
-## Tecnologias Utilizadas
+### Screenshot
+<img width="1881" height="518" alt="image" src="https://github.com/user-attachments/assets/92e52c37-c90c-4cec-8ffe-5ef075bc2822" />
 
-- HTML5
-- CSS3
-- JavaScript
-- Bootstrap 4
-- Font Awesome
-- APIs externas para consulta de CNPJs
 
+---
+
+## 🚀 Como Usar
+
+1. Acesse o projeto através do [link de hospedagem](https://marcus-gonzaga.github.io/DESPACHOS-PJ-PF-CAUAP/);
+2. Escolha o tipo de despacho necessário (PJ ou PF);
+3. Preencha os campos obrigatórios no formulário exibido;
+4. Gere e visualize o despacho pronto para download ou impressão.
+
+---
+
+## 🤝 Contribuindo
+
+Se você deseja contribuir com este projeto:
+
+1. Faça um fork deste repositório;
+2. Crie uma branch para suas alterações:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Faça suas modificações e realize um commit:
+   ```bash
+   git commit -m "Adiciona nova funcionalidade"
+   ```
+4. Envie para o seu repositório:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um pull request no repositório principal.
+
+---
+
+## 🧑‍💻 Autor
+
+Este projeto foi desenvolvido por **Marcus Gonzaga**.
+
+---
+
+## 📜 Licença
+
+Este projeto é disponibilizado sob a licença [MIT](LICENSE). Sinta-se à vontade para usá-lo, alterá-lo e distribuí-lo com as devidas atribuições.
+
+---
+
+## 📞 Contato
+
+Se você tiver dúvidas ou sugestões, envie um e-mail para: **marcusgonzaga.contato@gmail.com**.
+
+---
+
+Com isso, você terá um **Readme.md** completo, informativo e bem estruturado para seu repositório no GitHub. Caso precise ajustar algo ou incluir informações adicionais, é só me avisar! 😊
