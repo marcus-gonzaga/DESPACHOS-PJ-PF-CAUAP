@@ -1,6 +1,4 @@
-Aqui está um exemplo de um **arquivo Readme.md** para o projeto mencionado. Ele contém informações essenciais e segue as boas práticas para documentação de repositórios no GitHub:
 
----
 
 # Despachos PJ/PF - CAU/AP
 
