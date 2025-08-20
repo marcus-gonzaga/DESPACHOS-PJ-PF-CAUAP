@@ -84,8 +84,5 @@ Este projeto é disponibilizado sob a licença [MIT](LICENSE). Sinta-se à vonta
 
 ## 📞 Contato
 
-Se você tiver dúvidas ou sugestões, envie um e-mail para: **marcusgonzaga.contato@gmail.com**.
+Se você tiver dúvidas ou sugestões, envie um e-mail para: **marcus.gonzaga@cauap.gov.br**.
 
----
-
-Com isso, você terá um **Readme.md** completo, informativo e bem estruturado para seu repositório no GitHub. Caso precise ajustar algo ou incluir informações adicionais, é só me avisar! 😊
