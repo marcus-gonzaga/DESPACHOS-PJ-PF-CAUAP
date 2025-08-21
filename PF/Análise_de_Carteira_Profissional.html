@@ -250,8 +250,8 @@
 
             .btn-desmarcar { background-color: #6c757d; border-color: #6c757d; } 
             .btn-copiar { background-color: #007bff; border-color: #007bff; }   
-            .btn-atualizar { background-color: #28a745; border-color: #28a745; } 
-            .btn-deletar { background-color: #dc3545; border-color: #dc3545; }
+            /* .btn-atualizar { background-color: #28a745; border-color: #28a745; } <-- REMOVIDO */
+            .btn-deletar { background-color: #dc3545; border-color: #dc3545; } /* Mantido para o botão Reiniciar */
         </style>
     </head>
 
@@ -306,29 +306,29 @@
                     <!-- links demais páginas -->
                     <ul class="navbar-nav flex-wrap">
                         <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="../piso-semanal.html" target="_blank">Calculadora Piso</a>
+                            <a class="nav-link" href="../piso-semanal.html" >Calculadora Piso</a>
                         </li>
-                  		<li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://cau-painel.idproof.com.br/login", target="_blank">Carteira Digital</a>
+                          <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://cau-painel.idproof.com.br/login", >Carteira Digital</a>
                         </li>
-						<li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://acesso.caubr.gov.br/", target="_blank">SICCAU</a>
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://acesso.caubr.gov.br/", >SICCAU</a>
                         </li> 
                         <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/", target="_blank">Resoluções</a>
+                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/", >Resoluções</a>
                         </li>
-						
-						<li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php", target="_blank">Helpdesk</a>
+                        
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php", >Helpdesk</a>
                         </li>
-						<li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://ria.caubr.gov.br", target="_blank">RIA</a>
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://ria.caubr.gov.br", >RIA</a>
                         </li>
-						<li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://gad.caubr.gov.br", target="_blank">GAD</a>
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://gad.caubr.gov.br", >GAD</a>
                         </li>
-						
-				    </ul>
+                        
+                    </ul>
                 </ul>
             </div>
         </nav>
@@ -360,8 +360,8 @@
                     <textarea id="despachoOutputCarteira" readonly placeholder="Selecione as opções para gerar o texto do despacho..."></textarea>
                     <div class="action-buttons-group">
                         <button id="btnCopiarDespacho" class="btn btn-copiar">Copiar</button>
-                        <button id="btnAtualizarDespacho" class="btn btn-atualizar">Atualizar</button>
-                        <button id="btnDeletarDespacho" class="btn btn-deletar">Deletar</button>
+                        <!-- O botão "Atualizar" foi removido daqui -->
+                        <button id="btnReiniciarDespacho" class="btn btn-deletar">Reiniciar</button> <!-- Nome e ID alterados -->
                     </div>
                 </div>
             </div>
@@ -385,8 +385,8 @@
                 const despachoOutput = document.getElementById('despachoOutputCarteira');
                 const btnDesmarcar = document.getElementById('btnDesmarcarTodosCarteira');
                 const btnCopiar = document.getElementById('btnCopiarDespacho');
-                const btnAtualizar = document.getElementById('btnAtualizarDespacho');
-                const btnDeletar = document.getElementById('btnDeletarDespacho');
+                // const btnAtualizar = document.getElementById('btnAtualizarDespacho'); // Removido
+                const btnReiniciar = document.getElementById('btnReiniciarDespacho'); // ID e nome alterados para 'Reiniciar'
 
                 const opcoesSaudacao = [
                     { id: 'optArquiteta', label: 'Arquiteta', textoDespacho: 'Prezada Arquiteta, analisamos a foto enviada e pedimos que envie outra. Esta foi recusada porque:' },
@@ -489,6 +489,47 @@
                     atualizarDespachoTexto(); 
                 });
 
+                // Função auxiliar para copiar texto sem seleção visual
+                function copyTextToClipboard(text, buttonElement) {
+                    // Tenta usar a API Clipboard moderna
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).then(() => {
+                            buttonElement.textContent = 'Copiado!';
+                            setTimeout(() => {
+                                buttonElement.textContent = 'Copiar';
+                            }, 2000);
+                        }).catch(err => {
+                            console.error('Falha ao copiar com Clipboard API:', err);
+                            // Fallback para execCommand se a API Clipboard falhar
+                            fallbackCopyToClipboard(text, buttonElement);
+                        });
+                    } else {
+                        // Fallback para execCommand
+                        fallbackCopyToClipboard(text, buttonElement);
+                    }
+                }
+
+                function fallbackCopyToClipboard(text, buttonElement) {
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = text;
+                    tempTextArea.style.position = 'fixed'; // Impede que a tela role para baixo
+                    tempTextArea.style.left = '-9999px';    // Move para fora da tela
+                    document.body.appendChild(tempTextArea);
+                    tempTextArea.select();
+                    try {
+                        document.execCommand('copy');
+                        buttonElement.textContent = 'Copiado!';
+                        setTimeout(() => {
+                            buttonElement.textContent = 'Copiar';
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Falha ao copiar (execCommand):', err);
+                        alert('Erro ao copiar o texto. Por favor, tente novamente manualmente.');
+                    } finally {
+                        document.body.removeChild(tempTextArea);
+                    }
+                }
+
                 btnCopiar.addEventListener('click', function () {
                     const radioSelecionado = radioGroupContainer.querySelector('input[name="saudacaoProfissional"]:checked');
                     const checkboxesSelecionados = checkboxContainer.querySelectorAll('input[type="checkbox"]:checked');
@@ -498,28 +539,21 @@
                         return;
                     }
                     
-                    despachoOutput.select();
-                    document.execCommand('copy');
-                    alert('Texto copiado para a área de transferência!');
+                    copyTextToClipboard(despachoOutput.value, btnCopiar);
                 });
 
-                btnAtualizar.addEventListener('click', function () {
-                    atualizarDespachoTexto();
-                    alert('Despacho atualizado!');
-                });
+                // O event listener para btnAtualizar foi removido
 
-                btnDeletar.addEventListener('click', function () {
-                    if (confirm('Tem certeza que deseja deletar todo o conteúdo?')) {
-                        // Desmarcar todos os elementos
-                        radioGroupContainer.querySelectorAll('input[type="radio"]').forEach(rb => {
-                            rb.checked = false;
-                        });
-                        checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-                            cb.checked = false;
-                        });
-                        despachoOutput.value = '';
-                        alert('Conteúdo deletado!');
-                    }
+                btnReiniciar.addEventListener('click', function () { // Alterado de btnDeletar
+                    // Desmarcar todos os elementos
+                    radioGroupContainer.querySelectorAll('input[type="radio"]').forEach(rb => {
+                        rb.checked = false;
+                    });
+                    checkboxContainer.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        cb.checked = false;
+                    });
+                    atualizarDespachoTexto(); // Isso irá limpar e redefinir o texto padrão
+                    // O alerta de confirmação foi removido
                 });
 
                 // Inicializar com texto padrão
@@ -528,4 +562,3 @@
         </script>
     </body>
 </html>
-
