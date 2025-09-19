@@ -278,6 +278,16 @@
                     </div>
                     
                     <div class="form-check mb-1">
+                        <input type="checkbox" class="form-check-input" id="despacho16" data-text="">
+                        <label class="form-check-label" for="despacho16">
+                            <span contenteditable="false">Profissional solicitante de baixa sendo único responsável.</strong></span>
+                        </label>
+                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal16"></i>
+                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal16"></i>
+                    </div>
+                
+                
+                    <div class="form-check mb-1">
                         <input type="checkbox" class="form-check-input" id="despacho4" data-text="" >
                         <label class="form-check-label" for="despacho4">
                             <span contenteditable="false">Informe sobre o que falta - empresa.</span>
@@ -679,7 +689,25 @@
                 </div>
             </div>
         </div>
-
+        
+        <div class="modal" id="editModal16">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Editar Despacho</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea class="form-control" rows="12" id="editTextModal15" style="line-height: 1;">
+                        </textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" onclick="saveEdit(16)">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
             
         <!--------------------------------------- area do despacho  ---------------------------------------->
@@ -824,6 +852,17 @@ Ressaltamos que a baixa do profissional xxxxxxxxxxx somente será efetuada após
 
             document.getElementById('despacho3').setAttribute('data-text', texto_3);
             document.getElementById('editTextModal3').value = texto_3;
+            
+            
+            var texto_16 = 
+`De acordo com o art. 23 da Resolução nº 28 do CAU/BR, sobre a baixa de responsabilidade técnica:
+“§ 1° Se a baixa de responsabilidade técnica for solicitada pelo arquiteto e urbanista, e se este for o único responsável técnico pela pessoa jurídica, a solicitação deverá ser atendida no prazo de dez dias, devendo o CAU/UF notificar a pessoa jurídica para, no mesmo prazo, registrar novo responsável técnico, sob pena de sujeitar-se às cominações legais cabíveis.”
+
+Sendo assim, em virtude de você ser o único responsável técnico da empresa, informamos que sua saída será atendida no prazo de 10 dias, durante esse período será comunicada a empresa da necessidade de contratar outro responsável técnico ou interromper o registro junto ao CAU.
+`;
+
+            document.getElementById('despacho16').setAttribute('data-text', texto_16);
+            document.getElementById('editTextModal16').value = texto_16;
 
             var texto_4 = 
 `Para dar prosseguimento à solicitação de baixa de responsabilidade técnica  do profissional xxxxxxxxxxxxxx é necessário:

@@ -8,7 +8,7 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="../styles.css">
         <title>Consulta Status de CNPJ</title>
-        
+
         <style>
             .edit-icon {
                 cursor: pointer;
@@ -20,13 +20,13 @@
                 margin-left: 10px;
                 color: rgba(235, 153, 1, 0.884);
             }
-            
+
             body{
                 min-width: 650px;
                 font-family: Arial, Helvetica, sans-serif;
                 background-color: #f7f8fa;
             }
-            
+
             header {
                 background-color: #005abb;
                 color: white;
@@ -34,13 +34,13 @@
                 margin-bottom: 0px;
                 text-align: center;
             }
-            
+
             ul {
                 padding: 0px;
                 margin: 0px;
                 list-style: none;
             }
-            
+
             .lateral ul li {
                 background: #14385d;
             }
@@ -53,13 +53,13 @@
                 float: left;
                 width: 20%;
             }
-            
+
             .despacho {
                 float: left;
                 width: 58%;
                 margin: 0px 5px;
             }
-                        
+
             .lateral ul a {
                 font-size: 0.9em;
                 display: block;
@@ -76,7 +76,7 @@
                 text-align: center;
                 margin: 10px;
             }
-            
+
             button {
                 padding: 10px 20px;
                 margin: 5px;
@@ -89,11 +89,7 @@
             .mt-4 {
                 color: #44546a;
             }
-            
-         //   .siccau-color {
-         //       background-color: #005abb !important;
-         //   }
-            
+
             .main-container {
                 max-width: 1400px;
                 margin: 20px auto;
@@ -102,7 +98,7 @@
                 border-radius: 8px;
                 box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             }
-            
+
             .page-title {
                 color: #2c3e50;
                 text-align: center;
@@ -111,19 +107,14 @@
                 border-bottom: 2px solid #dee2e6;
                 padding-bottom: 0.5rem;
             }
-            
+
             .cnpj-columns {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 20px;
                 margin-bottom: 15px;
             }
-            
-            .cnpj-column {
-                flex: 1;
-                min-width: 300px;
-            }
-            
+
             textarea {
                 width: 100%;
                 padding: 10px;
@@ -133,7 +124,7 @@
                 margin-bottom: 15px;
                 height: 200px;
             }
-            
+
             .btn-custom {
                 background-color: #3498db;
                 color: white;
@@ -146,93 +137,93 @@
                 margin-right: 10px;
                 margin-bottom: 10px;
             }
-            
+
             .btn-custom:hover {
                 background-color: #2980b9;
                 color: white;
             }
-            
+
             .btn-custom:disabled {
                 background-color: #95a5a6;
                 cursor: not-allowed;
             }
-            
+
             .btn-export {
                 background-color: #2ecc71;
             }
-            
+
             .btn-clear {
                 background-color: #e74c3c;
             }
-            
+
             table {
                 width: 100%;
                 border-collapse: collapse;
                 margin-top: 20px;
                 font-size: 14px;
             }
-            
+
             th, td {
                 border: 1px solid #ddd;
                 padding: 10px;
                 text-align: left;
             }
-            
+
             th {
                 background-color: #f2f2f2;
                 position: sticky;
                 top: 0;
             }
-            
+
             tr:nth-child(even) {
                 background-color: #f9f9f9;
             }
-            
+
             .error {
                 color: #e74c3c;
                 font-weight: bold;
             }
-            
+
             .success {
                 color: #27ae60;
             }
-            
+
             .warning {
                 color: #f39c12;
             }
-            
+
             .progress-container {
                 margin: 20px 0;
                 display: none;
             }
-            
+
             progress {
                 width: 100%;
                 height: 20px;
             }
-            
+
             .status-container {
                 display: flex;
                 justify-content: space-between;
                 margin: 10px 0;
             }
-            
+
             .status {
                 font-weight: bold;
             }
-            
+
             .timer {
                 font-weight: bold;
                 color: #2c3e50;
             }
-            
+
             .button-group {
                 display: flex;
                 flex-wrap: wrap;
                 gap: 10px;
                 margin-bottom: 15px;
             }
-            
+
             .config-section {
                 margin-bottom: 20px;
                 padding: 15px;
@@ -242,21 +233,21 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
-            
+
             .config-title {
                 font-weight: bold;
                 margin-bottom: 10px;
                 grid-column: 1 / -1;
                 text-align: center;
             }
-            
+
             .toggle-container {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 margin-bottom: 10px;
             }
-            
+
             .toggle-switch {
                 position: relative;
                 display: inline-block;
@@ -264,13 +255,13 @@
                 height: 24px;
                 margin-right: 10px;
             }
-            
+
             .toggle-switch input {
                 opacity: 0;
                 width: 0;
                 height: 0;
             }
-            
+
             .slider {
                 position: absolute;
                 cursor: pointer;
@@ -282,7 +273,7 @@
                 transition: .4s;
                 border-radius: 24px;
             }
-            
+
             .slider:before {
                 position: absolute;
                 content: "";
@@ -294,27 +285,27 @@
                 transition: .4s;
                 border-radius: 50%;
             }
-            
+
             input:checked + .slider {
                 background-color: #2ecc71;
             }
-            
+
             input:checked + .slider:before {
                 transform: translateX(26px);
             }
-            
+
             .api-info {
                 font-size: 12px;
                 color: #7f8c8d;
                 margin-left: 10px;
             }
-            
+
             @media (max-width: 1200px) {
                 .cnpj-column {
                     min-width: 250px;
                 }
             }
-            
+
             @media (max-width: 900px) {
                 .cnpj-column {
                     min-width: 100%;
@@ -331,15 +322,15 @@
             <!-- collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button> 
-                   
+            </button>
+
             <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav ">
                     <!-- Dropdown PARA DESPACHOS PESSOA JURIDICA -->
                     <li class="nav-item dropdown active ">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Jurídica</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="registro_empresa.html">Registro de Empresa</a>                           
+                            <a class="dropdown-item" href="registro_empresa.html">Registro de Empresa</a>
                             <a class="dropdown-item" href="alteracao_cadastral.html">Alteração Cadastral</a>
                             <a class="dropdown-item" href="inclusao_email.html">Inclusão de email</a>
                             <a class="dropdown-item" href="baixa_registro_empresa.html">Baixa de Registro</a>
@@ -351,14 +342,14 @@
                             <a class="dropdown-item" href="crqpj.html">CRQPJ</a>
                             <a class="dropdown-item" href="despachos_gerais.html">Despachos Gerais</a>
                             <a class="dropdown-item" href="ConsultaCNAE.html">Consulta CNAE</a>
-                            <a class="dropdown-item" href="ConsultadeCNPJs_MultiAPI.html">Consulta Status de CNPJ</a>                            
+                            <a class="dropdown-item" href="ConsultadeCNPJs_MultiAPI.html">Consulta Status de CNPJ</a>
                         </div>
                     </li>
-                
+
                     <!-- Dropdown com atividades PARA DESPACHOS PESSOA FÍSICA-->
                     <li class="nav-item dropdown active ">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 250px; height: 100%; font-size: 20px;margin-right: 20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Física</a>
-                        <div class="dropdown-menu">              
+                        <div class="dropdown-menu">
                             <a class="dropdown-item" href="../PF/rrts-01.html">RRTs</a>
                             <a class="dropdown-item" href="../PF/cat-01.html">CAT-A</a>
                             <a class="dropdown-item" href="../PF/rda-01.html">RDA</a>
@@ -367,45 +358,45 @@
                             <a class="dropdown-item" href="../PF/protocolos-01.html">Protocolos</a>
                             <a class="dropdown-item" href="../PF/email-01.html">E-mail</a>
                             <a class="dropdown-item" href="../PF/siccau-01.html">SICCAU</a>
-                            <a class="dropdown-item" href="../PF/Análise_de_Carteira_Profissional.html">Carteira Profissional</a>                                                  
+                            <a class="dropdown-item" href="../PF/Análise_de_Carteira_Profissional.html">Carteira Profissional</a>
                         </div>
                     </li>
-                
+
                     <!-- links demais páginas -->
                     <ul class="navbar-nav flex-wrap">
                         <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="../piso-semanal.html" target="_blank">Calculadora Piso</a>
+                            <a class="nav-link" href="../piso-semanal.html" >Calculadora Piso</a>
                         </li>
-                  
+
                         <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://acesso.caubr.gov.br/" target="_blank">SICCAU</a>
-                        </li> 
-                        <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/" target="_blank">Resoluções</a>
-                        </li>
-                        
-                        <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php" target="_blank">Tutoriais Helpdesk</a>
+                            <a class="nav-link" href="https://acesso.caubr.gov.br/" >SICCAU</a>
                         </li>
                         <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://ria.caubr.gov.br" target="_blank">Tutoriais RIA</a>
+                            <a class="nav-link" href="https://transparencia.caubr.gov.br/resolucoes/" >Resoluções</a>
+                        </li>
+
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://servicos.caubr.gov.br/helpdesk/doku.php" >Tutoriais Helpdesk</a>
                         </li>
                         <li class="nav-item align-items-center justify-content-center">
-                            <a class="nav-link" href="https://gad.caubr.gov.br" target="_blank">GAD</a>
+                            <a class="nav-link" href="https://ria.caubr.gov.br" >Tutoriais RIA</a>
+                        </li>
+                        <li class="nav-item align-items-center justify-content-center">
+                            <a class="nav-link" href="https://gad.caubr.gov.br" >GAD</a>
                         </li>
                     </ul>
                 </ul>
             </div>
         </nav>
-            
+
         <!--------------------------------------- area elaboração do despacho ---------------------------------------->
         <div class="main-container">
             <h1 class="page-title">Consulta de CNPJs - Multi-API</h1>
-			<p>Utilizado para iniciar processo de baixa no conselho. Copie e cole uma lista de CNPJs registradas que a página apresentará o Status das empresas na receita Federal</p>
-            
+            <p>Utilizado para iniciar processo de baixa no conselho. Copie e cole uma lista de CNPJs registradas que a página apresentará o Status das empresas na receita Federal</p>
+
             <div class="config-section">
                 <div class="config-title">Selecione as APIs para consulta:</div>
-                
+
                 <!-- Primeira Coluna - CNPJá -->
                 <div class="toggle-container">
                     <label class="toggle-switch">
@@ -415,7 +406,7 @@
                     <label for="toggleCnpja">API CNPJá</label>
                     <div class="api-info">5 consultas/minuto</div>
                 </div>
-                
+
                 <!-- Segunda Coluna - Minha Receita -->
                 <div class="toggle-container">
                     <label class="toggle-switch">
@@ -426,7 +417,7 @@
                     <div class="api-info">1 consulta/segundo</div>
                 </div>
             </div>
-            
+
             <div>
                 <label for="cnpjs">Insira os CNPJs (um por linha, com ou sem formatação):</label><br>
                 <div class="cnpj-columns" id="cnpjColumns">
@@ -441,13 +432,13 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="button-group">
                 <button id="consultarBtn" class="btn-custom">Consultar CNPJs</button>
                 <button id="limparBtn" class="btn-custom btn-clear">Limpar Tudo</button>
                 <button id="exportarCsvBtn" class="btn-custom btn-export" disabled>Exportar para CSV</button>
             </div>
-            
+
             <div class="progress-container" id="progressContainer">
                 <progress id="progressBar" value="0" max="100"></progress>
                 <div class="status-container">
@@ -456,16 +447,18 @@
                 </div>
                 <div class="status" id="apiStatusText"></div>
             </div>
-            
+
             <table id="resultTable">
                 <thead>
                     <tr>
                         <th>CNPJ</th>
                         <th>Nome da Empresa</th>
-                        <th>Nome Fantasia</th>
+                        <th>É de arquitetura?</th> <!-- COLUNA MODIFICADA -->
                         <th>Status na Receita</th>
                         <th>Data da Situação</th>
                         <th>Município/UF</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
                         <th>Fonte</th>
                         <th>Status da Consulta</th>
                         <th>Ações</th>
@@ -489,6 +482,31 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
         <script>
+            // Lista de CNAEs relacionados à arquitetura extraída de ConsultaCNAE - Copia.txt
+            const CNAES_ARQUITETURA_RAW = [
+                "2330-3/01", "2330-3/02", "2330-3/99", "2599-3/01", "3299-0/03", "3299-0/04",
+                "4120-1/00", "4120-4/00", "4213-8/00", "4222-7/01", "4222-7/02", "4292-8/01", "4299-5/01",
+                "4311-8/01", "4311-8/02", "4312-6/00", "4313-4/00", "4319-3/00", "4321-5/00",
+                "4322-3/01", "4322-3/02", "4322-3/03", "4329-1/01", "4329-1/03", "4329-1/04",
+                "4329-1/05", "4329-1/99", "4330-4/01", "4330-4/02", "4330-4/03", "4330-4/04",
+                "4330-4/05", "4330-4/99", "4391-6/00", "4399-1/01", "4399-1/02", "4399-1/03",
+                "4399-1/04", "4399-1/05", "4399-1/99", "6810-2/03", "6821-8/01", "7111-1/00",
+                "7119-7/01", "7119-7/02", "7119-7/03", "7119-7/04", "7119-7/99", "7319-0/01",
+                "7490-1/99", "7410-2/02", "8130-3/00", "8230-0/01", "8599-6/04", "8599-6/99",
+                "9001-9/06", "9102-3/02", "9311-5/00", "9529-1/05", "4211-1/01", "4211-1/02",
+                "4221-9/03", "3329-5/01"
+            ];
+
+            // Cria um Set para pesquisa eficiente, normalizando os CNAEs para apenas dígitos.
+            const CNAES_ARQUITETURA_SET = new Set(CNAES_ARQUITETURA_RAW.map(cnae => cnae.replace(/\D/g,'')));
+
+            // Função para verificar se um CNAE pertence à lista de arquitetura
+            function cnaePertenceArquitetura(cnaeCodigo) {
+                if (!cnaeCodigo) return false;
+                const normalizedCnae = String(cnaeCodigo).replace(/\D/g, ''); // Remove caracteres não numéricos
+                return CNAES_ARQUITETURA_SET.has(normalizedCnae);
+            }
+
             document.addEventListener('DOMContentLoaded', function() {
                 // Elementos da interface
                 const cnpjColumns = document.getElementById('cnpjColumns');
@@ -506,7 +524,7 @@
                 const apiStatusText = document.getElementById('apiStatusText');
                 const toggleCnpja = document.getElementById('toggleCnpja');
                 const toggleMinhaReceita = document.getElementById('toggleMinhaReceita');
-                
+
                 // Estado da aplicação
                 let resultados = [];
                 let apiUsage = {
@@ -535,27 +553,27 @@
                 function distribuirCnpjs() {
                     const cnpjsInput = cnpjs1.value.trim();
                     const linhas = cnpjsInput.split('\n').filter(line => line.trim() !== '');
-                    
+
                     // Resetar colunas
                     cnpjs1.value = '';
                     cnpjs2.style.display = 'none';
                     cnpjs2.value = '';
                     cnpjs3.style.display = 'none';
                     cnpjs3.value = '';
-                    
+
                     if (linhas.length === 0) return;
-                    
+
                     // Calcular número de colunas necessárias (1-3)
                     const numColunas = Math.min(3, Math.ceil(linhas.length / 15));
-                    
+
                     // Distribuir linhas pelas colunas
                     const linhasPorColuna = Math.ceil(linhas.length / numColunas);
-                    
+
                     for (let i = 0; i < linhas.length; i++) {
                         const coluna = Math.floor(i / linhasPorColuna) + 1;
-                        const textarea = coluna === 1 ? cnpjs1 : 
+                        const textarea = coluna === 1 ? cnpjs1 :
                                         coluna === 2 ? cnpjs2 : cnpjs3;
-                        
+
                         if (coluna > 1) textarea.style.display = 'block';
                         textarea.value += (textarea.value ? '\n' : '') + linhas[i];
                     }
@@ -567,19 +585,18 @@
                     const cnpjNormalizado = apenasDigitos.padStart(14, '0');
                     return cnpjNormalizado.length > 14 ? cnpjNormalizado.substring(0, 14) : cnpjNormalizado;
                 }
-                
+
                 // Calcular tempo estimado
                 function calcularTempoEstimado(totalCnpjs) {
                     if (!toggleCnpja.checked && !toggleMinhaReceita.checked) return 0;
-                    
+
                     const usandoAmbas = toggleCnpja.checked && toggleMinhaReceita.checked;
-                    
+
                     if (usandoAmbas) {
                         // Calcular quantos CNPJs cada API vai processar
                         const velocidadeCnpja = 5 / 60; // 5 por minuto = 0.0833 por segundo
                         const velocidadeMinhaReceita = 1; // 1 por segundo
                         const velocidadeTotal = velocidadeCnpja + velocidadeMinhaReceita;
-                        
                         return Math.ceil(totalCnpjs / velocidadeTotal);
                     } else if (toggleCnpja.checked) {
                         return Math.ceil(totalCnpjs / (5 / 60));
@@ -592,12 +609,11 @@
                 function atualizarTimer() {
                     const tempoDecorrido = Math.floor((Date.now() - startTime) / 1000);
                     const tempoRestante = Math.max(0, estimatedTime - tempoDecorrido);
-                    
+
                     const minutos = Math.floor(tempoRestante / 60);
                     const segundos = tempoRestante % 60;
-                    
+
                     timerText.textContent = `Tempo estimado: ${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
-                    
                     if (tempoRestante <= 0) {
                         clearInterval(timerInterval);
                     }
@@ -607,12 +623,12 @@
                 function iniciarTimer(totalCnpjs) {
                     estimatedTime = calcularTempoEstimado(totalCnpjs);
                     startTime = Date.now();
-                    
+
                     if (timerInterval) clearInterval(timerInterval);
                     timerInterval = setInterval(atualizarTimer, 1000);
                     atualizarTimer();
                 }
-                
+
                 // Limpar tudo
                 limparBtn.addEventListener('click', function() {
                     resultTable.innerHTML = '';
@@ -629,10 +645,10 @@
                     clearInterval(timerInterval);
                     timerText.textContent = 'Tempo estimado: --:--';
                 });
-                
+
                 // Observar mudanças no textarea principal
                 cnpjs1.addEventListener('input', distribuirCnpjs);
-                
+
                 // Resetar contadores de API
                 function resetApiCounters() {
                     const now = Date.now();
@@ -641,57 +657,60 @@
                         minhaReceita: { count: 0, lastReset: now, limit: Infinity }
                     };
                 }
-                
+
                 // Verificar e resetar contadores se necessário
                 function checkApiRateLimits(api) {
                     const now = Date.now();
                     const oneMinute = 60000;
-                    
+
                     if (now - apiUsage[api].lastReset > oneMinute) {
                         apiUsage[api].count = 0;
                         apiUsage[api].lastReset = now;
                     }
                 }
-                
+
                 // Consultar CNPJ na API selecionada
                 async function consultarCnpj(cnpj, api) {
                     try {
                         checkApiRateLimits(api);
-                        
+
                         if (apiUsage[api].count >= apiUsage[api].limit) {
-                            throw new Error(`Limite de consultas atingido para ${api}`);
+                            throw new Error(`Limite de consultas atingido para ${getApiName(api)}`);
                         }
-                        
+
                         const cnpjNormalizado = normalizarCnpj(cnpj);
                         const config = API_CONFIG[api];
                         const url = config.url(cnpjNormalizado);
-                        
+
                         apiUsage[api].count++;
-                        
+
                         const response = await fetch(url);
-                        
+
                         if (!response.ok) {
                             throw new Error(`HTTP error! status: ${response.status}`);
                         }
 
                         const data = await response.json();
                         return processarResposta(cnpjNormalizado, data, api);
-                        
+
                     } catch (error) {
+                        console.error(`Erro na consulta do CNPJ ${cnpj} via ${getApiName(api)}:`, error);
                         return {
                             CNPJ: normalizarCnpj(cnpj),
                             Nome: 'Erro na consulta',
-                            NomeFantasia: '',
+                            EhDeArquitetura: 'NÃO', // Default 'NÃO' em caso de erro
                             Status: 'Erro',
                             DataSituacao: 'Não disponível',
                             MunicipioUF: '',
+                            Telefone: '',
+                            Email: '',
                             Fonte: getApiName(api),
                             StatusConsulta: `Falha: ${error.message}`,
                             Detalhes: null
                         };
                     }
                 }
-                
+
                 function getApiName(api) {
                     const names = {
                         cnpja: 'CNPJá',
@@ -699,49 +718,106 @@
                     };
                     return names[api] || api;
                 }
-                
-                // Processar resposta da API
+
+                // Processar resposta da API e determinar se a empresa é de arquitetura
                 function processarResposta(cnpj, data, api) {
+                    let ehDeArquitetura = "NÃO";
+                    const cnaesDaEmpresa = [];
+
+                    // Extrair CNAEs da resposta da API
+                    if (api === 'cnpja') {
+                        // Assumindo estrutura comum para CNAEs na API open.cnpja.com
+                        if (data.cnae && data.cnae.main && data.cnae.main.code) {
+                            cnaesDaEmpresa.push(data.cnae.main.code);
+                        }
+                        if (data.cnae && data.cnae.secondary && Array.isArray(data.cnae.secondary)) {
+                            data.cnae.secondary.forEach(cnaeSec => {
+                                if (cnaeSec.code) cnaesDaEmpresa.push(cnaeSec.code);
+                            });
+                        }
+                        // Algumas implementações da API podem ter os CNAEs em campos de nível superior
+                        if (data.main_cnae && data.main_cnae.code) {
+                             cnaesDaEmpresa.push(data.main_cnae.code);
+                        }
+                        if (data.secondary_cnaes && Array.isArray(data.secondary_cnaes)) {
+                            data.secondary_cnaes.forEach(cnaeSec => {
+                                if (cnaeSec.code) cnaesDaEmpresa.push(cnaeSec.code);
+                            });
+                        }
+
+                    } else { // minhaReceita.org
+                        if (data.cnae_fiscal) {
+                            cnaesDaEmpresa.push(data.cnae_fiscal);
+                        }
+                        if (data.cnaes_secundarios && Array.isArray(data.cnaes_secundarios)) {
+                            data.cnaes_secundarios.forEach(cnaeSec => {
+                                if (cnaeSec.codigo) cnaesDaEmpresa.push(cnaeSec.codigo);
+                            });
+                        }
+                    }
+
+                    // Verificar se algum CNAE extraído está na lista de arquitetura
+                    for (const cnaeCode of cnaesDaEmpresa) {
+                        if (cnaePertenceArquitetura(cnaeCode)) {
+                            ehDeArquitetura = "SIM";
+                            break;
+                        }
+                    }
+
                     if (api === 'cnpja') {
                         return {
                             CNPJ: cnpj,
                             Nome: data.company?.name || 'Não encontrado',
-                            NomeFantasia: data.company?.alias || '',
+                            NomeFantasia: data.company?.alias || '', // Mantém para fins internos/CSV se necessário, mas não será exibido diretamente na tabela
+                            EhDeArquitetura: ehDeArquitetura, // Novo campo para exibição
                             Status: data.status?.text || 'Desconhecido',
                             DataSituacao: data.statusDate || 'Não disponível',
                             MunicipioUF: `${data.address?.city || ''}/${data.address?.state || ''}`,
+                            Telefone: data.company?.phone || '',
+                            Email: data.company?.email || '',
                             Fonte: 'CNPJá',
                             StatusConsulta: 'Sucesso',
                             Detalhes: data
                         };
-                    } else {
+                    } else { // minhaReceita
+                        let telefoneMinhaReceita = '';
+                        if (data.ddd_telefone_1 && data.telefone_1) {
+                            telefoneMinhaReceita = `(${data.ddd_telefone_1}) ${data.telefone_1}`;
+                        } else if (data.ddd_telefone_2 && data.telefone_2) {
+                            telefoneMinhaReceita = `(${data.ddd_telefone_2}) ${data.telefone_2}`;
+                        }
                         return {
                             CNPJ: cnpj,
                             Nome: data.razao_social || 'Não encontrado',
-                            NomeFantasia: data.nome_fantasia || '',
+                            NomeFantasia: data.nome_fantasia || '', // Mantém para fins internos/CSV se necessário
+                            EhDeArquitetura: ehDeArquitetura, // Novo campo para exibição
                             Status: data.descricao_situacao_cadastral || 'Desconhecido',
                             DataSituacao: data.data_situacao_cadastral || 'Não disponível',
                             MunicipioUF: `${data.municipio || ''}/${data.uf || ''}`,
+                            Telefone: telefoneMinhaReceita,
+                            Email: data.email || '',
                             Fonte: 'Minha Receita',
                             StatusConsulta: data.erro ? `Erro: ${data.erro}` : 'Sucesso',
                             Detalhes: data
                         };
                     }
                 }
-                
+
                 // Adicionar linha na tabela
                 function adicionarLinhaTabela(resultado) {
                     const row = document.createElement('tr');
-                    
+
                     row.innerHTML = `
                         <td>${resultado.CNPJ}</td>
                         <td>${resultado.Nome}</td>
-                        <td>${resultado.NomeFantasia}</td>
+                        <td>${resultado.EhDeArquitetura}</td> <!-- Exibindo o novo campo -->
                         <td>${resultado.Status}</td>
                         <td>${formatarData(resultado.DataSituacao)}</td>
                         <td>${resultado.MunicipioUF}</td>
+                        <td>${resultado.Telefone}</td>
+                        <td>${resultado.Email}</td>
                         <td>${resultado.Fonte}</td>
-                        <td class="${resultado.StatusConsulta.includes('Sucesso') ? 'success' : 
+                        <td class="${resultado.StatusConsulta.includes('Sucesso') ? 'success' :
                             resultado.StatusConsulta.includes('Erro') ? 'error' : 'warning'}">${resultado.StatusConsulta}</td>
                         <td>
                             <button class="detalhes-btn btn-custom" data-cnpj="${resultado.CNPJ}" ${!resultado.Detalhes ? 'disabled' : ''}>
@@ -749,65 +825,77 @@
                             </button>
                         </td>
                     `;
-                    
+
                     if (resultado.Detalhes) {
                         row.querySelector('.detalhes-btn').addEventListener('click', function() {
                             mostrarDetalhes(resultado.CNPJ, resultado.Detalhes, resultado.Fonte);
                         });
                     }
-                    
+
                     resultTable.appendChild(row);
                 }
-                
+
                 // Função para consulta paralela
                 async function consultarCnpjsEmParalelo(cnpjs) {
                     const filaConsultas = [...cnpjs];
-                    const resultados = [];
+                    const resultadosLocais = []; // Usar um array local para evitar conflito com 'resultados' global
                     let consultasAtivas = 0;
-                    
-                    // Função para processar uma API específica
-                    async function processarApi(api) {
-                        while (filaConsultas.length > 0 || consultasAtivas > 0) {
-                            if (filaConsultas.length === 0) {
-                                await new Promise(resolve => setTimeout(resolve, 100));
+                    const maxConsultasSimultaneas = 5; // Limitar consultas simultâneas para evitar sobrecarga
+
+                    async function executarConsulta() {
+                        while (filaConsultas.length > 0) {
+                            if (consultasAtivas >= maxConsultasSimultaneas) {
+                                await new Promise(resolve => setTimeout(resolve, 200)); // Espera um pouco
                                 continue;
                             }
-                            
+
                             const cnpj = filaConsultas.shift();
                             if (!cnpj) continue;
-                            
+
                             consultasAtivas++;
                             try {
-                                const resultado = await consultarCnpj(cnpj, api);
-                                resultados.push(resultado);
+                                // Prioriza a API Minha Receita se ambas estiverem ativadas
+                                // ou se for a única ativada, por ser mais rápida (1s)
+                                const apiParaUsar = toggleMinhaReceita.checked ? 'minhaReceita' : 'cnpja';
+
+                                const resultado = await consultarCnpj(cnpj, apiParaUsar);
+                                resultadosLocais.push(resultado);
                                 adicionarLinhaTabela(resultado);
-                                
+
                                 // Atualizar progresso
-                                progressBar.value = resultados.length;
-                                statusText.textContent = `Consultando CNPJs... (${resultados.length}/${cnpjs.length})`;
-                                
-                                // Aguardar intervalo mínimo entre consultas
-                                await new Promise(resolve => setTimeout(resolve, API_CONFIG[api].interval));
+                                progressBar.value = resultadosLocais.length;
+                                statusText.textContent = `Consultando CNPJs... (${resultadosLocais.length}/${cnpjs.length})`;
+
+                                // Aguardar intervalo mínimo entre consultas para a API específica
+                                await new Promise(resolve => setTimeout(resolve, API_CONFIG[apiParaUsar].interval));
                             } catch (error) {
-                                console.error(`Erro na consulta ${api}:`, error);
+                                console.error(`Erro ao processar CNPJ ${cnpj}:`, error);
+                                // Adicionar um resultado de erro para o CNPJ em questão
+                                resultadosLocais.push({
+                                    CNPJ: normalizarCnpj(cnpj),
+                                    Nome: 'Erro',
+                                    EhDeArquitetura: 'NÃO',
+                                    Status: 'Falha na consulta',
+                                    DataSituacao: 'Não disponível',
+                                    MunicipioUF: '',
+                                    Telefone: '',
+                                    Email: '',
+                                    Fonte: 'N/A',
+                                    StatusConsulta: `Falha: ${error.message}`,
+                                    Detalhes: null
+                                });
+                                adicionarLinhaTabela(resultadosLocais[resultadosLocais.length - 1]);
                             } finally {
                                 consultasAtivas--;
                             }
                         }
                     }
 
-                    // Iniciar consultas paralelas
-                    const promises = [];
-                    if (toggleCnpja.checked) {
-                        promises.push(processarApi('cnpja'));
-                    }
-                    if (toggleMinhaReceita.checked) {
-                        promises.push(processarApi('minhaReceita'));
-                    }
-
-                    await Promise.all(promises);
-                    return resultados;
+                    const trabalhadores = Array(maxConsultasSimultaneas).fill(null).map(executarConsulta);
+                    await Promise.all(traballhadores); // Espera todas as consultas terminarem
+                    return resultadosLocais;
                 }
+
 
                 // Consultar CNPJs
                 consultarBtn.addEventListener('click', async function() {
@@ -815,56 +903,55 @@
                     const cnpjsInput = [cnpjs1.value, cnpjs2.value, cnpjs3.value]
                         .join('\n')
                         .trim();
-                    
+
                     if (!cnpjsInput) {
                         alert('Por favor, insira pelo menos um CNPJ');
                         return;
                     }
-                    
+
                     if (!toggleCnpja.checked && !toggleMinhaReceita.checked) {
                         alert('Selecione pelo menos uma API para consulta');
                         return;
                     }
-                    
+
                     // Normaliza todos os CNPJs antes de processar
                     const cnpjs = cnpjsInput.split('\n')
                         .map(cnpj => normalizarCnpj(cnpj.trim()))
                         .filter(cnpj => cnpj !== '00000000000000' && cnpj !== '');
-                    
+
                     if (cnpjs.length === 0) {
                         alert('Nenhum CNPJ válido encontrado');
                         return;
                     }
-                    
+
                     consultarBtn.disabled = true;
                     progressContainer.style.display = 'block';
                     progressBar.max = cnpjs.length;
                     progressBar.value = 0;
                     statusText.textContent = `Consultando CNPJs... (0/${cnpjs.length})`;
-                    
                     const apisAtivas = [];
                     if (toggleCnpja.checked) apisAtivas.push('CNPJá');
                     if (toggleMinhaReceita.checked) apisAtivas.push('Minha Receita');
-                    
+
                     apiStatusText.textContent = `APIs ativas: ${apisAtivas.join(', ')}`;
-                    
+
                     resultTable.innerHTML = '';
-                    resultados = [];
+                    resultados = []; // Limpa resultados anteriores
                     resetApiCounters();
-                    
+
                     // Iniciar timer com estimativa
                     iniciarTimer(cnpjs.length);
-                    
+
                     // Usar a função de consulta paralela
                     resultados = await consultarCnpjsEmParalelo(cnpjs);
-                    
+
                     consultarBtn.disabled = false;
                     exportarCsvBtn.disabled = false;
-                    statusText.textContent = `Consulta concluída! (${cnpjs.length} CNPJs verificados)`;
+                    statusText.textContent = `Consulta concluída! (${resultados.length} CNPJs verificados)`;
                     clearInterval(timerInterval);
                     timerText.textContent = 'Consulta concluída!';
                 });
-                
+
                 // Exportar para CSV
                 exportarCsvBtn.addEventListener('click', function() {
                     if (resultados.length === 0) {
@@ -872,52 +959,54 @@
                         return;
                     }
 
-                    const headers = ['CNPJ', 'Nome da Empresa', 'Nome Fantasia', 'Status na Receita', 
-                                     'Data da Situação', 'Município/UF', 'Fonte', 'Status da Consulta'];
+                    // Headers atualizados para incluir "É de arquitetura?"
+                    const headers = ['CNPJ', 'Nome da Empresa', 'É de arquitetura?', 'Status na Receita',
+                                     'Data da Situação', 'Município/UF', 'Telefone', 'Email', 'Fonte', 'Status da Consulta'];
                     let csvContent = headers.join(';') + '\n';
-                    
+
                     resultados.forEach(result => {
                         csvContent += `"${result.CNPJ}";"${result.Nome.replace(/"/g, '""')}";` +
-                                     `"${result.NomeFantasia.replace(/"/g, '""')}";` +
+                                     `"${result.EhDeArquitetura}";` + // Usando o novo campo
                                      `"${result.Status}";"${formatarData(result.DataSituacao)}";` +
-                                     `"${result.MunicipioUF}";"${result.Fonte}";"${result.StatusConsulta}"\n`;
+                                     `"${result.MunicipioUF}";"${result.Telefone}";"${result.Email}";` +
+                                     `"${result.Fonte}";"${result.StatusConsulta}"\n`;
                     });
 
                     const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
                     const url = URL.createObjectURL(blob);
                     const link = document.createElement('a');
                     link.setAttribute('href', url);
-                    link.setAttribute('download', `cnpjs_${new Date().toISOString().slice(0,10)}.csv`);
+                    link.setAttribute('download', `cnpjs_arquitetura_${new Date().toISOString().slice(0,10)}.csv`);
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
                 });
-                
+
                 // Funções auxiliares
                 function formatarData(dataString) {
                     if (!dataString || dataString === 'Não disponível') return dataString;
-                    
+
                     try {
                         if (dataString.match(/^\d{4}-\d{2}-\d{2}/)) {
                             const [year, month, day] = dataString.split('-');
                             return `${day}/${month}/${year}`;
                         }
-                        
+
                         if (dataString.match(/^\d{2}\/\d{2}\/\d{4}/)) {
                             return dataString;
                         }
-                        
+
                         const data = new Date(dataString);
                         if (!isNaN(data)) {
                             return data.toLocaleDateString('pt-BR');
                         }
-                        
+
                         return dataString;
                     } catch {
                         return dataString;
                     }
                 }
-                
+
                 function mostrarDetalhes(cnpj, dados, fonte) {
                     const detalhesStr = JSON.stringify(dados, null, 2);
                     alert(`Detalhes completos para CNPJ ${cnpj} (${fonte}):\n\n${detalhesStr}`);
@@ -929,4 +1018,4 @@
         </script>
     </body>
 </html>
-
+```
