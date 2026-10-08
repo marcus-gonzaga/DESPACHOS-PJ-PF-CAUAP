@@ -285,7 +285,7 @@
                         <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal16"></i>
                         <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal16"></i>
                     </div>
-                
+
                 
                     <div class="form-check mb-1">
                         <input type="checkbox" class="form-check-input" id="despacho4" data-text="" >
@@ -331,7 +331,16 @@
                         <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal8"></i>
                         <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal8"></i>
                     </div>
-                    
+
+					<div class="form-check mb-1">
+                        <input type="checkbox" class="form-check-input" id="despacho17" data-text="">
+                        <label class="form-check-label" for="despacho17">
+                            <span contenteditable="false">Comunicado de ausência de RT com opções pra regularização.</strong></span>
+                        </label>
+                        <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#editModal16"></i>
+                        <i class="info-icon fa fa-info" data-toggle="modal" data-target="#infoModal16"></i>
+                    </div>
+					
                     <div class="form-check mb-1">
                         <input type="checkbox" class="form-check-input" id="despacho9" data-text="" >
                         <label class="form-check-label" for="despacho9">
@@ -864,6 +873,27 @@ Sendo assim, em virtude de você ser o único responsável técnico da empresa, 
             document.getElementById('despacho16').setAttribute('data-text', texto_16);
             document.getElementById('editTextModal16').value = texto_16;
 
+
+		var texto_17 = 
+`Informamos que a empresa encontra-se, no momento, sem responsável técnico vinculado/registrado junto ao CAU, situação que pode impedir a oferta/execução regular de serviços no campo da Arquitetura e Urbanismo e que está sujeita às providências administrativas cabíveis, inclusive encaminhamento ao Setor de Fiscalização.
+ 
+Para regularização, orientamos que seja adotada uma das opções abaixo, conforme a situação atual da empresa:
+ 
+Opção 1) Inclusão/substituição de responsável técnico Para incluir um responsável técnico, acesse o SICCAU da empresa (login com o CNPJ) e, na página inicial, siga o caminho: Protocolo > Cadastrar Protocolo > Grupo de assunto: Cadastro de empresa > Assunto: Prorrogação, baixa, substituição e inclusão de responsável técnico
+ 
+Anexar, no mínimo: 1) RRT de Cargo ou Função do arquiteto e urbanista indicado; e 2) Comprovante de vínculo entre o arquiteto e urbanista e a empresa, conforme o caso: 2.1) Se for sócio: contrato social (e alterações, se houver); 2.2) Se for empregado: páginas de identificação, qualificação civil, registro e alterações salariais (se houver) da CTPS; 2.3) Se for prestador de serviços: contrato de prestação de serviços.
+ 
+Opção 2) Interrupção temporária do registro da pessoa jurídica (quando a empresa não estiver atuando) Caso a empresa não esteja prestando serviços de Arquitetura e Urbanismo no momento, é possível solicitar, via protocolo, a interrupção temporária do registro.
+ 
+Para cadastrar o protocolo, acesse o SICCAU da empresa (login com o CNPJ) e, na página inicial, siga o caminho: Protocolo > Cadastrar Protocolo > Grupo de assunto: Cadastro de empresa > Assunto: Interrupção do registro de pessoa jurídica
+ 
+Após atender às orientações, solicitamos que responda a este protocolo no SICCAU, seguindo o caminho: Protocolo > Pesquisar Protocolo > (inserir o número do protocolo) > Responder Protocolo
+`;
+
+            document.getElementById('despacho17').setAttribute('data-text', texto_17);
+            document.getElementById('editTextModal17').value = texto_17;
+			
+
             var texto_4 = 
 `Para dar prosseguimento à solicitação de baixa de responsabilidade técnica  do profissional xxxxxxxxxxxxxx é necessário:
 `;
@@ -954,6 +984,7 @@ https://transparencia.caubr.gov.br/resolucao28
 
             var texto_14 = 
 `PRAZO PARA MANIFESTAÇÃO: 10 DIAS (sob pena de ter o protocolo indeferido e arquivado).`;
+`Observação: decorrido o prazo acima sem retorno/regularização, o caso poderá ser encaminhado ao Setor de Fiscalização para adoção das providências cabíveis.`;
 
             document.getElementById('despacho14').setAttribute('data-text', texto_14);
             document.getElementById('editTextModal14').value = texto_14;
