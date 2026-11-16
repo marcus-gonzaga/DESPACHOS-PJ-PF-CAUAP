@@ -97,9 +97,9 @@
                 background-color: #dc3545;
                 color: white;
             }
-           // .siccau-color {
-           //     background-color: #005abb !important;
-         //   }
+            .siccau-color {
+                background-color: #005abb !important;
+            }
             .cnae-nao-encontrado-local {
                 background-color: #fff3cd; 
                 border: 1px solid #ffeeba;
@@ -127,14 +127,14 @@
      <body>
         <nav class="navbar navbar-expand-lg navbar-dark siccau-color" style="background-color: #005abb !important;">
             <a href="../index.html"><img src="../cau.png" width="233" height="75" alt="Início" class="img-fluid"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
                 <span class="navbar-toggler-icon"></span>
             </button> 
             <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown active ">
-                   <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Despachos Pessoa Jurídica</a>
-                        <div class="dropdown-menu">
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="#" id="navbarDropdownPJ" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Despachos Pessoa Jurídica</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownPJ">
                             <a class="dropdown-item" href="registro_empresa.html">Registro de Empresa</a>                           
                             <a class="dropdown-item" href="alteracao_cadastral.html">Alteração Cadastral</a>
                             <a class="dropdown-item" href="inclusao_email.html">Inclusão de email</a>
@@ -146,13 +146,40 @@
                             <a class="dropdown-item" href="desconto_anuidade.html">Desconto de Anuidade</a>
                             <a class="dropdown-item" href="crqpj.html">CRQPJ</a>
                             <a class="dropdown-item" href="despachos_gerais.html">Despachos Gerais</a>
-							<a class="dropdown-item" href="ConsultaCNAE.html">Consulta CNAE</a>
+                            <a class="dropdown-item active" href="ConsultaCNAE.html">Consulta CNAE</a>
                             <a class="dropdown-item" href="ConsultadeCNPJs_MultiAPI.html">Consulta Status de CNPJ</a>                            
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 290px; height: 100%; font-size: 20px; margin-left: 20px;" href="#" id="navbarDropdownPF" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Despachos Pessoa Física</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownPF">
+                            <a class="dropdown-item" href="../PF/rrts.html">RRTs</a>
+                            <a class="dropdown-item" href="../PF/cat_a.html">CAT-A</a>
+                            <a class="dropdown-item" href="../PF/rda.html">RDA</a>
+                            <a class="dropdown-item" href="../PF/status_rrt.html">Status de RRT</a>
+                            <a class="dropdown-item" href="../PF/interrupcao_registro.html">Interrupção de Registro</a>
+                            <a class="dropdown-item" href="../PF/protocolos.html">Protocolos</a>
+                            <a class="dropdown-item" href="../PF/email.html">E-mail</a>
+                            <a class="dropdown-item" href="../PF/siccau.html">SICCAU</a>
+                            <a class="dropdown-item" href="../PF/carteira_profissional.html">Carteira Profissional</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" style="width: 180px; height: 100%; font-size: 20px; margin-left: 20px;" href="#" id="navbarDropdownLinks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Links Úteis</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownLinks">
+                            <a class="dropdown-item" href="https://piso.caubr.gov.br/" target="_blank">Calculadora Piso</a>
+                            <a class="dropdown-item" href="https://carteira.caubr.gov.br/" target="_blank">Carteira Digital</a>
+                            <a class="dropdown-item" href="https://siccau.caubr.gov.br/" target="_blank">SICCAU</a>
+                            <a class="dropdown-item" href="https://transparencia.caubr.gov.br/resolucoes/" target="_blank">Resoluções</a>
+                            <a class="dropdown-item" href="https://helpdesk.caubr.gov.br/" target="_blank">Helpdesk</a>
+                            <a class="dropdown-item" href="https://ria.caubr.gov.br/" target="_blank">RIA</a>
+                            <a class="dropdown-item" href="https://gad.caubr.gov.br/" target="_blank">GAD</a>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
+
         <div class="container">
             <h2 class="text-center my-4" style="text-align: center; color: gray">Consulta CNAEs por CNPJ</h2>
             <div class="row">
@@ -176,15 +203,27 @@
                 </div>
             </div>
             <div id="tabelaReferenciaContainer" class="mt-3">
-                <!-- Tabela de Referência original mantida -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-sm bg-white">
+                        <thead class="thead-dark" style="background-color: #005abb;">
+                            <tr>
+                                <th style="width: 150px; text-align: center;">CNAE</th>
+                                <th>Atividade Relacionada ao CAU</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelaReferenciaBody"></tbody>
+                    </table>
+                </div>
             </div> 
         </div> 
-        <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-3" style="background-color: #005abb !important;">
+
+        <footer class="siccau-color text-light d-flex align-items-center justify-content-center py-2 mt-4" style="background-color: #005abb !important;">
             <p class="m-1">Gerência de Fiscalização e Registros - CAU/AP</p>
         </footer>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script>
             $(document).ready(function(){
                 var cnaeList = [
@@ -253,6 +292,16 @@
                     {cnae: "3329-5/01", atividade: "Serviços de montagem de móveis de qualquer material"}
                 ];
 
+                // Preenche a tabela de referência automaticamente
+                cnaeList.forEach(item => {
+                    $("#tabelaReferenciaBody").append(`
+                        <tr>
+                            <td class="text-center font-weight-bold">${item.cnae}</td>
+                            <td>${item.atividade}</td>
+                        </tr>
+                    `);
+                });
+
                 function formatCnae(cnaeStr) {
                     if (!cnaeStr) return "";
                     const clean = String(cnaeStr).replace(/\D/g, '').padStart(7, '0');
@@ -262,6 +311,74 @@
                 function findAtividade(cnae) {
                     const found = cnaeList.find(item => item.cnae === cnae);
                     return found ? found.atividade : "*** Atividade não encontrada na lista local ***";
+                }
+
+                function analisarIsencao(data) {
+                    const natureza =
+                        data.natureza_juridica ||
+                        data.descricao_natureza_juridica ||
+                        "";
+
+                    const codigo =
+                        String(data.codigo_natureza_juridica || "");
+
+                    const naturezaUpper = natureza.toUpperCase();
+
+                    const codigosDireitoPublico = [
+                        "101-5", "102-3", "103-1",
+                        "110-4", "111-2", "112-0",
+                        "113-9", "114-7", "115-5"
+                    ];
+
+                    const termosDireitoPublico = [
+                        "ORGAO PUBLICO", "ÓRGÃO PÚBLICO",
+                        "AUTARQUIA",
+                        "FUNDACAO PUBLICA", "FUNDAÇÃO PÚBLICA"
+                    ];
+
+                    if (
+                        codigosDireitoPublico.includes(codigo) ||
+                        termosDireitoPublico.some(termo => naturezaUpper.includes(termo))
+                    ) {
+                        return {
+                            classe: "success",
+                            icone: "✅",
+                            titulo: "Possível Direito à Isenção",
+                            mensagem: "A natureza jurídica indica Órgão Público, Autarquia ou Fundação Pública. Recomenda-se conferência documental pelo analista."
+                        };
+                    }
+
+                    if (
+                        codigo === "201-1" ||
+                        naturezaUpper.includes("EMPRESA PUBLICA") ||
+                        naturezaUpper.includes("EMPRESA PÚBLICA")
+                    ) {
+                        return {
+                            classe: "warning",
+                            icone: "⚠️",
+                            titulo: "Empresa Pública Identificada",
+                            mensagem: "Necessária análise manual. Nem toda Empresa Pública possui personalidade jurídica de direito público para fins de isenção."
+                        };
+                    }
+
+                    if (
+                        codigo === "203-8" ||
+                        naturezaUpper.includes("SOCIEDADE DE ECONOMIA MISTA")
+                    ) {
+                        return {
+                            classe: "warning",
+                            icone: "⚠️",
+                            titulo: "Sociedade de Economia Mista",
+                            mensagem: "Necessária análise manual para eventual enquadramento de isenção."
+                        };
+                    }
+
+                    return {
+                        classe: "danger",
+                        icone: "❌",
+                        titulo: "Sem Indicação de Isenção",
+                        mensagem: "Não foi identificado enquadramento automático para isenção da anuidade."
+                    };
                 }
 
                 $("#atualizarBtn").click(async function(){ 
@@ -274,7 +391,6 @@
                     }
 
                     try {
-                        // MUDANÇA PARA BRASILAPI (MAIS ESTÁVEL E COM SUPORTE CORS)
                         const response = await fetch(`https://brasilapi.com.br/api/cnpj/v1/${cnpj}`);
                         
                         if (!response.ok) {
@@ -282,11 +398,54 @@
                         }
 
                         const data = await response.json();
+                        console.log("Retorno BrasilAPI:", data);
                         $("#outputCnaes").empty(); 
 
                         const razao = data.razao_social || data.nome || "Empresa não identificada";
                         $("#outputCnaes").append(`<h3 class="text-center my-3">${razao}</h3>`);
 
+                        /* ======================================
+                           ANÁLISE DE ISENÇÃO DE ANUIDADE
+                        ====================================== */
+                        const analise = analisarIsencao(data);
+
+                        const natureza =
+                            data.natureza_juridica ||
+                            data.descricao_natureza_juridica ||
+                            "Não informada";
+
+                        const codigo =
+                            data.codigo_natureza_juridica ||
+                            "Não informado";
+
+                        $("#outputCnaes").append(`
+                            <div class="alert alert-${analise.classe} mb-4">
+                                <h5>
+                                    ${analise.icone}
+                                    <strong>Análise de Isenção de Anuidade</strong>
+                                </h5>
+                                <p class="mb-1">
+                                    <strong>Natureza Jurídica:</strong>
+                                    ${natureza}
+                                </p>
+                                <p class="mb-1">
+                                    <strong>Código:</strong>
+                                    ${codigo}
+                                </p>
+                                <p class="mb-1">
+                                    <strong>Resultado:</strong>
+                                    ${analise.titulo}
+                                </p>
+                                <hr>
+                                <p class="mb-0">
+                                    ${analise.mensagem}
+                                </p>
+                            </div>
+                        `);
+
+                        /* ======================================
+                           EXIBIÇÃO DOS CNAEs
+                        ====================================== */
                         let cnaes = [];
                         if (data.cnae_fiscal) {
                             cnaes.push({ codigo: String(data.cnae_fiscal), desc: data.cnae_fiscal_descricao, tipo: 'Principal' });
@@ -345,7 +504,11 @@
                 });
 
                 $("#deletarBtn").click(() => { $("#outputCnaes").empty(); $("#inputCnpj").val(""); });
-                $("#toggleTabelaReferenciaBtn").click(() => $("#tabelaReferenciaContainer").toggle());
+                $("#toggleTabelaReferenciaBtn").click(function() {
+                    $("#tabelaReferenciaContainer").toggle();
+                    const isVisible = $("#tabelaReferenciaContainer").is(":visible");
+                    $(this).text(isVisible ? "Ocultar Tabela de Referência de CNAEs" : "Mostrar Tabela de Referência de CNAEs");
+                });
             });
         </script>
     </body>
